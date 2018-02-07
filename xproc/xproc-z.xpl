@@ -43,7 +43,7 @@ version="1.0" name="main">
 										<p>Examples:</p>
 										<ul>
 											<li>Get <a href="object/119609">item 119609</a></li>
-											<li>Search for <a href="object?filters[]=obj_phydescription%3Avauxhall%20car&amp;filters[]=obj_type%3Aphotographs">photographs of Vauxhall cars</a></li>
+											<li>Search for <a href="object?obj_phydescription=vauxhall%20car&amp;obj_type=photographs">photographs of Vauxhall cars</a></li>
 										</ul>
 									</body>
 								</html>
@@ -63,19 +63,21 @@ version="1.0" name="main">
 		<!-- retrieve objects matching search criteria -->
 		<p:when test=" starts-with($relative-uri, 'object') ">
 			<z:parse-parameters/>
+			<!-- TODO escape quotes in the query; maybe with a regex replace or maybe even use a simple XSLT to generate the Solr query. -->
 			<p:load>
 				<p:with-option name="href" select="
 					concat(
 						'http://localhost:8080/solr/select/?q=', 
-						string-join(
-							for $query-term in /c:multipart/c:body[@id='filters[]'] return 
-							concat(
-								substring-before($query-term, ':'), 
-								'%3A%22',
-								substring-after($query-term, ':'),
-								'%22'
-							), 
-							'%20AND%20'
+						encode-for-uri(
+							string-join(
+								for $parameter in /c:multipart/c:body return concat(
+									$parameter/@id, 
+									':&quot;', 
+									$parameter, 
+									'&quot;'
+								), 
+								' AND '
+							)
 						)
 					)
 				"/>
