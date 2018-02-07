@@ -75,6 +75,38 @@ version="1.0" name="main">
 		</p:when>
 		<!-- retrieve objects matching search criteria -->
 		<p:when test=" starts-with($relative-uri, 'object') ">
+			<p:www-form-urldecode>
+				<p:with-option name="value" select="substring-after($relative-uri, 'object?')"/>
+			</p:www-form-urldecode>
+			<p:load>
+				<p:with-option name="href" select="
+					concat(
+						'http://localhost:8080/solr/select/?q=', 
+						encode-for-uri(
+							string-join(
+								for $parameter in /c:param-set/c:param[normalize-space(@value)] return concat(
+									$parameter/@name, 
+									':&quot;', 
+									replace(
+										replace(
+											$parameter/@value,
+											'\\',
+											'\\\\'
+										),
+										'&quot;',
+										'\\&quot;'
+									), 
+									'&quot;'
+								), 
+								' AND '
+							)
+						)
+					)
+				"/>
+			</p:load>
+			<z:make-http-response status="200" content-type="application/xml"/>
+		</p:when>
+		<p:when test=" starts-with($relative-uri, 'object') ">
 			<z:parse-parameters/>
 			<p:load>
 				<p:with-option name="href" select="
