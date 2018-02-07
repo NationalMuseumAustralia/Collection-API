@@ -76,17 +76,24 @@ version="1.0" name="main">
 		<!-- retrieve objects matching search criteria -->
 		<p:when test=" starts-with($relative-uri, 'object') ">
 			<z:parse-parameters/>
-			<!-- TODO escape quotes in the query; maybe with a regex replace or maybe even use a simple XSLT to generate the Solr query. -->
 			<p:load>
 				<p:with-option name="href" select="
 					concat(
 						'http://localhost:8080/solr/select/?q=', 
 						encode-for-uri(
 							string-join(
-								for $parameter in /c:multipart/c:body return concat(
+								for $parameter in /c:multipart/c:body[normalize-space()] return concat(
 									$parameter/@id, 
 									':&quot;', 
-									$parameter, 
+									replace(
+										replace(
+											$parameter,
+											'\\',
+											'\\\\'
+										),
+										'&quot;',
+										'\\&quot;'
+									), 
 									'&quot;'
 								), 
 								' AND '
