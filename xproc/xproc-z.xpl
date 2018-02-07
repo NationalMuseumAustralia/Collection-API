@@ -45,6 +45,19 @@ version="1.0" name="main">
 											<li>Get <a href="object/119609">item 119609</a></li>
 											<li>Search for <a href="object?obj_phydescription=vauxhall%20car&amp;obj_type=photographs">photographs of Vauxhall cars</a></li>
 										</ul>
+										<form action="object" method="get">
+											<table>
+												<tr>
+													<td><label>Physical Description</label></td>
+													<td><input type="text" name="obj_phydescription"/></td>
+												</tr>
+												<tr>
+													<td><label>Type</label></td>
+													<td><input type="text" name="obj_type"/></td>
+												</tr>
+											</table>
+											<button type="submit">Search</button>
+										</form>
 									</body>
 								</html>
 							</c:body>
