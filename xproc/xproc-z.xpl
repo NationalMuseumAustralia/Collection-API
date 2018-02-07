@@ -106,36 +106,6 @@ version="1.0" name="main">
 			</p:load>
 			<z:make-http-response status="200" content-type="application/xml"/>
 		</p:when>
-		<p:when test=" starts-with($relative-uri, 'object') ">
-			<z:parse-parameters/>
-			<p:load>
-				<p:with-option name="href" select="
-					concat(
-						'http://localhost:8080/solr/select/?q=', 
-						encode-for-uri(
-							string-join(
-								for $parameter in /c:multipart/c:body[normalize-space()] return concat(
-									$parameter/@id, 
-									':&quot;', 
-									replace(
-										replace(
-											$parameter,
-											'\\',
-											'\\\\'
-										),
-										'&quot;',
-										'\\&quot;'
-									), 
-									'&quot;'
-								), 
-								' AND '
-							)
-						)
-					)
-				"/>
-			</p:load>
-			<z:make-http-response status="200" content-type="application/xml"/>
-		</p:when>
 		<p:otherwise>
 			<z:not-found/>
 		</p:otherwise>
