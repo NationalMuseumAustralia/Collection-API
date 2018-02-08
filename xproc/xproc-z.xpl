@@ -71,7 +71,7 @@ version="1.0" name="main">
 			<p:load>
 				<p:with-option name="href" select="concat('http://localhost:8080/solr/select/?q=id:', substring-after($relative-uri, 'object/'))"/>
 			</p:load>
-			<z:make-http-response status="200" content-type="application/xml"/>
+			<z:transform xslt="../xslt/solr-xml-to-json.xsl"/>
 		</p:when>
 		<!-- retrieve objects matching search criteria -->
 		<p:when test=" starts-with($relative-uri, 'object') ">
@@ -104,7 +104,7 @@ version="1.0" name="main">
 					)
 				"/>
 			</p:load>
-			<z:make-http-response status="200" content-type="application/xml"/>
+			<z:transform xslt="../xslt/solr-xml-to-json.xsl"/>
 		</p:when>
 		<p:otherwise>
 			<z:not-found/>
