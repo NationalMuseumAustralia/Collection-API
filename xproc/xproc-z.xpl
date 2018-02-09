@@ -86,17 +86,21 @@ version="1.0" name="main">
 							string-join(
 								for $parameter in /c:param-set/c:param[normalize-space(@value)] return concat(
 									$parameter/@name, 
-									':&quot;', 
-									replace(
+									if ($parameter/@value='*') then 
+										':*' 
+									else concat(
+										':&quot;', 
 										replace(
-											$parameter/@value,
-											'\\',
-											'\\\\'
-										),
-										'&quot;',
-										'\\&quot;'
-									), 
-									'&quot;'
+											replace(
+												$parameter/@value,
+												'\\',
+												'\\\\'
+											),
+											'&quot;',
+											'\\&quot;'
+										), 
+										'&quot;'
+									)
 								), 
 								' AND '
 							)
