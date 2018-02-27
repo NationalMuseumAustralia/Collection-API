@@ -46,8 +46,10 @@
 			<xsl:otherwise>
 				<xsl:text>[</xsl:text>
 				<xsl:for-each select="$string-values">
+					<xsl:if test="position() &gt; 1">
+						<xsl:text>,&#xA;</xsl:text>
+					</xsl:if>
 					<xsl:apply-templates/>
-					<xsl:text>,&#xA;</xsl:text>
 				</xsl:for-each>
 				<xsl:text>]</xsl:text>
 			</xsl:otherwise>
