@@ -42,18 +42,22 @@ version="1.0" name="main">
 										<h1>NMA API v0.0</h1>
 										<p>Examples:</p>
 										<ul>
-											<li>Get <a href="object/119609">item 119609</a></li>
-											<li>Search for <a href="object?obj_phydescription=vauxhall%20car&amp;obj_type=photographs">photographs of Vauxhall cars</a></li>
+											<li>Get <a href="object/45929">object 45929</a></li>
+											<li>Search for <a href="object?title=bark">bark</a></li>
 										</ul>
 										<form action="object" method="get">
 											<table>
 												<tr>
-													<td><label>Physical Description</label></td>
-													<td><input type="text" name="obj_phydescription"/></td>
+													<td><label>Title</label></td>
+													<td><input type="text" name="title"/></td>
 												</tr>
 												<tr>
-													<td><label>Type</label></td>
-													<td><input type="text" name="obj_type"/></td>
+													<td><label>Place</label></td>
+													<td><input type="text" name="place"/></td>
+												</tr>
+												<tr>
+													<td><label>Person</label></td>
+													<td><input type="text" name="place"/></td>
 												</tr>
 											</table>
 											<button type="submit">Search</button>
@@ -69,7 +73,7 @@ version="1.0" name="main">
 		<!-- retrieve object by id -->
 		<p:when test=" starts-with($relative-uri, 'object/') ">
 			<p:load>
-				<p:with-option name="href" select="concat('http://localhost:8080/solr/select/?q=id:', substring-after($relative-uri, 'object/'))"/>
+				<p:with-option name="href" select="concat('http://localhost:8983/solr/core_nma_public/select?wt=xml&amp;q=id:', substring-after($relative-uri, 'object/'))"/>
 			</p:load>
 			<z:transform xslt="../xslt/solr-xml-to-json.xsl"/>
 		</p:when>
@@ -81,7 +85,7 @@ version="1.0" name="main">
 			<p:load>
 				<p:with-option name="href" select="
 					concat(
-						'http://localhost:8080/solr/select/?q=', 
+						'http://localhost:8983/solr/core_nma_public/select?wt=xml&amp;q=', 
 						encode-for-uri(
 							string-join(
 								for $parameter in /c:param-set/c:param[normalize-space(@value)] return concat(
