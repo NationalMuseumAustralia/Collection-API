@@ -24,10 +24,19 @@
 	
 	<!-- a JSON object -->
 	<xsl:template match="doc">
+		<xsl:value-of select="arr[@name='json-ld']"/>
+	</xsl:template>
+	
+	<xsl:template match="doc" priority="-999"><!-- obsolete -->
 		<xsl:text>{&#xA;</xsl:text>
-		<xsl:apply-templates/>
+		<!-- Solr generates an alias of each property name (an artefact of the "schemaless" mode is creating an explicit "string" version of each property -->
+		<!-- which we can ignore -->
+		<!-- and the _version_ field can go too -->
+		<xsl:apply-templates select="*[not(@name='_version_')][not(ends-with(@name, '_str'))]"/>
 		<xsl:text>&#xA;}</xsl:text>
 	</xsl:template>
+	
+
 
 	<!-- a JSON object property/value pair -->
 	<xsl:template match="doc/*">
