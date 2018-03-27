@@ -1,10 +1,62 @@
 <?xml version="1.1"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:c="http://www.w3.org/ns/xproc-step" >
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:c="http://www.w3.org/ns/xproc-step"  xmlns:nma="tag:conaltuohy.com,2018:nma">
+	
+	<!-- content negotiation -->
+	<!-- if the format parameter is present, it identifies one of the payload fields; "simple" or "json-ld" -->
+	<!-- if the format parameter is absent then a format is chosen based on the HTTP accept header -->
+	<!-- or as a last resort a buillt in default is chosen -->
+	<xsl:param name="accept" select=" 'application/ld+json' "/>
+	<xsl:param name="format"/>
+	
+	<xsl:variable name="accept-header-types">
+		<xsl:element name="types">
+			<xsl:analyze-string select="$accept" regex="[^,]+">
+				<xsl:matching-substring>
+					<xsl:element name="type">
+						<xsl:analyze-string select="normalize-space(.)" regex="([^\s;]+)(.*)">
+							<xsl:matching-substring>
+								<xsl:attribute name="name" select="regex-group(1)"/>
+								
+								<xsl:analyze-string select="regex-group(2)" regex=";\s?([^=]+)=([^;]+)">
+									<xsl:matching-substring>
+										<xsl:attribute name="{regex-group(1)}" select="regex-group(2)"/>
+									</xsl:matching-substring>
+								</xsl:analyze-string>
+							</xsl:matching-substring>
+						</xsl:analyze-string>
+					</xsl:element>
+				</xsl:matching-substring>
+			</xsl:analyze-string>
+		</xsl:element>
+	</xsl:variable>
+	
+	<xsl:function name="nma:content-type-preference">
+		<xsl:param name="content-type"/>
+		<xsl:variable name="specified-type" select="$accept-header-types/types/type[@name=$content-type]"/>
+		<xsl:choose>
+			<xsl:when test="not($specified-type)">0.0</xsl:when>
+			<xsl:otherwise><xsl:value-of select="($specified-type/@q, 1.0)[1]"/></xsl:otherwise>
+		</xsl:choose>
+	</xsl:function>
+	
+	<xsl:variable name="response-format">
+		<xsl:choose>
+			<xsl:when test="$format">
+				<xsl:value-of select="$format"/>
+			</xsl:when>
+			<xsl:when test="number(nma:content-type-preference('application/ld+json')) &gt;= number(nma:content-type-preference('application/json'))">
+				<xsl:text>json-ld</xsl:text>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text>simple</xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
 	
 	<xsl:template match="/response">
-		<c:response status="{if (result/@numFound='0') then '404' else '200'}" content-type="application/json">
-			<c:body content-type="application/json">
+		<c:response status="{if (result/@numFound='0') then '404' else '200'}">
+			<c:body content-type="{if ($response-format='json-ld') then 'application/ld+json' else 'application/json'}">
 				<xsl:apply-templates select="result"/>
 			</c:body>
 		</c:response>
@@ -24,7 +76,7 @@
 	
 	<!-- a JSON object -->
 	<xsl:template match="doc">
-		<xsl:value-of select="arr[@name='json-ld']"/>
+		<xsl:value-of select="arr[@name=$response-format]"/>
 	</xsl:template>
 	
 	<xsl:template match="doc" priority="-999"><!-- obsolete -->
