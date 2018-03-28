@@ -59,6 +59,9 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 				</p:when>
 				<!-- retrieve objects matching search criteria -->
 				<p:when test=" contains($relative-uri, '?') ">
+					<p:variable name="sort" select="/c:param-set/c:param[@name='sort']/@value"/>
+					<p:variable name="start" select="/c:param-set/c:param[@name='offset']/@value"/>
+					<p:variable name="rows" select="/c:param-set/c:param[@name='limit']/@value"/>
 					<p:variable name="entity-type" select="substring-before($relative-uri, '?')"/>
 					<p:load>
 						<p:with-option name="href" select="
@@ -67,7 +70,10 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 								'fq=type:', $entity-type, '&amp;',
 								'q=', encode-for-uri(
 									string-join(
-										for $parameter in /c:param-set/c:param[normalize-space(@value)][not(@name='format')] return concat(
+										for $parameter in /c:param-set/c:param
+											[normalize-space(@value)]
+											[not(@name=('format', 'sort', 'offset', 'limit'))] 
+										return concat(
 											$parameter/@name, 
 											if ($parameter/@value='*') then 
 												':*' 
@@ -87,7 +93,22 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 										), 
 										' AND '
 									)
-								)
+								),
+								if ($sort) then
+									concat(
+										'&amp;sort=', 
+										string-join(
+											encode-for-uri($sort),
+											','
+										)
+									)
+								else (),
+								if (not($start='')) then 
+									concat('&amp;start=', encode-for-uri($start))
+								else (),
+								if (not($rows='')) then 
+									concat('&amp;rows=', encode-for-uri($rows))
+								else ()
 							)
 						"/>
 					</p:load>
