@@ -59,16 +59,15 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 				</p:when>
 				<!-- retrieve objects matching search criteria -->
 				<p:when test=" contains($relative-uri, '?') ">
-                                        <p:variable name="sort" select="/c:param-set/c:param[@name='sort']/@value"/>
-                                        <p:variable name="start" select="/c:param-set/c:param[@name='offset']/@value"/>
-                                        <p:variable name="rows" select="/c:param-set/c:param[@name='limit']/@value"/>
+					<p:variable name="entity-type" select="substring-before($relative-uri, '?')"/>
 					<p:load>
 						<p:with-option name="href" select="
 							concat(
-								'http://localhost:8983/solr/core_nma_public/select?wt=xml&amp;q=', 
-								encode-for-uri(
+								'http://localhost:8983/solr/core_nma_public/select?wt=xml&amp;',
+								'fq=type:', $entity-type, '&amp;',
+								'q=', encode-for-uri(
 									string-join(
-                                                                                for $parameter in /c:param-set/c:param[normalize-space(@value)][not(@name='format' or @name='sort' or @name='offset' or @name='limit')] return concat(
+										for $parameter in /c:param-set/c:param[normalize-space(@value)][not(@name='format')] return concat(
 											$parameter/@name, 
 											if ($parameter/@value='*') then 
 												':*' 
@@ -88,17 +87,7 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 										), 
 										' AND '
 									)
-                                                                ),
-                                                                if (not($sort='')) then 
-                                                                        concat('&amp;sort=', encode-for-uri($sort))
-                                                                else (),
-                                                                if (not($start='')) then 
-                                                                        concat('&amp;start=', encode-for-uri($start))
-                                                                else (),
-                                                                if (not($rows='')) then 
-                                                                        concat('&amp;rows=', encode-for-uri($rows))
-                                                                else ()
-
+								)
 							)
 						"/>
 					</p:load>
