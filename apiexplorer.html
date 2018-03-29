@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8' />
+<title>NMA API Explorer</title>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+<style>
+html {
+	background-color: #F39C12;
+	background-image: -moz-linear-gradient(center top, #5e8ec6, #E4E4E4);
+}
+body {
+	background-color: transparent;
+	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+	font-size: 10pt;
+	padding: 1px 0 30px;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+hr {
+	border-top: 1px solid #CCCCCC;
+}
+#page {
+	background-color: #FFFFFF;
+	border-radius: 5px 5px 5px 5px;
+	box-shadow: 0 0 5px #000000;
+	clear: left;
+	padding: 10px 0 0;
+	margin-top: 20px;
+	min-height: 800px;
+}
+#page article {
+	margin: 0 43px;
+	padding: 30px 0 20px;
+}
+.objRow {
+	display: table-row;
+}
+.objTable {
+	display: table;
+}
+.name {
+	color: #117864;
+	font-weight: bold;
+	display: table-cell;
+	min-width: 60px;
+	padding-right: 8px;
+}
+.value {
+	display: table-cell;
+}
+.noLinkValue {
+	color: SlateGray;
+	font-weight: bold;
+}
+.nestedvalue {
+	display: table-cell;
+	margin-top: 20px;
+}
+</style>
+</head>
+<body>
+	<section id='page' class='container'>
+
+		<article>
+
+			<a href="https://github.com/Conal-Tuohy/NMA-API/wiki/Getting-started">API home</a>
+			<div class='well'>
+				<h3>National Museum of Australia API Explorer</h3>
+
+				<div style="margin-top: 20px;">
+
+					<form name="searchForm">
+						<input type="text" name="keywords" id="formKeywords" placeholder="Enter your keywords" value="*" /> 
+						<select name="endpoint" id="formEndpoint">
+							<option value="object">Object</option>
+							<option value="party">Party</option>
+							<option value="place">Place</option>
+							<option value="media">Media</option>
+						</select> 
+						<select name="field" id="formField">
+							<option value="text">Anywhere</option>
+							<option value="all">--- Objects: ---</option>
+							<option value="title">Title</option>
+							<option value="description">Description</option>
+							<option value="type">Type</option>
+							<option value="creator">Creator</option>
+							<option value="temporal">Date</option>
+							<option value="spatial">Place</option>
+							<option value="contributor">Contributor</option>
+							<option value="collection">Collection</option>
+							<option value="medium">Material</option>
+							<option value="rights">Rights</option>
+							<option value="identifier">Identifier</option>
+							<option value="media">Media</option>
+							<option value="all">--- Parties: ---</option>
+							<option value="name">Name</option>
+							<option value="gender">Gender</option>
+							<option value="all">--- Places: ---</option>
+							<option value="location">Geolocation</option>
+						</select> 
+						<select name="format" id="formFormat">
+							<option value="simple">Simple format</option>
+							<option value="json-ld">Linked Art</option>
+						</select> 
+						<select name="size" id="formSize">
+							<option>5</option>
+							<option>10</option>
+							<option>50</option>
+							<option>100</option>
+						</select>
+						<input type="submit" id="formSearch" value="Search" /> <a
+							id="formReset" href="#">Reset</a>
+					</form>
+
+					<div id="searchUrl"></div>
+					<div id="resultsCount"></div>
+
+				</div>
+			</div>
+
+			<div id='top'></div>
+		</article>
+
+	</section>
+
+	<script type="text/javascript">
+
+//var API_BASE = 'http://nma.conaltuohy.com/xproc-z';
+var API_BASE = '/xproc-z';
+
+$(function(){
+
+	// set up reset-form link
+	$('#formReset').attr("href", window.location.href.split("?")[0]);
+
+	// page called to display a single object
+	let pageId = _getParameterByName('id');
+	let apiKey = _getParameterByName('apiKey');
+	if (apiKey != null) {
+		$('#formApiKey').val(apiKey);
+	}
+
+	if (pageId) {
+			try {
+				let url = API_BASE + '/' + pageId + '?format=simple';
+				$('#searchUrl').html('<a href="' + url + '">' + url + '</a>');
+				
+				// retrieve from API then process
+				let apiHeaders = new Headers();
+				fetch(url, {headers: apiHeaders})
+				.then(_checkStatus)
+				.then(function(response) {
+					return response.json()
+				}).then(function(json) {
+					displayResponse(json)
+				}).catch(function(ex) {
+					console.log('retrieve failed:', ex);
+					alert("Oh noes, an error: " + ex);
+				})
+			} catch (e) {
+				alert("Oh noes, an error: " + e.message);
+			}
+	}
+
+	//  page called to run query
+	if (_getParameterByName('keywords')) {
+		$('#resultsCount').html('');
+		$('#searchUrl').html('');
+		
+		// populate the form fields
+		let keywords = _getParameterByName('keywords');
+		let endpoint = _getParameterByName('endpoint');
+		let format = _getParameterByName('format');
+		let field = _getParameterByName('field');
+		let sort = _getParameterByName('sort');
+		let size = _getParameterByName('size');
+		$('#formKeywords').val(keywords);
+		$('#formEndpoint').val(endpoint);
+		$('#formFormat').val(format);
+		$('#formField').val(field);
+		$('#formSort').val(sort);
+		$('#formSize').val(size);
+		
+		if (format == null || format == '') {
+			format = 'simple';
+		}
+		
+		// run query
+		doQuery(keywords, field, endpoint, format, sort, size, apiKey);
+	}
+});
+
+// run query and display results
+function doQuery(keywords, field, endpoint, format, sort, size, apiKey) {
+	let parts = [];
+	if (keywords == null) {
+		parts.push(field + "=*");
+	} else {
+		if (keywords == '') keywords = '*';
+		parts.push(field + "=" + keywords);
+	}
+	let query = parts.join("&");
+	if (endpoint == null || endpoint == '') endpoint='object';
+	
+	// retrieve from API then process
+	try {
+		// currently API doesn't accept empty sort param
+		let sortParam = '';
+		if (sort != '') {
+			sortParam = '&sort=' + sort;
+		}
+		let url = API_BASE + '/' + endpoint + '?limit=' + size + '&' + query;
+		if (format != null) {
+			url += "&format=" + format;
+		}
+		$('#searchUrl').html('<a href=\'' + url + '\'>' + url + '</a>');
+		
+		let apiHeaders = new Headers();
+//		apiHeaders.append('Access-Control-Allow-Origin', '*');
+//		fetch(url, {headers: apiHeaders, mode: "no-cors"})
+		fetch(url)
+		.then(_checkStatus)
+		.then(function(response) {
+			return response.json()
+		}).then(function(json) {
+			displayResponse(json)
+		}).catch(function(ex) {
+			console.log('retrieve failed:', ex);
+			alert("Oh noes, an error: " + ex);
+		})
+	} catch (e) {
+		alert("Oh noes, an error: " + e.message);
+	}
+}
+
+// display an API response
+function displayResponse(responseJson) {
+	$('#top').html('');
+
+	if (responseJson) {
+		// search results
+//		$('#resultsCount').html('<p>' + responseJson._metadata.resultset.count + ' results</p>' );
+		if ($.type(responseJson) === 'array') {
+			responseJson.forEach(function(r){
+				$('#top').append( '<div class="container table table-hover">' + displayObject(r, 0) + '</div>' );
+				$('#top').append( '<hr style="border-top: 5px solid green;" />' );
+			})
+		} else {
+			$('#top').append( '<div class="container table table-hover">' + displayObject(responseJson, 0) + '</div>' );
+			$('#top').append( '<hr style="border-top: 5px solid green;" />' );
+		}
+
+	} else if (responseJson.id) {
+		// single object
+		$('#top').append( '<div class="objTable">' + displayObject(responseJson, 0) + '</div>' );
+	} else {
+		$('#resultsCount').html('<p>0 results</p>' );
+	}
+}
+
+// display a single object or property within an object
+function displayObject(obj, depth) {
+
+	let objType = $.type(obj);
+	let objUrl = '?id=' + getEndpoint(obj.type) + '/' + obj.id;
+	let apiType = obj.type;
+
+	let html = "";
+	if (depth === 0) {
+		// header
+		let headerTitle = "untitled";
+		if (obj.title != null) {
+			headerTitle = obj.title;
+		} else if (obj.name != null) {
+			headerTitle = obj.name;
+		}
+		headerTitle = headerTitle.replace(/&/g, '&amp;');
+		headerTitle = headerTitle.replace(/</g, '&lt;');
+		headerTitle = headerTitle.replace(/>/g, '&gt;');
+		$('#top').append( '<h4><a href="' + objUrl + '">' + headerTitle + '</a> - ' + obj.type + '</h4>' );
+	}
+
+	if (objType === 'string') {
+		// display leaf node
+		obj = obj.replace(/&/g, '&amp;');
+		obj = obj.replace(/</g, '&lt;');
+		obj = obj.replace(/>/g, '&gt;');
+		if (obj.startsWith("http")) {
+			html += '<div class="value"><a href="' + obj + '">' + obj + '</a></div>';
+		} else {
+			html += '<div class="value">' + obj + '</div>';
+		}
+	
+	} else {
+	
+		for(let prop in obj) {
+		
+			// ignore JSON-LD context
+			if (prop === '@context') continue;
+
+			html += '<div class="objRow">';
+			let name = prop[0].toUpperCase() + prop.substring(1);
+			html += '<div class="name">' + name + '</div>';
+
+			switch($.type(obj[prop])) {
+
+				case 'object':
+					// recurse to display nested object
+					html += '<div class="nestedvalue">' + displayObject(obj[prop], depth+1) + '</div>';
+					break;
+				
+				case 'array':
+					// recurse to display each nested object
+					html += '<div class="nestedvalue">';
+					for (let a = 0; a < obj[prop].length; a++) {
+						html += displayObject(obj[prop][a], depth+1);
+						if ($.type(obj[prop][a]) === "string") {
+							html += '<span style="clear:both;" />';
+						} else {
+							html += '<hr style="margin:5px;" />';
+						}
+					}
+					html += '</div>';
+					break;
+				
+				default:
+					// display this prop
+					let value = obj[prop];
+					// encode for HTML display
+					if ($.type(value) === 'string') {
+						value = value.replace(/&/g, '&amp;');
+						value = value.replace(/</g, '&lt;');
+						value = value.replace(/>/g, '&gt;');
+					}
+					switch(prop) {
+						case 'type':
+							html += '<div class="value" style="font-style:italic;">' + value + '</div>';
+							break;
+						case 'title':
+							if (!obj.id) {
+								// no id so there is no endpoint 
+								html += '<div class="value"><span class="noLinkValue">' + value + '</span></div>';
+							} else {
+								html += '<div class="value"><a href="' + objUrl + '">' + value + '</a></div>';
+							}
+							break;
+						default:
+							if ($.type(value) === 'string' && value.startsWith("http")) {
+								html += '<div class="value"><a href="' + value + '">' + value + '</a>';
+								// display thumbnail image
+								if (value.includes('prodderivT') || value.includes('200x200')) {
+									html += '<br /><img src="' + value + '" height="100" />';
+								}
+								html += '</div>';
+							} else {
+								html += '<div class="value">' + value + '</div>';
+							}
+					}
+			}
+			html += '</div>';
+		}
+	}
+	
+	return html;
+}
+
+// get API endpoint name for the specified object type
+function getEndpoint(objectType) {
+	switch(objectType) {
+		case 'Person':
+		case 'Organisation':
+		case 'person':
+		case 'organisation':
+			return('party');
+		case 'Place':
+		case 'place':
+			return('place');
+		case 'StillImage':
+		case 'MovingImage':
+		case 'Sound':
+			return('media');
+		default:
+			return("object");
+	}
+}
+
+// throw error if response not HTTP 2xx OK
+function _checkStatus(response) {
+	if (response.status >= 200 && response.status < 300) {
+		return response
+	} else {
+		let error = new Error(response.status + " " + response.statusText)
+		error.response = response
+		throw error
+	}
+}
+
+// extract querystring parameter from page URL
+function _getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+</script>
+</body>
+</html>
