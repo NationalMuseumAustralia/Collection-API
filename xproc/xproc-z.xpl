@@ -159,16 +159,68 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 									<form action="object" method="get">
 										<table>
 											<tr>
+												<td><label>Type</label></td>
+												<td><input type="text" name="type"/></td>
+											</tr>
+											<tr>
+												<td><label>Text (catch-all)</label></td>
+												<td><input type="text" name="text"/></td>
+											</tr>
+											<tr>
+												<td><label>Collection name</label></td>
+												<td><input type="text" name="collection"/></td>
+											</tr>
+											<tr>
 												<td><label>Title</label></td>
 												<td><input type="text" name="title"/></td>
 											</tr>
 											<tr>
-												<td><label>Place</label></td>
-												<td><input type="text" name="place"/></td>
+												<td><label>Description</label></td>
+												<td><input type="text" name="description"/></td>
 											</tr>
 											<tr>
-												<td><label>Person</label></td>
-												<td><input type="text" name="place"/></td>
+												<td><label>Creator</label></td>
+												<td><input type="text" name="creator"/></td>
+											</tr>
+											<tr>
+												<td><label>Temporal</label></td>
+												<td><input type="text" name="temporal"/></td>
+											</tr>
+											<tr>
+												<td><label>Spatial</label></td>
+												<td><input type="text" name="spatial"/></td>
+											</tr>
+											<tr>
+												<td><label>Dimension</label></td>
+												<td><input type="text" name="dimension"/></td>
+											</tr>
+											<tr>
+												<td><label>Medium</label></td>
+												<td><input type="text" name="medium"/></td>
+											</tr>
+											<tr>
+												<td><label>Rights</label></td>
+												<td><input type="text" name="rights"/></td>
+											</tr>
+											<tr>
+												<td><label>Contributor</label></td>
+												<td><input type="text" name="contributor"/></td>
+											</tr>
+											<tr>
+												<td><label>Media (identifiers)</label></td>
+												<td><input type="text" name="media"/></td>
+											</tr>
+											<tr>
+												<td><label>Name (of people)</label></td>
+												<td><input type="text" name="name"/></td>
+											</tr>
+											<tr>
+												<td><label>Gender</label></td>
+												<td><input type="text" name="gender"/></td>
+											</tr>
+											<tr>
+												<td><label>Location (lat, long)</label></td>
+												<td><input type="text" name="location"/></td>
 											</tr>
 										</table>
 										<button type="submit">Search</button>
