@@ -61,7 +61,23 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 				<p:when test=" contains($relative-uri, '?') ">
 					<p:variable name="sort" select="/c:param-set/c:param[@name='sort']/@value"/>
 					<p:variable name="start" select="/c:param-set/c:param[@name='offset']/@value"/>
-					<p:variable name="rows" select="/c:param-set/c:param[@name='limit']/@value"/>
+					<!-- if you don't specify a limit, this is how many rows you get -->
+					<p:variable name="default-rows" select="50"/>
+					<!-- this is the maximum number of rows you can get, even if you request more -->
+					<p:variable name="max-rows" select="100"/>
+					<!-- this is the number of rows requested -->
+					<p:variable name="requested-rows" select="/c:param-set/c:param[@name='limit']/@value"/>
+					<!-- this is the number of rows which we will request from Solr -->
+					<!-- and which is no less than 1 and no more than $max-rows -->
+					<p:variable name="rows" select="
+						if ($requested-rows castable as xs:integer) then
+							min((
+								$max-rows cast as xs:integer,
+								max((1, $requested-rows cast as xs:double))
+							)) cast as xs:integer
+						else
+							$default-rows
+					"/>
 					<p:variable name="entity-type" select="substring-before($relative-uri, '?')"/>
 					<p:load>
 						<p:with-option name="href" select="
