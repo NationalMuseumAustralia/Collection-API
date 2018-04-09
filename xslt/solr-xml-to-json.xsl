@@ -6,7 +6,7 @@
 	<!-- if the format parameter is present, it identifies one of the payload fields; "simple" or "json-ld" -->
 	<!-- if the format parameter is absent then a format is chosen based on the HTTP accept header -->
 	<!-- or as a last resort a buillt in default is chosen -->
-	<xsl:param name="accept" select=" 'application/ld+json' "/>
+	<xsl:param name="accept" select=" 'application/json' "/>
 	<xsl:param name="format"/>
 	
 	<xsl:variable name="accept-header-types">
