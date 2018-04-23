@@ -9,6 +9,9 @@
 	<xsl:param name="accept"/>
 	<!-- (or as a last resort the "simple" JSON format is chosen) -->
 	
+	<!-- the current API query URI, used when generating a "next" link -->
+	<xsl:param name="relative-uri"/>
+	
 	<!-- The format to return result data in -->
 	<xsl:variable name="response-format">
 		<xsl:choose>
@@ -75,8 +78,36 @@
 
 	<!-- Convert the Solr http response into an API response to the API user -->
 	<xsl:template match="/response">
+		<xsl:variable name="result-count" select="number(result/@numFound)"/>
 		<!-- define the HTTP response; a 404 "Not found" if nothing was found, otherwise a 200 "OK" -->
-		<c:response status="{if (result/@numFound='0') then '404' else '200'}">
+		<c:response status="{if ($result-count=0) then '404' else '200'}">
+			<c:header name="Result-Count" value="{$result-count}"/>
+			<xsl:variable name="result-count-so-far" select="number(result/@start) + count(result/doc)"/>
+			<xsl:if test="$result-count &gt; $result-count-so-far">
+				<!-- The current page of records does not exhaust the result set -->
+				<!-- Generate a link that points to the next page, by constructing a new API query URI with the old 'offset' parameter
+				removed, and a new 'offset' parameter which reflects the number of records returned in this response. -->
+				<xsl:variable name="object-type" select="substring-before($relative-uri, '?')"/><!-- e.g. 'object', 'party' etc. -->
+				<xsl:variable name="query-parameters" select="tokenize(substring-after($relative-uri, '?'), '&amp;')"/>
+it				<c:header name="Link" value="&lt;{
+					concat(
+						$object-type,
+						'?',
+						string-join(
+							(
+								$query-parameters
+									[not(starts-with(., 'offset='))]
+									[substring-after(., '=')],
+								concat(
+									'offset=', 
+									$result-count-so-far
+								)
+							),
+							'&amp;'
+						)
+					)
+				}&gt;; rel=next"/>
+			</xsl:if>
 			<!-- specify which format the result is being returned in -->
 			<c:body content-type="{if ($response-format='json-ld') then 'application/ld+json' else 'application/json'}">
 				<!-- output the actual result data -->

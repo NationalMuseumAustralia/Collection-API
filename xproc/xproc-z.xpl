@@ -131,6 +131,7 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 					<nma:format-result>
 						<p:with-option name="accept" select="$accept"/>
 						<p:with-option name="format" select="$format"/>
+						<p:with-option name="relative-uri" select="$relative-uri"/>
 					</nma:format-result>
 				</p:when>
 				<p:otherwise>
@@ -145,9 +146,12 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 		<p:output port="result"/>
 		<p:option name="accept"/>
 		<p:option name="format"/>
+		<p:option name="relative-uri"/>
+		<p:option name="rows"/>
 		<p:xslt>
 			<p:with-param name="accept" select="$accept"/>
 			<p:with-param name="format" select="$format"/>
+			<p:with-param name="relative-uri" select="$relative-uri"/>
 			<p:input port="stylesheet">
 				<p:document href="../xslt/solr-xml-to-json.xsl"/>
 			</p:input>
