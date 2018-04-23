@@ -89,7 +89,7 @@
 				removed, and a new 'offset' parameter which reflects the number of records returned in this response. -->
 				<xsl:variable name="object-type" select="substring-before($relative-uri, '?')"/><!-- e.g. 'object', 'party' etc. -->
 				<xsl:variable name="query-parameters" select="tokenize(substring-after($relative-uri, '?'), '&amp;')"/>
-it				<c:header name="Link" value="&lt;{
+				<c:header name="Link" value="&lt;{
 					concat(
 						$object-type,
 						'?',
