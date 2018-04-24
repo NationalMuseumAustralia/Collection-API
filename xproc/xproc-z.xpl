@@ -55,6 +55,7 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 					<nma:format-result>
 						<p:with-option name="accept" select="$accept"/>
 						<p:with-option name="format" select="$format"/>
+						<p:with-option name="relative-uri" select="$relative-uri"/>
 					</nma:format-result>
 				</p:when>
 				<!-- retrieve objects matching search criteria -->
@@ -144,9 +145,9 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 	<p:declare-step name="format-result" type="nma:format-result">
 		<p:input port="source"/>
 		<p:output port="result"/>
-		<p:option name="accept"/>
-		<p:option name="format"/>
-		<p:option name="relative-uri"/>
+		<p:option name="accept" required="true"/>
+		<p:option name="format" required="true"/>
+		<p:option name="relative-uri" required="true"/>
 		<p:option name="rows"/>
 		<p:xslt>
 			<p:with-param name="accept" select="$accept"/>
