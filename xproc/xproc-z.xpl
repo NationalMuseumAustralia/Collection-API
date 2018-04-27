@@ -25,7 +25,10 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 	<p:import href="xproc-z-library.xpl"/>	
 	
 	<p:variable name="relative-uri" select="substring-after(/c:request/@href, '/xproc-z/')"/>
-	<p:variable name="accept" select="/c:request/c:header[@name='accept']/@value"/>
+	<!-- HTTP Header names are case-insensitive -->
+	<p:variable name="accept" select="/c:request/c:header[lower-case(@name)='accept']/@value"/>
+	<p:variable name="anonymous" select="/c:request/c:header[lower-case(@name)='x-anonymous-consumer']/@value"/>
+	<p:variable name="dataset" select="if ($anonymous='false') then 'internal' else 'public'"/>
 	<p:www-form-urldecode name="uri-parameters">
 		<p:with-option name="value" select="substring-after($relative-uri, '?')"/>
 	</p:www-form-urldecode>
@@ -44,7 +47,9 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 					<p:load>
 						<p:with-option name="href" select="
 							concat(
-								'http://localhost:8983/solr/core_nma_public/select?wt=xml&amp;q=id:', 
+								'http://localhost:8983/solr/core_nma_',
+								$dataset,
+								'/select?wt=xml&amp;q=id:', 
 								substring-before(
 									concat($relative-uri, '?'),
 									'?'
@@ -80,10 +85,13 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 							$default-rows
 					"/>
 					<p:variable name="entity-type" select="substring-before($relative-uri, '?')"/>
+					<!-- TODO use http-request step instead of load, and catch any errors -->
 					<p:load>
 						<p:with-option name="href" select="
 							concat(
-								'http://localhost:8983/solr/core_nma_public/select?wt=xml&amp;',
+								'http://localhost:8983/solr/core_nma_',
+								$dataset,
+								'/select?wt=xml&amp;',
 								'fq=type:', $entity-type, '&amp;',
 								'q=', encode-for-uri(
 									string-join(
