@@ -27,8 +27,6 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 	<p:variable name="relative-uri" select="substring-after(/c:request/@href, '/xproc-z/')"/>
 	<!-- HTTP Header names are case-insensitive -->
 	<p:variable name="accept" select="/c:request/c:header[lower-case(@name)='accept']/@value"/>
-	<p:variable name="anonymous" select="/c:request/c:header[lower-case(@name)='x-anonymous-consumer']/@value"/>
-	<p:variable name="dataset" select="if ($anonymous='false') then 'internal' else 'public'"/>
 	<!-- the "format" parameter can be used to specify a content type (overriding Accept header) -->
 	<p:variable name="format" select="/c:param-set/c:param[@name='format']/@value"/>
 	<p:www-form-urldecode name="uri-parameters">
@@ -55,9 +53,6 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 				<p:with-option name="format" select="$format"/>
 				<p:with-option name="relative-uri" select="$relative-uri"/>
 			</nma:format-result>
-			<!--
-			<z:make-http-response/>
-			-->
 		</p:when>
 		<!-- unknown request URI -->
 		<p:otherwise>
