@@ -80,16 +80,18 @@ hr {
 						<input type="text" name="keywords" id="formKeywords" placeholder="Enter your keywords" value="*" /> 
 						<select name="endpoint" id="formEndpoint">
 							<option value="object">Object</option>
+							<option value="narrative">Narrative</option>
 							<option value="party">Party</option>
 							<option value="place">Place</option>
+							<option value="collection">Collection</option>
 							<option value="media">Media</option>
 						</select> 
 						<select name="field" id="formField">
 							<option value="text">Anywhere</option>
-							<option value="all">--- Objects: ---</option>
 							<option value="title">Title</option>
 							<option value="description">Description</option>
 							<option value="type">Type</option>
+							<option value="all">--- Objects: ---</option>
 							<option value="creator">Creator</option>
 							<option value="temporal">Date</option>
 							<option value="spatial">Place</option>
@@ -98,6 +100,7 @@ hr {
 							<option value="medium">Material</option>
 							<option value="rights">Rights</option>
 							<option value="identifier">Identifier</option>
+							<option value="modified">Modified</option>
 							<option value="media">Media</option>
 							<option value="all">--- Parties: ---</option>
 							<option value="name">Name</option>
@@ -108,7 +111,14 @@ hr {
 						<select name="format" id="formFormat">
 							<option value="simple">Simple format</option>
 							<option value="json-ld">Linked Art</option>
+						</select>
+<!-- 
+						<select name="sort" id="formSort">
+							<option value="">Relevance</option>
+							<option value="title_sort">Title</option>
+							<option value="modified_sort">Modified</option>
 						</select> 
+ --> 
 						<select name="size" id="formSize">
 							<option>5</option>
 							<option>10</option>
@@ -228,7 +238,7 @@ function doQuery(keywords, field, endpoint, format, sort, size, apiKey) {
 		fetch(url)
 		.then(_checkStatus)
 		.then(function(response) {
-			return response.json()
+			return response.json();
 		}).then(function(json) {
 			displayResponse(json)
 		}).catch(function(ex) {
@@ -387,6 +397,12 @@ function getEndpoint(objectType) {
 		case 'Place':
 		case 'place':
 			return('place');
+		case 'Narrative':
+		case 'narrative':
+			return('narrative');
+		case 'Collection':
+		case 'collection':
+			return('collection');
 		case 'StillImage':
 		case 'MovingImage':
 		case 'Sound':
@@ -398,6 +414,12 @@ function getEndpoint(objectType) {
 
 // throw error if response not HTTP 2xx OK
 function _checkStatus(response) {
+	// search results
+	let resultCount = response.headers.get('Result-Count');
+	console.log(resultCount);
+	if (resultCount != '') {
+		$('#resultsCount').html('<p>' + resultCount + ' results</p>' );
+	}
 	if (response.status >= 200 && response.status < 300) {
 		return response
 	} else {
