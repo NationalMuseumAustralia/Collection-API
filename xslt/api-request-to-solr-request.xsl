@@ -2,7 +2,8 @@
 <xsl:stylesheet version="2.0" 
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
 	xmlns:c="http://www.w3.org/ns/xproc-step" 
-	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:nma="tag:conaltuohy.com,2018:nma">
 
 	<xsl:param name="relative-uri"/>
 	<xsl:variable name="anonymous" select="/c:request/c:header[lower-case(@name)='x-anonymous-consumer']/@value"/>
@@ -58,6 +59,14 @@
 							$default-rows
 					"/>
 					<xsl:variable name="entity-type" select="substring-before($relative-uri, '?')"/>
+					
+					<!-- the search parameters are those which specify values for fields in the Solr index -->
+					<xsl:variable name="search-parameters" select="
+						/c:param-set/c:param
+							[normalize-space(@value)]
+							[not(@name=('format', 'sort', 'offset', 'limit'))] 
+					"/>
+					
 					<xsl:attribute name="href" select="
 						concat(
 							'http://localhost:8983/solr/core_nma_',
@@ -65,30 +74,7 @@
 							'/select?wt=xml&amp;',
 							'fq=type%3A', $entity-type, '&amp;',
 							'q=', encode-for-uri(
-								string-join(
-									for $parameter in /c:param-set/c:param
-										[normalize-space(@value)]
-										[not(@name=('format', 'sort', 'offset', 'limit'))] 
-									return concat(
-										$parameter/@name, 
-										if ($parameter/@value='*') then 
-											':*' 
-										else concat(
-											':&quot;', 
-											replace(
-												replace(
-													$parameter/@value,
-													'\\',
-													'\\\\'
-												),
-												'&quot;',
-												'\\&quot;'
-											), 
-											'&quot;~1000000'
-										)
-									), 
-									' AND '
-								)
+								nma:encode-params-as-solr-query($search-parameters)
 							),
 							if ($sort) then
 								concat(
@@ -112,5 +98,42 @@
 			</xsl:choose>
 		</c:request>
 	</xsl:template>
+	
+	<xsl:function name="nma:encode-params-as-solr-query">
+		<xsl:param name="params"/><!-- sequence of c:param elements -->
+		<xsl:variable name="query">
+			<xsl:for-each-group select="$params" group-by="@name">
+				<xsl:if test="position() &gt; 1">
+					<xsl:text> AND </xsl:text>
+				</xsl:if>
+				<xsl:text>(</xsl:text>
+				<xsl:value-of select="
+					string-join(
+						for $parameter in current-group() return concat(
+							$parameter/@name, 
+							if ($parameter/@value='*') then 
+								':*' 
+							else concat(
+								':&quot;', 
+								replace(
+									replace(
+										$parameter/@value,
+										'\\',
+										'\\\\'
+									),
+									'&quot;',
+									'\\&quot;'
+								), 
+								'&quot;~1000000'
+							)
+						),
+						' OR '
+					)
+				"/>
+				<xsl:text>)</xsl:text>
+			</xsl:for-each-group>
+		</xsl:variable>
+		<xsl:value-of select="string($query)"/>
+	</xsl:function>
 		
 </xsl:stylesheet>
