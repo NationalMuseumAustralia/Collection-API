@@ -29,6 +29,8 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 	<p:variable name="accept" select="/c:request/c:header[lower-case(@name)='accept']/@value"/>
 	<p:variable name="anonymous" select="/c:request/c:header[lower-case(@name)='x-anonymous-consumer']/@value"/>
 	<p:variable name="dataset" select="if ($anonymous='false') then 'internal' else 'public'"/>
+	<!-- the "format" parameter can be used to specify a content type (overriding Accept header) -->
+	<p:variable name="format" select="/c:param-set/c:param[@name='format']/@value"/>
 	<p:www-form-urldecode name="uri-parameters">
 		<p:with-option name="value" select="substring-after($relative-uri, '?')"/>
 	</p:www-form-urldecode>
@@ -37,116 +39,29 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 		<p:when test=" $relative-uri = '' ">
 			<nma:home-page/>
 		</p:when>
+		<!-- retrieve record by id, OR matching search criteria -->
+		<p:when test=" matches($relative-uri, '[^/]+/[^?]+') or contains($relative-uri, '?')">
+			<!-- Translate the API request into a request to Solr -->
+			<p:xslt>
+				<p:with-param name="relative-uri" select="$relative-uri"/>
+				<p:input port="stylesheet">
+					<p:document href="../xslt/api-request-to-solr-request.xsl"/>
+				</p:input>
+			</p:xslt>
+			<!-- Make the HTTP request to Solr, extract response data from Solr's response and reformat it as an API response -->
+			<p:http-request/>
+			<nma:format-result>
+				<p:with-option name="accept" select="$accept"/>
+				<p:with-option name="format" select="$format"/>
+				<p:with-option name="relative-uri" select="$relative-uri"/>
+			</nma:format-result>
+			<!--
+			<z:make-http-response/>
+			-->
+		</p:when>
+		<!-- unknown request URI -->
 		<p:otherwise>
-			<!-- either searching, or retrieving individual objects -->
-			<!-- the "format" parameter can be used to specify a content type (overriding Accept header) -->
-			<p:variable name="format" select="/c:param-set/c:param[@name='format']/@value"/>
-			<p:choose>
-				<!-- retrieve record by id -->
-				<p:when test=" matches($relative-uri, '[^/]+/[^?]+') ">
-					<p:load>
-						<p:with-option name="href" select="
-							concat(
-								'http://localhost:8983/solr/core_nma_',
-								$dataset,
-								'/select?wt=xml&amp;q=id:', 
-								substring-before(
-									concat($relative-uri, '?'),
-									'?'
-								)
-							)
-						"/>
-					</p:load>
-					<nma:format-result>
-						<p:with-option name="accept" select="$accept"/>
-						<p:with-option name="format" select="$format"/>
-						<p:with-option name="relative-uri" select="$relative-uri"/>
-					</nma:format-result>
-				</p:when>
-				<!-- retrieve objects matching search criteria -->
-				<p:when test=" contains($relative-uri, '?') ">
-					<p:variable name="sort" select="/c:param-set/c:param[@name='sort']/@value"/>
-					<p:variable name="start" select="/c:param-set/c:param[@name='offset']/@value"/>
-					<!-- if you don't specify a limit, this is how many rows you get -->
-					<p:variable name="default-rows" select="50"/>
-					<!-- this is the maximum number of rows you can get, even if you request more -->
-					<p:variable name="max-rows" select="100"/>
-					<!-- this is the number of rows requested -->
-					<p:variable name="requested-rows" select="/c:param-set/c:param[@name='limit']/@value"/>
-					<!-- this is the number of rows which we will request from Solr -->
-					<!-- and which is no less than 1 and no more than $max-rows -->
-					<p:variable name="rows" select="
-						if ($requested-rows castable as xs:integer) then
-							min((
-								$max-rows cast as xs:integer,
-								max((1, $requested-rows cast as xs:double))
-							)) cast as xs:integer
-						else
-							$default-rows
-					"/>
-					<p:variable name="entity-type" select="substring-before($relative-uri, '?')"/>
-					<!-- TODO use http-request step instead of load, and catch any errors -->
-					<p:load>
-						<p:with-option name="href" select="
-							concat(
-								'http://localhost:8983/solr/core_nma_',
-								$dataset,
-								'/select?wt=xml&amp;',
-								'fq=type:', $entity-type, '&amp;',
-								'q=', encode-for-uri(
-									string-join(
-										for $parameter in /c:param-set/c:param
-											[normalize-space(@value)]
-											[not(@name=('format', 'sort', 'offset', 'limit'))] 
-										return concat(
-											$parameter/@name, 
-											if ($parameter/@value='*') then 
-												':*' 
-											else concat(
-												':&quot;', 
-												replace(
-													replace(
-														$parameter/@value,
-														'\\',
-														'\\\\'
-													),
-													'&quot;',
-													'\\&quot;'
-												), 
-												'&quot;~1000000'
-											)
-										), 
-										' AND '
-									)
-								),
-								if ($sort) then
-									concat(
-										'&amp;sort=', 
-										string-join(
-											encode-for-uri($sort),
-											','
-										)
-									)
-								else (),
-								if (not($start='')) then 
-									concat('&amp;start=', encode-for-uri($start))
-								else (),
-								if (not($rows='')) then 
-									concat('&amp;rows=', encode-for-uri($rows))
-								else ()
-							)
-						"/>
-					</p:load>
-					<nma:format-result>
-						<p:with-option name="accept" select="$accept"/>
-						<p:with-option name="format" select="$format"/>
-						<p:with-option name="relative-uri" select="$relative-uri"/>
-					</nma:format-result>
-				</p:when>
-				<p:otherwise>
-					<z:not-found/>
-				</p:otherwise>
-			</p:choose>
+			<z:not-found/>
 		</p:otherwise>
 	</p:choose>
 	
