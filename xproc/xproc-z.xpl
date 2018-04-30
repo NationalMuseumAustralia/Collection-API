@@ -27,8 +27,6 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 	<p:variable name="relative-uri" select="substring-after(/c:request/@href, '/xproc-z/')"/>
 	<!-- HTTP Header names are case-insensitive -->
 	<p:variable name="accept" select="/c:request/c:header[lower-case(@name)='accept']/@value"/>
-	<!-- the "format" parameter can be used to specify a content type (overriding Accept header) -->
-	<p:variable name="format" select="/c:param-set/c:param[@name='format']/@value"/>
 	<p:www-form-urldecode name="uri-parameters">
 		<p:with-option name="value" select="substring-after($relative-uri, '?')"/>
 	</p:www-form-urldecode>
@@ -39,6 +37,8 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 		</p:when>
 		<!-- retrieve record by id, OR matching search criteria -->
 		<p:when test=" matches($relative-uri, '[^/]+/[^?]+') or contains($relative-uri, '?')">
+			<!-- the "format" parameter can be used to specify a content type (overriding Accept header) -->
+			<p:variable name="format" select="/c:param-set/c:param[@name='format']/@value"/>
 			<!-- Translate the API request into a request to Solr -->
 			<p:xslt>
 				<p:with-param name="relative-uri" select="$relative-uri"/>
