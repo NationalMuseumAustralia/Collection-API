@@ -288,6 +288,8 @@ function displayObject(obj, depth) {
 		let headerTitle = "untitled";
 		if (obj.title != null) {
 			headerTitle = obj.title;
+		} else if (obj.label != null) {
+				headerTitle = obj.label;
 		} else if (obj.name != null) {
 			headerTitle = obj.name;
 		}
