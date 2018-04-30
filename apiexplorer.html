@@ -108,17 +108,17 @@ hr {
 							<option value="all">--- Places: ---</option>
 							<option value="location">Geolocation</option>
 						</select> 
+						<select name="sort" id="formSort">
+							<option value="">Relevance</option>
+							<option value="title_sort asc">Title (asc)</option>
+							<option value="title_sort desc">Title (desc)</option>
+							<option value="modified_sort asc">Modified (asc)</option>
+							<option value="modified_sort desc">Modified (desc)</option>
+						</select> 
 						<select name="format" id="formFormat">
 							<option value="simple">Simple format</option>
 							<option value="json-ld">Linked Art</option>
 						</select>
-<!-- 
-						<select name="sort" id="formSort">
-							<option value="">Relevance</option>
-							<option value="title_sort">Title</option>
-							<option value="modified_sort">Modified</option>
-						</select> 
- --> 
 						<select name="size" id="formSize">
 							<option>5</option>
 							<option>10</option>
@@ -226,7 +226,7 @@ function doQuery(keywords, field, endpoint, format, sort, size, apiKey) {
 		if (sort != '') {
 			sortParam = '&sort=' + sort;
 		}
-		let url = API_BASE + '/' + endpoint + '?limit=' + size + '&' + query;
+		let url = API_BASE + '/' + endpoint + '?limit=' + size + '&' + query + sortParam;
 		if (format != null) {
 			url += "&format=" + format;
 		}
