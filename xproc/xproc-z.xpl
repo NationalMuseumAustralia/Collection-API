@@ -35,6 +35,9 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 		<p:when test=" $relative-uri = '' ">
 			<nma:home-page/>
 		</p:when>
+		<p:when test="starts-with($relative-uri, 'apiexplorer.html')">
+			<nma:api-explorer/>
+		</p:when>
 		<!-- retrieve record by id, OR matching search criteria -->
 		<p:when test=" matches($relative-uri, '[^/]+/[^?]+') or contains($relative-uri, '?')">
 			<!-- the "format" parameter can be used to specify a content type (overriding Accept header) -->
@@ -77,6 +80,18 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 		</p:xslt>
 	</p:declare-step>
 	
+	<p:declare-step name="api-explorer" type="nma:api-explorer">
+		<p:output port="result"/>
+		<p:http-request>
+			<p:input port="source">
+				<p:inline>
+					<c:request href="../apiexplorer.html" method="get"/>
+				</p:inline>
+			</p:input>
+		</p:http-request>
+		<z:make-http-response content-type="text/html"/>
+	</p:declare-step>
+	
 	<p:declare-step name="home-page" type="nma:home-page">
 		<p:output port="result"/>
 		<p:identity>
@@ -86,84 +101,18 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 						<c:body content-type="application/xhtml+xml">
 							<html xmlns="http://www.w3.org/1999/xhtml">
 								<head>
-									<title>NMA API v1.0β</title>
+									<title>National Museum of Australia Collections API Public Beta</title>
 								</head>
 								<body>
-									<h1>NMA API v1.0β</h1>
-									<p>Examples:</p>
+									<h1>National Museum of Australia Collections API Public Beta</h1>
+									<p>Welcome to the beta testing site of the National Museum of Australia's Collections API.</p>
+									<p>To get started quickly, see our <a href="https://github.com/Conal-Tuohy/NMA-API/wiki/Getting-started">Getting Started</a> guide, or jump straight into the <a href="http://nma.conaltuohy.com/apiexplorer.html" >API Explorer</a>.</p>
+									<p>To report a bug, request an enhancement, or make an encouraging comment, see the <a href="https://github.com/Conal-Tuohy/NMA-API/issues">list of issues</a> at our GitHub repository, and post a new issue or comment on an existing issue (NB you will need to log in to GitHub).</p>
+									<p>Sample resources:</p>
 									<ul>
-										<li>Get <a href="object/45929">object 45929</a></li>
-										<li>Search for <a href="object?title=bark">bark</a></li>
+										<li><a href="object/64620#">Phar Lap's Heart</a></li>
+										<li>Things made out of <a href="object?medium=bark">bark</a></li>
 									</ul>
-									<form action="object" method="get">
-										<table>
-											<tr>
-												<td><label>Type</label></td>
-												<td><input type="text" name="type"/></td>
-											</tr>
-											<tr>
-												<td><label>Text (catch-all)</label></td>
-												<td><input type="text" name="text"/></td>
-											</tr>
-											<tr>
-												<td><label>Collection name</label></td>
-												<td><input type="text" name="collection"/></td>
-											</tr>
-											<tr>
-												<td><label>Title</label></td>
-												<td><input type="text" name="title"/></td>
-											</tr>
-											<tr>
-												<td><label>Description</label></td>
-												<td><input type="text" name="description"/></td>
-											</tr>
-											<tr>
-												<td><label>Creator</label></td>
-												<td><input type="text" name="creator"/></td>
-											</tr>
-											<tr>
-												<td><label>Temporal</label></td>
-												<td><input type="text" name="temporal"/></td>
-											</tr>
-											<tr>
-												<td><label>Spatial</label></td>
-												<td><input type="text" name="spatial"/></td>
-											</tr>
-											<tr>
-												<td><label>Dimension</label></td>
-												<td><input type="text" name="dimension"/></td>
-											</tr>
-											<tr>
-												<td><label>Medium</label></td>
-												<td><input type="text" name="medium"/></td>
-											</tr>
-											<tr>
-												<td><label>Rights</label></td>
-												<td><input type="text" name="rights"/></td>
-											</tr>
-											<tr>
-												<td><label>Contributor</label></td>
-												<td><input type="text" name="contributor"/></td>
-											</tr>
-											<tr>
-												<td><label>Media (identifiers)</label></td>
-												<td><input type="text" name="media"/></td>
-											</tr>
-											<tr>
-												<td><label>Name (of people)</label></td>
-												<td><input type="text" name="name"/></td>
-											</tr>
-											<tr>
-												<td><label>Gender</label></td>
-												<td><input type="text" name="gender"/></td>
-											</tr>
-											<tr>
-												<td><label>Location (lat, long)</label></td>
-												<td><input type="text" name="location"/></td>
-											</tr>
-										</table>
-										<button type="submit">Search</button>
-									</form>
 								</body>
 							</html>
 						</c:body>
