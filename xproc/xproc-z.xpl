@@ -38,6 +38,9 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 		<p:when test="starts-with($relative-uri, 'apiexplorer.html')">
 			<nma:api-explorer/>
 		</p:when>
+		<p:when test="$relative-uri = 'context.json'">
+			<nma:json-context/>
+		</p:when>
 		<!-- retrieve record by id, OR matching search criteria -->
 		<p:when test=" matches($relative-uri, '[^/]+/[^?]+') or contains($relative-uri, '?')">
 			<!-- the "format" parameter can be used to specify a content type (overriding Accept header) -->
@@ -90,6 +93,18 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 			</p:input>
 		</p:http-request>
 		<z:make-http-response content-type="text/html"/>
+	</p:declare-step>
+	
+	<p:declare-step name="json-context" type="nma:json-context">
+		<p:output port="result"/>
+		<p:http-request>
+			<p:input port="source">
+				<p:inline>
+					<c:request href="../context.json" method="get" override-content-type="text/json"/>
+				</p:inline>
+			</p:input>
+		</p:http-request>
+		<z:make-http-response content-type="application/json"/>
 	</p:declare-step>
 	
 	<p:declare-step name="home-page" type="nma:home-page">
