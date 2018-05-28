@@ -154,11 +154,14 @@
 				"id": "</xsl:text>
 				<xsl:value-of select="$first-page-link"/>
 				<xsl:text>",
-				"type": "Aggregation",
-				"next": "</xsl:text>
-				<xsl:value-of select="$next-page-link"/>
-				<xsl:text>",
-				"entities": </xsl:text>
+				"type": "Aggregation",</xsl:text>
+				<xsl:if test="$result-count &gt; $result-count-so-far">
+					<!-- The current page of records does not exhaust the result set -->
+					<xsl:text>"next": "</xsl:text>
+					<xsl:value-of select="$next-page-link"/>
+					<xsl:text>",</xsl:text>
+				</xsl:if>
+				<xsl:text>"entities": </xsl:text>
 				<xsl:value-of select="$result-count"/>
 				<xsl:text>,
 				"aggregates": [</xsl:text>
