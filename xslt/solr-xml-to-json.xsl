@@ -2,6 +2,46 @@
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:c="http://www.w3.org/ns/xproc-step"  xmlns:nma="tag:conaltuohy.com,2018:nma">
 	
+	<!-- search result pagination -->
+	<xsl:variable name="result-count" select="number(/response/result/@numFound)"/>
+	<xsl:variable name="result-count-so-far" select="number(/response/result/@start) + count(/response/result/doc)"/>
+	<xsl:variable name="object-type" select="substring-before($relative-uri, '?')"/><!-- e.g. 'object', 'party' etc. -->
+	<xsl:variable name="query-parameters" select="tokenize(substring-after($relative-uri, '?'), '&amp;')"/>
+	<!-- Generate a link that points to the next page, by constructing a new API query URI with the old 'offset' parameter
+	removed, and a new 'offset' parameter which reflects the number of records returned in this response. -->
+	<xsl:variable name="next-page-link" select="
+		concat(
+			$object-type,
+			'?',
+			string-join(
+				(
+					$query-parameters
+						[not(starts-with(., 'offset='))]
+						[substring-after(., '=')],
+					concat(
+						'offset=', 
+						$result-count-so-far
+					)
+				),
+				'&amp;'
+			)
+		)
+	"/>	
+	<xsl:variable name="first-page-link" select="
+		concat(
+			$object-type,
+			'?',
+			string-join(
+				(
+					$query-parameters
+						[not(starts-with(., 'offset='))]
+						[substring-after(., '=')]
+				),
+				'&amp;'
+			)
+		)
+	"/>
+		
 	<!-- content negotiation -->
 	<!-- if the "format" URL parameter is present, it identifies one of the payload fields; "simple" or "json-ld" -->
 	<xsl:param name="format"/>
@@ -11,6 +51,10 @@
 	
 	<!-- the current API query URI, used when generating a "next" link -->
 	<xsl:param name="relative-uri"/>
+	
+	<!-- determine whether the request is a search request, or a retrieval of a single resource -->
+	<!-- by attempting to match the request URI to a pattern like "object/12345" --> 
+	<xsl:variable name="is-search-request" select="not(matches($relative-uri, '[^/]*/.*'))"/>
 	
 	<!-- The format to return result data in -->
 	<xsl:variable name="response-format">
@@ -77,60 +121,99 @@
 	</xsl:function>
 
 	<!-- Convert the Solr http response into an API response to the API user -->
-	<xsl:template match="/response">
-		<xsl:variable name="result-count" select="number(result/@numFound)"/>
+	<xsl:template match="/">
 		<!-- define the HTTP response; a 404 "Not found" if nothing was found, otherwise a 200 "OK" -->
 		<c:response status="{if ($result-count=0) then '404' else '200'}">
-			<c:header name="Result-Count" value="{$result-count}"/>
-			<xsl:variable name="result-count-so-far" select="number(result/@start) + count(result/doc)"/>
-			<xsl:if test="$result-count &gt; $result-count-so-far">
-				<!-- The current page of records does not exhaust the result set -->
-				<!-- Generate a link that points to the next page, by constructing a new API query URI with the old 'offset' parameter
-				removed, and a new 'offset' parameter which reflects the number of records returned in this response. -->
-				<xsl:variable name="object-type" select="substring-before($relative-uri, '?')"/><!-- e.g. 'object', 'party' etc. -->
-				<xsl:variable name="query-parameters" select="tokenize(substring-after($relative-uri, '?'), '&amp;')"/>
-				<c:header name="Link" value="&lt;{
-					concat(
-						$object-type,
-						'?',
-						string-join(
-							(
-								$query-parameters
-									[not(starts-with(., 'offset='))]
-									[substring-after(., '=')],
-								concat(
-									'offset=', 
-									$result-count-so-far
-								)
-							),
-							'&amp;'
-						)
-					)
-				}&gt;; rel=next"/>
-			</xsl:if>
+			<xsl:call-template name="response-headers"/>
 			<!-- specify which format the result is being returned in -->
 			<c:body content-type="{if ($response-format='json-ld') then 'application/ld+json' else 'application/json'}">
 				<!-- output the actual result data -->
-				<xsl:apply-templates select="result"/>
+				<xsl:choose>
+					<xsl:when test="$is-search-request">
+						<!-- URI specified a search request -->
+						<xsl:call-template name="return-search-results"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<!-- URI specified a request for a single resource by identifier -->
+						<xsl:call-template name="return-single-resource"/>
+					</xsl:otherwise>
+				</xsl:choose>
 			</c:body>
 		</c:response>
 	</xsl:template>
 	
-	<xsl:template match="result[not(@numFound = '1')]">
-		<!-- if the number of items found is not exactly 1, then wrap the response in a JSON array object -->
-		<xsl:text>[&#xA;</xsl:text>
-		<xsl:for-each select="doc">
-			<xsl:if test="position() > 1">
-				<xsl:text>,&#xA;</xsl:text>
-			</xsl:if>
-			<xsl:apply-templates select="."/>
-		</xsl:for-each>
-		<xsl:text>]</xsl:text>
+	<xsl:template name="return-single-resource">
+		<xsl:apply-templates select="/response/result/doc"/>
 	</xsl:template>
+	
+	<xsl:template name="return-search-results">
+		<xsl:choose>
+			<xsl:when test="$response-format = 'json-ld'">
+				<xsl:text>
+				{"context": "/context.json",
+				"id": "</xsl:text>
+				<xsl:value-of select="$first-page-link"/>
+				<xsl:text>",
+				"type": "Aggregation",
+				"next": "</xsl:text>
+				<xsl:value-of select="$next-page-link"/>
+				<xsl:text>",
+				"entities": </xsl:text>
+				<xsl:value-of select="$result-count"/>
+				<xsl:text>,
+				"aggregates": [</xsl:text>
+				<xsl:for-each select="/response/result/doc">
+					<xsl:if test="position() > 1">
+						<xsl:text>,&#xA;</xsl:text>
+					</xsl:if>
+					<xsl:apply-templates select="."/>
+				</xsl:for-each>
+				<xsl:text>]
+				}</xsl:text>
+			</xsl:when>
+			<xsl:otherwise><!-- JSON-API -->
+				<xsl:text>{"data": [&#xA;</xsl:text>
+				<xsl:for-each select="/response/result/doc">
+					<xsl:if test="position() > 1">
+						<xsl:text>,&#xA;</xsl:text>
+					</xsl:if>
+					<xsl:apply-templates select="."/>
+				</xsl:for-each>
+				<xsl:text>], "meta": {"results": </xsl:text>
+				<xsl:value-of select="$result-count"/>
+				<xsl:text>}</xsl:text>
+				<xsl:if test="$result-count &gt; $result-count-so-far">
+					<!-- The current page of records does not exhaust the result set -->
+					<xsl:text>, "links": {"next": "</xsl:text>
+					<xsl:value-of select="$next-page-link"/>
+					<xsl:text>"}</xsl:text>
+				</xsl:if>
+				<xsl:text>}</xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+	
+	<xsl:template name="response-headers">
+		<xsl:if test="$is-search-request">
+			<!-- pagination headers are only useful for search requests because they produce multiple results -->
+			<c:header name="Result-Count" value="{$result-count}"/>
+			<xsl:if test="$result-count &gt; $result-count-so-far">
+				<!-- The current page of records does not exhaust the result set -->
+				<c:header name="Link" value="&lt;{$next-page-link}&gt;; rel=next"/>
+			</xsl:if>
+		</xsl:if>
+	</xsl:template>
+	
 	
 	<!-- Represent an individual search result simply by selecting the appropriate format payload field from within it -->
 	<xsl:template match="doc">
 		<xsl:value-of select="arr[@name=$response-format]"/>
 	</xsl:template>
+	
+	<!-- for errors in JSON-LD, use https://www.w3.org/TR/HTTP-in-RDF10/#example -->
+	<!-- http://api.plos.org/search?q=title:assjdfajsdf is a 404 -->
+	<!-- http://api.plos.org/search?q=foo:bar is a 400 -->
+	<!-- /response/lst[@name='error']/int[@name='code']='400' -->
+	<!-- /response/lst[@name='error']/str[@name='msg']='undefined field foo' -->
 		
 </xsl:stylesheet>

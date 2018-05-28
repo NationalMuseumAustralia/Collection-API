@@ -14,6 +14,8 @@
     "aat": "http://vocab.getty.edu/aat/", 
     "ulan": "http://vocab.getty.edu/ulan/", 
     "tgn": "http://vocab.getty.edu/tgn/", 
+    "void": "http://rdfs.org/ns/void#",
+    "xhv": "http://www.w3.org/1999/xhtml/vocab#",
     "id": "@id", 
     "type": "@type", 
     "Period": "crm:E4_Period", 
@@ -681,6 +683,8 @@
     "modified": "dcterms:modified",
      "issued": "dcterms:issued",
      "see_also": "rdfs:seeAlso",
-     "place_is_defined_by": "crm:P168_place_is_defined_by"
+     "place_is_defined_by": "crm:P168_place_is_defined_by",
+     "next": "xhv:next",
+     "entities": "void:entities"
   }
 }
