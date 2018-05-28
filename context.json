@@ -16,6 +16,7 @@
     "tgn": "http://vocab.getty.edu/tgn/", 
     "void": "http://rdfs.org/ns/void#",
     "xhv": "http://www.w3.org/1999/xhtml/vocab#",
+    "http": "http://www.w3.org/2011/http#",
     "id": "@id", 
     "type": "@type", 
     "Period": "crm:E4_Period", 
@@ -685,6 +686,11 @@
      "see_also": "rdfs:seeAlso",
      "place_is_defined_by": "crm:P168_place_is_defined_by",
      "next": "xhv:next",
-     "entities": "void:entities"
+     "entities": "void:entities",
+     "Response": "http:Response",
+     "response": "http:resp",
+     "request_uri": "http:requestURI",
+     "reason_phrase": "http:reasonPhrase",
+     "status_code_value": "http:statusCodeValue"
   }
 }

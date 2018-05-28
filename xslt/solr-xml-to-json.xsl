@@ -127,19 +127,54 @@
 			<xsl:call-template name="response-headers"/>
 			<!-- specify which format the result is being returned in -->
 			<c:body content-type="{if ($response-format='json-ld') then 'application/ld+json' else 'application/json'}">
-				<!-- output the actual result data -->
 				<xsl:choose>
-					<xsl:when test="$is-search-request">
-						<!-- URI specified a search request -->
-						<xsl:call-template name="return-search-results"/>
+					<xsl:when test="/response/lst[@name='error']">
+						<xsl:call-template name="return-error"/>
 					</xsl:when>
 					<xsl:otherwise>
-						<!-- URI specified a request for a single resource by identifier -->
-						<xsl:call-template name="return-single-resource"/>
+						<!-- output the actual result data -->
+						<xsl:choose>
+							<xsl:when test="$is-search-request">
+								<!-- URI specified a search request -->
+								<xsl:call-template name="return-search-results"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<!-- URI specified a request for a single resource by identifier -->
+								<xsl:call-template name="return-single-resource"/>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:otherwise>
 				</xsl:choose>
 			</c:body>
 		</c:response>
+	</xsl:template>
+	
+	<xsl:template name="return-error">
+		<xsl:choose>
+			<xsl:when test="$response-format = 'json-ld'">
+				{
+					"context": "/context.json",
+					"type": "Request",
+					"id": "<xsl:value-of select="$relative-uri"/>",
+					"request_uri": "<xsl:value-of select="$relative-uri"/>",
+					"response": {
+						"type": "Response",
+						"status_code_value": <xsl:value-of select="/response/lst[@name='error']/int[@name='code']"/>,
+						"reason_phrase": "<xsl:value-of select="/response/lst[@name='error']/str[@name='msg']"/>"
+					}
+				}
+			</xsl:when>
+			<xsl:otherwise><!-- JSON-API -->
+				{
+					"errors": [
+						{
+							"status": <xsl:value-of select="/response/lst[@name='error']/int[@name='code']"/>,
+							"title": "<xsl:value-of select="/response/lst[@name='error']/str[@name='msg']"/>"
+						}
+					]
+				}
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 	
 	<xsl:template name="return-single-resource">
@@ -212,11 +247,5 @@
 	<xsl:template match="doc">
 		<xsl:value-of select="arr[@name=$response-format]"/>
 	</xsl:template>
-	
-	<!-- for errors in JSON-LD, use https://www.w3.org/TR/HTTP-in-RDF10/#example -->
-	<!-- http://api.plos.org/search?q=title:assjdfajsdf is a 404 -->
-	<!-- http://api.plos.org/search?q=foo:bar is a 400 -->
-	<!-- /response/lst[@name='error']/int[@name='code']='400' -->
-	<!-- /response/lst[@name='error']/str[@name='msg']='undefined field foo' -->
-		
+
 </xsl:stylesheet>
