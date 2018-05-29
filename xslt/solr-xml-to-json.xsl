@@ -178,7 +178,24 @@
 	</xsl:template>
 	
 	<xsl:template name="return-single-resource">
-		<xsl:apply-templates select="/response/result/doc"/>
+		<xsl:choose>
+			<xsl:when test="$response-format = 'json-ld'">
+				<xsl:apply-templates select="/response/result/doc"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<!-- follow JSON-API practice of wrapping result in a "data" object -->
+				<xsl:choose>
+					<xsl:when test="$result-count = 0">
+						<xsl:text>{"data": null, "errors": [{"status": "404", "title": "Not found"}]}</xsl:text>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text>{"data": [</xsl:text>
+						<xsl:apply-templates select="/response/result/doc"/>
+						<xsl:text>]}</xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 	
 	<xsl:template name="return-search-results">
