@@ -91,6 +91,7 @@ hr {
 							<option value="title">Title</option>
 							<option value="description">Description</option>
 							<option value="type">Type</option>
+							<option value="additionalType">Additional Type</option>
 							<option value="all">--- Objects: ---</option>
 							<option value="creator">Creator</option>
 							<option value="temporal">Date</option>
@@ -98,15 +99,47 @@ hr {
 							<option value="contributor">Contributor</option>
 							<option value="collection">Collection</option>
 							<option value="medium">Material</option>
+							<option value="acknowledgement">Acknowledgement</option>
+							<option value="location">Exhibit</option>
+							<!-- 
+							<option value="contentDescription">Content description</option>
+							<option value="physicalDescription">Physical description</option>
+							<option value="significanceStatement">Significance</option>
+							<option value="educationalSignificance">Educational significance</option>
+							 -->
+							<!-- 
+							<option value="length">Length</option>
+							<option value="height">Height</option>
+							<option value="width">Width</option>
+							<option value="depth">Depth</option>
+							<option value="diameter">Diameter</option>
+							<option value="weight">Weight</option>
+							 -->
 							<option value="rights">Rights</option>
 							<option value="identifier">Identifier</option>
 							<option value="modified">Modified</option>
+							<!-- 
+							<option value="issued">Released online</option>
+							 -->
 							<option value="media">Media</option>
 							<option value="all">--- Parties: ---</option>
 							<option value="name">Name</option>
 							<option value="gender">Gender</option>
-							<option value="all">--- Places: ---</option>
-							<option value="location">Geolocation</option>
+							<option value="all">--- Related objects: ---</option>
+							<option value="collection_id">Obj collected in (coll id)</option>
+							<option value="creator_id">Obj created by (party id)</option>
+							<option value="contributor_id">Obj contributed by (party id)</option>
+							<option value="spatial_id">Obj located in (place id)</option>
+							<option value="media_id">Obj represented by (media id)</option>
+							<option value="related_object_id">Obj related to (object id)</option>
+							<option value="hasPart_object_id">Obj parent of (object id)</option>
+							<option value="isPartOf_object_id">Obj child of (object id)</option>
+							<option value="all">--- Related narratives: ---</option>
+							<option value="hasPart_narrative_id">Narr parent of (narrative id)</option>
+							<option value="isPartOf_narrative_id">Narr child of (narrative id)</option>
+							<option value="aggregates_id">Narr parent of (object id)</option>
+							<option value="all">--- Related media:  ---</option>
+							<option value="media_object_id">Media represents (object id)</option>
 						</select> 
 						<select name="sort" id="formSort">
 							<option value="">Relevance</option>
@@ -116,7 +149,7 @@ hr {
 							<option value="modified_sort desc">Modified (desc)</option>
 						</select> 
 						<select name="format" id="formFormat">
-							<option value="simple">Simple format</option>
+							<option value="simple">Simple DC</option>
 							<option value="json-ld">Linked Art</option>
 						</select>
 						<select name="size" id="formSize">
