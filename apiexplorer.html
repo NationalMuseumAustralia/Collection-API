@@ -77,7 +77,6 @@ hr {
 				<div style="margin-top: 20px;">
 
 					<form name="searchForm">
-						<input type="text" name="keywords" id="formKeywords" placeholder="Enter your keywords" value="*" /> 
 						<select name="endpoint" id="formEndpoint">
 							<option value="object">Object</option>
 							<option value="narrative">Narrative</option>
@@ -86,6 +85,7 @@ hr {
 							<option value="collection">Collection</option>
 							<option value="media">Media</option>
 						</select> 
+						<input type="text" name="keywords" id="formKeywords" placeholder="Enter your keywords" value="*" /> 
 						<select name="field" id="formField">
 							<option value="text">Anywhere</option>
 							<option value="title">Title</option>
@@ -255,30 +255,42 @@ function doQuery(keywords, field, endpoint, format, sort, size, apiKey) {
 function displayResponse(responseJson) {
 	$('#top').html('');
 
-	if (responseJson) {
-		// search results
-//		$('#resultsCount').html('<p>' + responseJson._metadata.resultset.count + ' results</p>' );
-		if ($.type(responseJson) === 'array') {
-			responseJson.forEach(function(r){
+	if (responseJson.errors) {
+		$('#resultsCount').html('<p style="color:red;">Error: ' + responseJson.errors[0].title + '</p>' );
+	} else if (responseJson.meta && responseJson.data != null) {
+		// simple format results
+		$('#resultsCount').html('<p>' + responseJson.meta.results + ' results</p>' );
+	} else if (responseJson.entities) {
+		// json-ld format results
+		$('#resultsCount').html('<p>' + responseJson.entities + ' results</p>' );
+	} else {
+		// resource request so no result count
+		$('#resultsCount').html('');
+	}
+
+	// simple format - search results or single object
+	if (responseJson.data) {
+		if ($.type(responseJson.data) === 'array') {
+			responseJson.data.forEach(function(r){
 				$('#top').append( '<div class="container table table-hover">' + displayObject(r, 0) + '</div>' );
 				$('#top').append( '<hr style="border-top: 5px solid green;" />' );
 			})
-		} else {
-			$('#top').append( '<div class="container table table-hover">' + displayObject(responseJson, 0) + '</div>' );
-			$('#top').append( '<hr style="border-top: 5px solid green;" />' );
 		}
-
-	} else if (responseJson.id) {
-		// single object
-		$('#top').append( '<div class="objTable">' + displayObject(responseJson, 0) + '</div>' );
-	} else {
-		$('#resultsCount').html('<p>0 results</p>' );
+	}
+	
+	// json-ld format - search results or single object
+	if (responseJson.aggregates) {
+		if ($.type(responseJson.aggregates) === 'array') {
+			responseJson.aggregates.forEach(function(r){
+				$('#top').append( '<div class="container table table-hover">' + displayObject(r, 0) + '</div>' );
+				$('#top').append( '<hr style="border-top: 5px solid green;" />' );
+			})
+		}
 	}
 }
 
 // display a single object or property within an object
 function displayObject(obj, depth) {
-
 	let objType = $.type(obj);
 	let objUrl = '?id=' + getEndpoint(obj.type) + '/' + obj.id;
 	let apiType = obj.type;
@@ -293,6 +305,8 @@ function displayObject(obj, depth) {
 				headerTitle = obj.label;
 		} else if (obj.name != null) {
 			headerTitle = obj.name;
+		} else if (obj.identified_by != null && obj.identified_by[0].value != null) {
+			headerTitle = obj.identified_by[0].value;
 		}
 		headerTitle = headerTitle.replace(/&/g, '&amp;');
 		headerTitle = headerTitle.replace(/</g, '&lt;');
@@ -396,6 +410,7 @@ function getEndpoint(objectType) {
 		case 'Organisation':
 		case 'person':
 		case 'organisation':
+		case 'party':
 			return('party');
 		case 'Place':
 		case 'place':
@@ -415,7 +430,7 @@ function getEndpoint(objectType) {
 	}
 }
 
-// throw error if response not HTTP 2xx OK
+// throw error if response not HTTP 2xx OK or 404 not found
 function _checkStatus(response) {
 	// search results
 	let resultCount = response.headers.get('Result-Count');
@@ -423,7 +438,7 @@ function _checkStatus(response) {
 	if (resultCount != '') {
 		$('#resultsCount').html('<p>' + resultCount + ' results</p>' );
 	}
-	if (response.status >= 200 && response.status < 300) {
+	if ( (response.status >= 200 && response.status < 300) || response.status == 404) {
 		return response
 	} else {
 		let error = new Error(response.status + " " + response.statusText)
