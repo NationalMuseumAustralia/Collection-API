@@ -77,7 +77,6 @@ hr {
 				<div style="margin-top: 20px;">
 
 					<form name="searchForm">
-						<input type="text" name="keywords" id="formKeywords" placeholder="Enter your keywords" value="*" /> 
 						<select name="endpoint" id="formEndpoint">
 							<option value="object">Object</option>
 							<option value="narrative">Narrative</option>
@@ -86,11 +85,13 @@ hr {
 							<option value="collection">Collection</option>
 							<option value="media">Media</option>
 						</select> 
+						<input type="text" name="keywords" id="formKeywords" placeholder="Enter your keywords" value="*" /> 
 						<select name="field" id="formField">
 							<option value="text">Anywhere</option>
 							<option value="title">Title</option>
 							<option value="description">Description</option>
 							<option value="type">Type</option>
+							<option value="additionalType">Additional Type</option>
 							<option value="all">--- Objects: ---</option>
 							<option value="creator">Creator</option>
 							<option value="temporal">Date</option>
@@ -98,15 +99,47 @@ hr {
 							<option value="contributor">Contributor</option>
 							<option value="collection">Collection</option>
 							<option value="medium">Material</option>
+							<option value="acknowledgement">Acknowledgement</option>
+							<option value="location">Exhibit</option>
+							<!-- 
+							<option value="contentDescription">Content description</option>
+							<option value="physicalDescription">Physical description</option>
+							<option value="significanceStatement">Significance</option>
+							<option value="educationalSignificance">Educational significance</option>
+							 -->
+							<!-- 
+							<option value="length">Length</option>
+							<option value="height">Height</option>
+							<option value="width">Width</option>
+							<option value="depth">Depth</option>
+							<option value="diameter">Diameter</option>
+							<option value="weight">Weight</option>
+							 -->
 							<option value="rights">Rights</option>
 							<option value="identifier">Identifier</option>
 							<option value="modified">Modified</option>
+							<!-- 
+							<option value="issued">Released online</option>
+							 -->
 							<option value="media">Media</option>
 							<option value="all">--- Parties: ---</option>
 							<option value="name">Name</option>
 							<option value="gender">Gender</option>
-							<option value="all">--- Places: ---</option>
-							<option value="location">Geolocation</option>
+							<option value="all">--- Related objects: ---</option>
+							<option value="collection_id">Obj collected in (coll id)</option>
+							<option value="creator_id">Obj created by (party id)</option>
+							<option value="contributor_id">Obj contributed by (party id)</option>
+							<option value="spatial_id">Obj located in (place id)</option>
+							<option value="media_id">Obj represented by (media id)</option>
+							<option value="related_object_id">Obj related to (object id)</option>
+							<option value="hasPart_object_id">Obj parent of (object id)</option>
+							<option value="isPartOf_object_id">Obj child of (object id)</option>
+							<option value="all">--- Related narratives: ---</option>
+							<option value="hasPart_narrative_id">Narr parent of (narrative id)</option>
+							<option value="isPartOf_narrative_id">Narr child of (narrative id)</option>
+							<option value="aggregates_id">Narr parent of (object id)</option>
+							<option value="all">--- Related media:  ---</option>
+							<option value="media_object_id">Media represents (object id)</option>
 						</select> 
 						<select name="sort" id="formSort">
 							<option value="">Relevance</option>
@@ -116,7 +149,7 @@ hr {
 							<option value="modified_sort desc">Modified (desc)</option>
 						</select> 
 						<select name="format" id="formFormat">
-							<option value="simple">Simple format</option>
+							<option value="simple">Simple DC</option>
 							<option value="json-ld">Linked Art</option>
 						</select>
 						<select name="size" id="formSize">
@@ -255,30 +288,42 @@ function doQuery(keywords, field, endpoint, format, sort, size, apiKey) {
 function displayResponse(responseJson) {
 	$('#top').html('');
 
-	if (responseJson) {
-		// search results
-//		$('#resultsCount').html('<p>' + responseJson._metadata.resultset.count + ' results</p>' );
-		if ($.type(responseJson) === 'array') {
-			responseJson.forEach(function(r){
+	if (responseJson.errors) {
+		$('#resultsCount').html('<p style="color:red;">Error: ' + responseJson.errors[0].title + '</p>' );
+	} else if (responseJson.meta && responseJson.data != null) {
+		// simple format results
+		$('#resultsCount').html('<p>' + responseJson.meta.results + ' results</p>' );
+	} else if (responseJson.entities) {
+		// json-ld format results
+		$('#resultsCount').html('<p>' + responseJson.entities + ' results</p>' );
+	} else {
+		// resource request so no result count
+		$('#resultsCount').html('');
+	}
+
+	// simple format - search results or single object
+	if (responseJson.data) {
+		if ($.type(responseJson.data) === 'array') {
+			responseJson.data.forEach(function(r){
 				$('#top').append( '<div class="container table table-hover">' + displayObject(r, 0) + '</div>' );
 				$('#top').append( '<hr style="border-top: 5px solid green;" />' );
 			})
-		} else {
-			$('#top').append( '<div class="container table table-hover">' + displayObject(responseJson, 0) + '</div>' );
-			$('#top').append( '<hr style="border-top: 5px solid green;" />' );
 		}
-
-	} else if (responseJson.id) {
-		// single object
-		$('#top').append( '<div class="objTable">' + displayObject(responseJson, 0) + '</div>' );
-	} else {
-		$('#resultsCount').html('<p>0 results</p>' );
+	}
+	
+	// json-ld format - search results or single object
+	if (responseJson.aggregates) {
+		if ($.type(responseJson.aggregates) === 'array') {
+			responseJson.aggregates.forEach(function(r){
+				$('#top').append( '<div class="container table table-hover">' + displayObject(r, 0) + '</div>' );
+				$('#top').append( '<hr style="border-top: 5px solid green;" />' );
+			})
+		}
 	}
 }
 
 // display a single object or property within an object
 function displayObject(obj, depth) {
-
 	let objType = $.type(obj);
 	let objUrl = '?id=' + getEndpoint(obj.type) + '/' + obj.id;
 	let apiType = obj.type;
@@ -293,6 +338,8 @@ function displayObject(obj, depth) {
 				headerTitle = obj.label;
 		} else if (obj.name != null) {
 			headerTitle = obj.name;
+		} else if (obj.identified_by != null && obj.identified_by[0].value != null) {
+			headerTitle = obj.identified_by[0].value;
 		}
 		headerTitle = headerTitle.replace(/&/g, '&amp;');
 		headerTitle = headerTitle.replace(/</g, '&lt;');
@@ -364,9 +411,9 @@ function displayObject(obj, depth) {
 								html += '<div class="value"><a href="' + objUrl + '">' + value + '</a></div>';
 							}
 							break;
-						case 'location':
+						case 'geo':
 							html += '<div class="value">' + value + '<br />';
-							html += '<iframe width="350" height="150" src="https://maps.google.com/maps?q=' + value + '&amp;hl=en&amp;z=12&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>';
+                            html += '<iframe width="400" height="150" src="https://maps.google.com/maps?q=' + value + '&amp;hl=en&amp;z=10&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>';
 							html += '</div>';
 							break;
 						default:
@@ -396,6 +443,7 @@ function getEndpoint(objectType) {
 		case 'Organisation':
 		case 'person':
 		case 'organisation':
+		case 'party':
 			return('party');
 		case 'Place':
 		case 'place':
@@ -409,13 +457,14 @@ function getEndpoint(objectType) {
 		case 'StillImage':
 		case 'MovingImage':
 		case 'Sound':
+		case 'media':
 			return('media');
 		default:
 			return("object");
 	}
 }
 
-// throw error if response not HTTP 2xx OK
+// throw error if response not HTTP 2xx OK or 404 not found
 function _checkStatus(response) {
 	// search results
 	let resultCount = response.headers.get('Result-Count');
@@ -423,7 +472,7 @@ function _checkStatus(response) {
 	if (resultCount != '') {
 		$('#resultsCount').html('<p>' + resultCount + ' results</p>' );
 	}
-	if (response.status >= 200 && response.status < 300) {
+	if ( (response.status >= 200 && response.status < 300) || response.status == 404) {
 		return response
 	} else {
 		let error = new Error(response.status + " " + response.statusText)
