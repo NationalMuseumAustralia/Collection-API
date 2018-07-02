@@ -6,8 +6,7 @@
 	xmlns:nma="tag:conaltuohy.com,2018:nma">
 
 	<xsl:param name="relative-uri"/>
-	<xsl:variable name="anonymous" select="/c:request/c:header[lower-case(@name)='x-anonymous-consumer']/@value"/>
-	<xsl:variable name="dataset" select="if ($anonymous='false') then 'internal' else 'public'"/>
+	<xsl:param name="dataset" select=" 'public' "/>
 	
 	<!-- transform the incoming HTTP request to the API into an outgoing HTTP request to Solr -->
 	<!-- the incoming request has been parsed into a set of parameters i.e. c:param-set, -->

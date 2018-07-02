@@ -1,4 +1,5 @@
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:c="http://www.w3.org/ns/xproc-step" xmlns:z="https://github.com/Conal-Tuohy/XProc-Z"
+	xmlns:cx="http://xmlcalabash.com/ns/extensions"
 version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 
 
@@ -23,14 +24,31 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 	<p:input port='parameters' kind='parameter' primary='true'/>
 	<p:output port="result" primary="true" sequence="true"/>
 	<p:import href="xproc-z-library.xpl"/>	
+	<p:import href="signup.xpl"/>
 	
 	<p:variable name="relative-uri" select="substring-after(/c:request/@href, '/xproc-z/')"/>
 	<!-- HTTP Header names are case-insensitive -->
 	<p:variable name="accept" select="/c:request/c:header[lower-case(@name)='accept']/@value"/>
+	<!-- the Kong 'x-consumer-groups' header will contain the dataset name 'internal' or 'public' -->
+	<p:variable name="dataset" select="/c:request/c:header[lower-case(@name)='x-consumer-groups']/@value"/>
 	<p:www-form-urldecode name="uri-parameters">
 		<p:with-option name="value" select="substring-after($relative-uri, '?')"/>
 	</p:www-form-urldecode>
 	<p:choose>
+		<p:when test="$relative-uri='debug'">
+			<z:make-http-response>
+				<p:input port="source">
+					<p:pipe step="main" port="source"/>
+				</p:input>
+			</z:make-http-response>
+		</p:when>
+		<p:when test=" $relative-uri='signup' or $relative-uri='register' ">
+			<nma:signup>
+				<p:input port="source">
+					<p:pipe step="main" port="source"/>
+				</p:input>
+			</nma:signup>
+		</p:when>
 		<!-- welcome page for the API, includes some sample invocations of the API -->
 		<p:when test=" $relative-uri = '' ">
 			<nma:home-page/>
@@ -48,11 +66,15 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 			<!-- Translate the API request into a request to Solr -->
 			<p:xslt>
 				<p:with-param name="relative-uri" select="$relative-uri"/>
+				<p:with-param name="dataset" select="$dataset"/>
 				<p:input port="stylesheet">
 					<p:document href="../xslt/api-request-to-solr-request.xsl"/>
 				</p:input>
 			</p:xslt>
 			<!-- Make the HTTP request to Solr, extract response data from Solr's response and reformat it as an API response -->
+			<cx:message>
+				<p:with-option name="message" select="/c:request/@href"/>
+			</cx:message>
 			<p:http-request/>
 			<nma:format-result>
 				<p:with-option name="accept" select="$accept"/>
@@ -112,25 +134,8 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 		<p:identity>
 			<p:input port="source">
 				<p:inline>
-					<c:response status="200">
-						<c:body content-type="application/xhtml+xml">
-							<html xmlns="http://www.w3.org/1999/xhtml">
-								<head>
-									<title>National Museum of Australia Collections API Public Beta</title>
-								</head>
-								<body>
-									<h1>National Museum of Australia Collections API Public Beta</h1>
-									<p>Welcome to the beta testing site of the National Museum of Australia's Collections API.</p>
-									<p>To get started quickly, see our <a href="https://github.com/Conal-Tuohy/NMA-API/wiki/Getting-started">Getting Started</a> guide, or jump straight into the <a href="http://nma.conaltuohy.com/apiexplorer.html" >API Explorer</a>.</p>
-									<p>To report a bug, request an enhancement, or make an encouraging comment, see the <a href="https://github.com/Conal-Tuohy/NMA-API/issues">list of issues</a> at our GitHub repository, and post a new issue or comment on an existing issue (NB you will need to log in to GitHub).</p>
-									<p>Sample resources:</p>
-									<ul>
-										<li><a href="object/64620#">Phar Lap's Heart</a></li>
-										<li>Things made out of <a href="object?medium=bark">bark</a></li>
-									</ul>
-								</body>
-							</html>
-						</c:body>
+					<c:response status="303">
+						<c:header name="location" value="http://www.nma.gov.au/collections/api"/>
 					</c:response>
 				</p:inline>
 			</p:input>

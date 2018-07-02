@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>National Museum of Australia Collections — API Register for an API key</title>
+	</head>
+	<body>
+		<h1>Register for an API key</h1>
+		<form action="register" method="post">
+			<p>Once you have submitted this form, you will automatically receive your authentication code, so can start using the Collection API straight away.</p>
+			<table>
+				<tr>
+					<td>
+						<label for="first-name">First name:</label>
+					</td>
+					<td>
+						<input id="first-name" autocomplete="given-name" type="text" name="first-name"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="last-name">Last name:</label>
+					</td>
+					<td>
+						<input id="last-name" autocomplete="family-name" type="text" name="last-name"/>
+					</td>
+				</tr>
+				<tr>
+					<td>						
+						<label for="organisation">Your organisation:</label>
+					</td>
+					<td>
+						<input id="organisation" auto-complete="organization" type="text" name="organisation"/>
+					</td>
+				</tr>
+				<tr>
+					<td>						
+						<label for="email">Your email address*:</label>
+					</td>
+					<td>
+						<input id="email" autocomplete="email" type="email"  name="email" required="required"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="use">How will you be using the API?</label>
+					</td>
+					<td>
+						<textarea id="use" name="use" rows="3">
+						</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="website">URL of website that will be using the API (if relevant):</label>
+					</td>
+					<td>
+						<input id="website" type="url" name="website"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="agreed">I agree to the Collection API Terms of Use*</label>
+					</td>
+					<td>
+						<input id="agreed" type="checkbox" required="required"/>
+					</td>
+				</tr>
+			</table>
+			<button type="submit">Submit</button>
+			<button type="reset">Cancel</button>
+			
+			<p>Mandatory fields are marked with an asterisk*</p>
+		</form>
+		<h2>Privacy</h2>
+		<p>We are collecting this information in order to gain a better understanding of who is using our API, and for what purposes. Your email address will only be used to contact you about the Collection API, for purposes such as: </p>
+		<ul>
+			<li>Alerting you to any modifications</li>
+			<li>Notifying you of new releases</li>
+			<li>Sharing opportunities for collaboration.</li>
+		</ul>
+		<p>We will not otherwise disclose your personal information to anyone unless you consent, or we are required or authorised by law (including the Privacy Act 1988) to do so. Each time we contact you, you will be able to opt out of future communications of that kind. The Museum’s privacy policy explains how you may access or seek correction of your personal information and how we deal with privacy complaints.</p>
+	</body>
+</html>
