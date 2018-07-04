@@ -5,6 +5,7 @@
 	xmlns:fn="http://www.w3.org/2005/xpath-functions" 
 	xmlns:kong="tag:conaltuohy.com,2018:kong"
 	xmlns:cx="http://xmlcalabash.com/ns/extensions"
+	xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:nma="tag:conaltuohy.com,2018:nma">
 
 	<p:input port='source' primary='true'/>
@@ -24,21 +25,32 @@
 				c:body)?)
 		</request>
 	-->
-	
+	<!-- expects request URIs:
+	/xproc-z/signup/internal/ (signup form for internal API key)
+	/xproc-z/signup/internal/register (target of signup form for internal API key)
+	/xproc-z/signup/public/ (signup form for public API key)
+	/xproc-z/signup/public/register (target of signup form for public API key)
+	-->
 	<p:input port='parameters' kind='parameter' primary='true'/>
 	<p:output port="result" primary="true" sequence="true"/>
 	<p:import href="xproc-z-library.xpl"/>	
-	<p:variable name="relative-uri" select="substring-after(/c:request/@href, '/xproc-z/')"/>
+	<p:variable name="base-uri" select="substring-after(/c:request/@href, '/xproc-z/signup/')"/>
+	<p:variable name="maximum-key-security" select="substring-before($base-uri, '/')"/><!-- 'public' or 'internal' -->
+	<p:variable name="relative-uri" select="substring-after($base-uri, '/')"/><!-- '' or 'register' -->
 	<p:choose>
-		<p:when test=" $relative-uri='signup' ">
+		<p:when test=" $relative-uri='' ">
 			<p:sink/>
-			<nma:signup-form/>
+			<nma:signup-form>
+				<p:with-option name="maximum-key-security" select="$maximum-key-security"/>
+			</nma:signup-form>
 		</p:when>
 		<p:when test=" $relative-uri='register' ">	
 			<p:www-form-urldecode name="fields">
 				<p:with-option name="value" select="/"/>
 			</p:www-form-urldecode>
 			<nma:process-signup>
+				<p:with-option name="maximum-key-security" select="$maximum-key-security"/>
+				<!-- if $maximum-key-security = 'public' then process-signup should not mint an 'internal' key -->
 				<p:input port="fields">
 					<p:pipe step="fields" port="result"/>
 				</p:input>
@@ -50,54 +62,90 @@
 	</p:choose>
 		
 	<p:declare-step name="signup-form" type="nma:signup-form">
+		<p:option name="maximum-key-security"/>
 		<p:output port="result"/>
-		<p:http-request>
-			<p:input port="source">
-				<p:inline>
-					<c:request href="../signup.html" method="get"/>
-				</p:inline>
-			</p:input>
-		</p:http-request>
-		<z:make-http-response content-type="text/html"/>
+		<p:load href="../signup.html"/>
+		<p:choose>
+			<p:when test="$maximum-key-security = 'public' ">
+				<!-- the form is unauthenticated and should mint only public API keys, so remove the other option -->
+				<p:delete match="//html:select[@id='user-group']/html:option[@value='internal']"/>
+			</p:when>
+			<p:otherwise>
+				<!-- the signup form is authenticated, so it can offer both 'public' and 'internal' API keys -->
+				<p:identity/>
+			</p:otherwise>
+		</p:choose>
+		<z:make-http-response content-type="application/xhtml+xml"/>
 	</p:declare-step>
 	
 	<p:documentation>Send an email using the sendemail command-line client</p:documentation>
 	<p:declare-step name="send-email" type="nma:send-email">
 		<p:input port="source"/>
-		<p:option name="to-email" required="true"/>
-		<p:option name="to-name" required="true"/>
-		<p:option name="from-email" required="true"/>
-		<p:option name="from-name" required="true"/>
+		<p:option name="to" required="true"/>
+		<p:option name="cc" select=" () "/>
+		<p:option name="bcc" select=" () "/>
+		<p:option name="from" required="true"/>
 		<p:option name="subject" required="true"/>
-		<p:template name="sendemail-args">
-			<p:with-param name="to-email" select="$to-email"/>
-			<p:with-param name="to-name" select="$to-name"/>
-			<p:with-param name="from-email" select="$from-email"/>
-			<p:with-param name="from-name" select="$from-name"/>
-			<p:with-param name="subject" select="$subject"/>
-			<p:input port="source"><p:empty/></p:input>
-			<p:input port="template">
-				<p:inline><args>
-					<arg>-t</arg>
-					<arg>{$to-name} &lt;{$to-email}&gt;</arg>
-					<arg>-u</arg>
-					<arg>{$subject}</arg>
-					<arg>-f</arg>
-					<arg>{$from-name} &lt;{$from-email}&gt;"</arg>
-					<arg>-o</arg>
-					<arg>message-charset=UTF-8</arg>
-					<arg>-o</arg>
-					<arg>message-content-type=html</arg>
-				</args></p:inline>
+		
+		<!-- construct the command-line arguments for the sendemail command -->
+		<p:in-scope-names name="email-fields"/>
+		<p:xslt name="sendemail-args">
+			<p:input port="parameters">
+				<p:empty/>
 			</p:input>
-		</p:template>
+			<p:input port="source">
+				<p:pipe step="email-fields" port="result"/>
+			</p:input>
+			<p:input port="stylesheet">
+				<p:inline>
+					<xsl:stylesheet version="2.0" 
+						xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+						xmlns:c="http://www.w3.org/ns/xproc-step">
+						<xsl:template match="/">
+							<args>
+								<xsl:for-each select="/c:param-set/c:param">
+									<xsl:choose>
+										<xsl:when test=" @name='to' ">
+											<arg>-t</arg>
+										</xsl:when>
+										<xsl:when test=" @name='cc' ">
+											<arg>-cc</arg>
+										</xsl:when>
+										<xsl:when test=" @name='bcc' ">
+											<arg>-bcc</arg>
+										</xsl:when>
+										<xsl:when test=" @name='from' ">
+											<arg>-f</arg>
+										</xsl:when>
+										<xsl:when test=" @name='subject' ">
+											<arg>-u</arg>
+										</xsl:when>
+									</xsl:choose>
+									<arg><xsl:value-of select="@value"/></arg>
+								</xsl:for-each>
+								<arg>-o</arg>
+								<arg>message-charset=UTF-8</arg>
+								<arg>-o</arg>
+								<arg>message-content-type=html</arg>
+							</args>
+						</xsl:template>
+					</xsl:stylesheet>
+				</p:inline>
+			</p:input>
+		</p:xslt>
 		<p:exec name="sendemail" command="sendemail" source-is-xml="true" result-is-xml="false" arg-separator="&#x0A;">
 			<p:with-option name="args" select="string-join(/args/arg, '&#x0A;')"/>
 			<p:input port="source">
 				<p:pipe step="send-email" port="source"/>
 			</p:input>
 		</p:exec>
-		<p:store href="/tmp/email-response.txt"/>
+		<p:sink/>
+		<!-- debugging -->
+		<p:store href="/tmp/email-response.txt">
+			<p:input port="source">
+				<p:pipe step="sendemail" port="result"/>
+			</p:input>
+		</p:store>
 		<p:store href="/tmp/email-errors.txt">
 			<p:input port="source">
 				<p:pipe step="sendemail" port="errors"/>
@@ -109,16 +157,35 @@
 		<p:output port="result"/>
 		<p:option name="name" required="true"/>
 		<p:option name="email" required="true"/>
+		<p:option name="user-group" required="true"/>
 		<!-- first create a consumer (user) -->
+		<!-- 
+		Kong username is a unique id, which needs to be unique even if the name/email/user-group combo is not,
+		because a single user may wish to mint different API keys with the same security level for different apps.
+		The username needs to include some identifying characteristic to support logging and admin. TODO: check if that's true.
+		For uniqueness, the name also includes a random code.
+		-->
+		<p:variable name="random-id" select="current-dateTime()"/>
+		<p:variable name="username" select="
+			concat(
+				$name,
+				' &lt;', 
+				$email, 
+				'(', 
+				$user-group,
+				' [',
+				$random-id,
+				'])&gt;'
+			)
+		"/>
 		<p:template name="create-user-request">
-			<p:with-param name="name" select="$name"/>
-			<p:with-param name="email" select="$email"/>
+			<p:with-param name="username" select="$username"/>
 			<p:input port="source"><p:empty/></p:input>
 			<p:input port="template">
 				<p:inline>
 					<fn:map>
-						<fn:string key="username">{$name}</fn:string>
-						<fn:string key="custom_id">{$email}</fn:string>
+						<fn:string key="username">{$username}</fn:string>
+						<fn:string key="custom_id">{$username}</fn:string>
 					</fn:map>
 				</p:inline>
 			</p:input>
@@ -130,26 +197,18 @@
 			<p:with-option name="uri" select="
 				concat(
 					'http://localhost:8001/consumers/?custom_id=',
-					encode-for-uri($email)
+					encode-for-uri($username)
 				)
 			"/>
 		</kong:read>
 		<!-- specify the appropriate user group for the new user -->
 		<p:template name="specify-user-group">
-			<p:with-param name="group" select="
-				if (
-					$email = ('conal.tuohy@gmail.com', 'staplegunn@gmail.com') or 
-					matches($email, '.*@nma\.gov\.au', 'i')
-				) then 
-					'internal' 
-				else 
-					'public'
-			"/>
+			<p:with-param name="user-group" select="$user-group"/>
 			<p:input port="source"><p:empty/></p:input>
 			<p:input port="template">
 				<p:inline>
 					<map xmlns="http://www.w3.org/2005/xpath-functions">
-						<string key="group">{$group}</string>
+						<string key="group">{$user-group}</string>
 					</map>
 				</p:inline>
 			</p:input>
@@ -177,6 +236,7 @@
 		</kong:write>
 		<p:sink/>
 		<!-- for debugging, log the requests -->
+		<!--
 		<p:store href="/tmp/create-user.xml" indent="true">
 			<p:input port="source">
 				<p:pipe step="create-user" port="log"/>
@@ -192,6 +252,7 @@
 				<p:pipe step="add-new-user-to-specified-group" port="log"/>
 			</p:input>
 		</p:store>
+		-->
 		<!-- mint an API key for the user (NB kong:read is used instead of kong:write because there's no data to send) -->
 		<kong:write name="add-key-to-consumer" method="post">
 			<p:with-option name="uri" select="
@@ -222,6 +283,7 @@
 	</p:declare-step>
 	
 	<p:declare-step name="process-signup" type="nma:process-signup">
+		<p:option name="maximum-key-security" select=" 'public' "/><!-- do not mint 'internal' keys if $maximum-key-security is 'public' -->
 		<p:input port="fields"/>
 		<p:output port="result"/>
 		<!-- get data from posted form fields -->
@@ -235,15 +297,25 @@
 				' '
 			)
 		"/>
+		<p:variable name="user-group"  select="
+			if ($maximum-key-security='internal') then 
+				/c:param-set/c:param[@name='user-group']/@value
+			else 
+				'public' 
+		"/>
 		<p:variable name="subject" select="concat('NMA Collections API Key for ', if (normalize-space($name)) then $name else 'you')"/>
 		
-		<cx:message message="getting API key ..."/>
+		<!--		<cx:message message="getting API key ..."/>-->
 		<nma:get-api-key name="api-key">
 			<p:with-option name="name" select="$name"/>
 			<p:with-option name="email" select="$email"/>
+			<p:with-option name="user-group" select="$user-group"/>
 		</nma:get-api-key>
+		<p:sink/>
+		<!--
 		<cx:message message="retrieved API key"/>
 		<p:store href="/tmp/api-key.xml" indent="true"/>
+		-->
 		<!--
 		<kong:read uri="http://localhost:8001/consumers/"/>
 		<p:store href="/tmp/kong-consumers.xml" indent="true"/>
@@ -260,34 +332,81 @@
 					<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fn="http://www.w3.org/2005/xpath-functions">
 						<head>
 							<title>API Key Registration Complete</title>
+							<style type="text/css">
+								body {{
+									font-family: Helvetica, Arial, sans-serif;
+									font-size: 16pt;
+								}}
+								table {{
+									background: #e1e1e1;
+									color: #333;
+									padding: 15px;
+								}}
+								caption {{
+									color: #524e3e;
+								}}
+								th {{
+									text-align: right;
+								}}
+								h1 {{
+									font-size: 24pt;
+								}}
+							</style>
 						</head>
 						<body>
-							<p>Hi {$first-name},</p>
+							<h1>Hi {$first-name},</h1>
 							<p>Thank you for registering for an API key. Your code is:</p>
 							<p><code>{/c:response/c:body/fn:map/fn:string[@key='key']}</code></p>
 							<p>To get started, <a href="https://github.com/Conal-Tuohy/NMA-API/wiki/Getting-started">view the documentation on GitHub</a>.</p>
 							<p>We hope you enjoy using the API. Please let us know how you are using it, or email feedback or questions to <a href="mailto:api@nma.gov.au">api@nma.gov.au</a></p>
 							<p>National Museum of Australia</p>
 							<p>Collection Explorer</p>
+							<table>
+								<caption>Registration Details</caption>
+								<tr>
+									<th>First name</th><td>{$first-name}</td>
+								</tr>
+								<tr>
+									<th>Last name</th><td>{$last-name}</td>
+								</tr>
+								<tr>
+									<th>Organisation</th><td>{$organisation}</td>
+								</tr>
+								<tr>
+									<th>Email</th><td>{$email}</td>
+								</tr>
+								<tr>
+									<th>User group</th><td>{$user-group}</td>
+								</tr>
+								<tr>
+									<th>Use of the API</th><td>{$use}</td>
+								</tr>
+								<tr>
+									<th>Website</th><td>{$website}</td>
+								</tr>
+							</table>
 						</body>
 					</html>		
 				</p:inline>
 			</p:input>
 		</p:template>
 		<nma:send-email 
-			from-name="NMA API Registration (do not reply)" 
-			from-email="no-reply@nma.gov.au">
+			from="NMA API Registration (do not reply) &lt;no-reply@nma.gov.au&gt;">
 			<p:with-option name="subject" select="$subject"/>
-			<p:with-option name="to-email" select="$email"/>
-			<p:with-option name="to-name" select="$name"/>
+			<p:with-option name="to" select="concat($name, ' &lt;', $email, '&gt;') "/>
 			<p:input port="source">
 				<p:pipe step="email-response" port="result"/>
 			</p:input>
 		</nma:send-email>
+		<!--
+		<p:store href="/tmp/fields.xml">
+			<p:input port="source">
+				<p:pipe step="process-signup" port="fields"/>
+			</p:input>
+		</p:store>
+		-->
 		
-		<p:parameters name="form-parameters"/>
-		
-		<!-- email the API key -->
+		<!-- Create response web page -->
 		<p:template name="http-response">
 			<p:input port="parameters">
 				<p:pipe step="process-signup" port="fields"/>

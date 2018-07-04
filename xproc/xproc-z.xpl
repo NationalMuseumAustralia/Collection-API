@@ -42,7 +42,7 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 				</p:input>
 			</z:make-http-response>
 		</p:when>
-		<p:when test=" $relative-uri='signup' or $relative-uri='register' ">
+		<p:when test="starts-with($relative-uri, 'signup/') ">
 			<nma:signup>
 				<p:input port="source">
 					<p:pipe step="main" port="source"/>
@@ -72,9 +72,6 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 				</p:input>
 			</p:xslt>
 			<!-- Make the HTTP request to Solr, extract response data from Solr's response and reformat it as an API response -->
-			<cx:message>
-				<p:with-option name="message" select="/c:request/@href"/>
-			</cx:message>
 			<p:http-request/>
 			<nma:format-result>
 				<p:with-option name="accept" select="$accept"/>
