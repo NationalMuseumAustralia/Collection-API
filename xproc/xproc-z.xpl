@@ -31,9 +31,7 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 	<p:variable name="accept" select="/c:request/c:header[lower-case(@name)='accept']/@value"/>
 	<!-- the Kong 'x-consumer-groups' header will contain the dataset name 'internal' or 'public' -->
 	<p:variable name="dataset" select="/c:request/c:header[lower-case(@name)='x-consumer-groups']/@value"/>
-	<p:www-form-urldecode name="uri-parameters">
-		<p:with-option name="value" select="substring-after($relative-uri, '?')"/>
-	</p:www-form-urldecode>
+
 	<p:choose>
 		<p:when test="$relative-uri='debug'">
 			<z:make-http-response>
@@ -61,23 +59,51 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 		</p:when>
 		<!-- retrieve record by id, OR matching search criteria -->
 		<p:when test=" matches($relative-uri, '[^/]+/[^?]+') or contains($relative-uri, '?')">
-			<!-- the "format" parameter can be used to specify a content type (overriding Accept header) -->
-			<p:variable name="format" select="/c:param-set/c:param[@name='format']/@value"/>
-			<!-- Translate the API request into a request to Solr -->
-			<p:xslt>
-				<p:with-param name="relative-uri" select="$relative-uri"/>
-				<p:with-param name="dataset" select="$dataset"/>
-				<p:input port="stylesheet">
-					<p:document href="../xslt/api-request-to-solr-request.xsl"/>
-				</p:input>
-			</p:xslt>
-			<!-- Make the HTTP request to Solr, extract response data from Solr's response and reformat it as an API response -->
-			<p:http-request/>
-			<nma:format-result>
-				<p:with-option name="accept" select="$accept"/>
-				<p:with-option name="format" select="$format"/>
-				<p:with-option name="relative-uri" select="$relative-uri"/>
-			</nma:format-result>
+			<p:try name="decode-and-process-query-parameters">
+				<p:group>
+					<p:www-form-urldecode name="uri-parameters">
+						<p:with-option name="value" select="substring-after($relative-uri, '?')"/>
+					</p:www-form-urldecode>
+					<p:group>
+						<!-- the "format" parameter, if it exists, specifies a content type (overriding Accept header) -->
+						<p:variable name="format" select="/c:param-set/c:param[@name='format']/@value"/>
+						<!-- Translate the API request into a request to Solr -->
+						<p:xslt>
+							<p:with-param name="relative-uri" select="$relative-uri"/>
+							<p:with-param name="dataset" select="$dataset"/>
+							<p:input port="stylesheet">
+								<p:document href="../xslt/api-request-to-solr-request.xsl"/>
+							</p:input>
+						</p:xslt>
+						<!-- Make the HTTP request to Solr, extract response data from Solr's response and reformat it as an API response -->
+						<p:http-request/>
+						<nma:format-result>
+							<p:with-option name="format" select="$format"/>
+							<p:with-option name="accept" select="$accept"/>
+							<p:with-option name="relative-uri" select="$relative-uri"/>
+						</nma:format-result>
+					</p:group>
+				</p:group>
+				<p:catch name="malformed-uri-parameters">
+					<!-- generate an error response in Solr's own error format -->
+					<p:identity name="solr-style-malformed-uri-parameters-error-response">
+						<p:input port="source">
+							<p:inline>
+								<response>
+									<lst name="error">
+										<int name="code">400</int>
+										<str name="msg">Malformed URI parameters</str>
+									</lst>
+								</response>
+							</p:inline>
+						</p:input>
+					</p:identity>
+					<nma:format-result>
+						<p:with-option name="accept" select="$accept"/>
+						<p:with-option name="relative-uri" select="$relative-uri"/>
+					</nma:format-result>
+				</p:catch>
+			</p:try>
 		</p:when>
 		<!-- unknown request URI -->
 		<p:otherwise>
@@ -89,7 +115,7 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 		<p:input port="source"/>
 		<p:output port="result"/>
 		<p:option name="accept" required="true"/>
-		<p:option name="format" required="true"/>
+		<p:option name="format" select=" '' "/><!-- the 'format' URI parameter may not be present -->
 		<p:option name="relative-uri" required="true"/>
 		<p:option name="rows"/>
 		<p:xslt>

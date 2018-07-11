@@ -122,8 +122,16 @@
 
 	<!-- Convert the Solr http response into an API response to the API user -->
 	<xsl:template match="/">
-		<!-- define the HTTP response; a 404 "Not found" if nothing was found, otherwise a 200 "OK" -->
-		<c:response status="{if ($result-count=0) then '404' else '200'}">
+		<!-- define the HTTP response; the error code supplied, or a 404 "Not found" if nothing was found, otherwise a 200 "OK" -->
+		<c:response status="{
+			if (/response/lst[@name='error']) then 
+				/response/lst[@name='error']/int[@name='code']
+			else
+				if ($result-count=0) then 
+					'404' 
+				else 
+					'200'
+		}">
 			<xsl:call-template name="response-headers"/>
 			<!-- specify which format the result is being returned in -->
 			<c:body content-type="{if ($response-format='json-ld') then 'application/ld+json' else 'application/json'}">
@@ -180,7 +188,24 @@
 	<xsl:template name="return-single-resource">
 		<xsl:choose>
 			<xsl:when test="$response-format = 'json-ld'">
-				<xsl:apply-templates select="/response/result/doc"/>
+				<xsl:choose>
+					<xsl:when test="/response/result/doc">
+						<xsl:apply-templates select="/response/result/doc"/>
+					</xsl:when>
+					<xsl:otherwise><!-- no object found with that id -->
+						{
+							"context": "/context.json",
+							"type": "Request",
+							"id": "<xsl:value-of select="$relative-uri"/>",
+							"request_uri": "<xsl:value-of select="$relative-uri"/>",
+							"response": {
+								"type": "Response",
+								"status_code_value": 404,
+								"reason_phrase": "Not found"
+							}
+						}
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 			<xsl:otherwise>
 				<!-- follow JSON-API practice of wrapping result in a "data" object -->
