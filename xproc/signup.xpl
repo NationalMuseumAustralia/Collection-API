@@ -357,7 +357,7 @@
 							<h1>Hi {$first-name},</h1>
 							<p>Thank you for registering for an API key. Your code is:</p>
 							<p><code>{/c:response/c:body/fn:map/fn:string[@key='key']}</code></p>
-							<p>To get started, <a href="https://github.com/Conal-Tuohy/NMA-API/wiki/Getting-started">view the documentation on GitHub</a>.</p>
+							<p>To get started, <a href="https://github.com/NationalMuseumAustralia/Collection-API/wiki/Getting-started">view the documentation on GitHub</a>.</p>
 							<p>We hope you enjoy using the API. Please let us know how you are using it, or email feedback or questions to <a href="mailto:api@nma.gov.au">api@nma.gov.au</a></p>
 							<p>National Museum of Australia</p>
 							<p>Collection Explorer</p>
