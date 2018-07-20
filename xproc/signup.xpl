@@ -38,6 +38,9 @@
 	<p:variable name="maximum-key-security" select="substring-before($base-uri, '/')"/><!-- 'public' or 'internal' -->
 	<p:variable name="relative-uri" select="substring-after($base-uri, '/')"/><!-- '' or 'register' -->
 	<p:choose>
+		<p:when test=" not($maximum-key-security = ('public', 'internal') ) ">
+			<z:not-found/>
+		</p:when>
 		<p:when test=" $relative-uri='' ">
 			<p:sink/>
 			<nma:signup-form>
