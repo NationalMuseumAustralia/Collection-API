@@ -68,15 +68,37 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 						<!-- the "format" parameter, if it exists, specifies a content type (overriding Accept header) -->
 						<p:variable name="format" select="/c:param-set/c:param[@name='format']/@value"/>
 						<!-- Translate the API request into a request to Solr -->
-						<p:xslt>
-							<p:with-param name="relative-uri" select="$relative-uri"/>
-							<p:with-param name="dataset" select="$dataset"/>
-							<p:input port="stylesheet">
-								<p:document href="../xslt/api-request-to-solr-request.xsl"/>
-							</p:input>
-						</p:xslt>
-						<!-- Make the HTTP request to Solr, extract response data from Solr's response and reformat it as an API response -->
-						<p:http-request/>
+						<p:try>
+							<p:group>
+								<p:xslt>
+									<p:with-param name="relative-uri" select="$relative-uri"/>
+									<p:with-param name="dataset" select="$dataset"/>
+									<p:input port="stylesheet">
+										<p:document href="../xslt/api-request-to-solr-request.xsl"/>
+									</p:input>
+								</p:xslt>
+								<!-- Make the HTTP request to Solr, extract response data from Solr's response and reformat it as an API response -->
+								<p:http-request/>
+							</p:group>
+							<p:catch name="solr-request-error">
+								<p:template>
+									<p:input port="parameters"><p:empty/></p:input>
+									<p:input port="source">
+										<p:pipe step="solr-request-error" port="error"/>
+									</p:input>
+									<p:input port="template">
+										<p:inline>
+											<response>
+												<lst name="error">
+													<int name="code">500</int>
+													<str name="msg">{string(.)}</str>
+												</lst>
+											</response>
+										</p:inline>
+									</p:input>
+								</p:template>
+							</p:catch>
+						</p:try>
 						<nma:format-result>
 							<p:with-option name="format" select="$format"/>
 							<p:with-option name="accept" select="$accept"/>
