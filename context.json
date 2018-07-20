@@ -667,6 +667,7 @@
       "@id": "crm:P70i_is_documented_in", 
       "@type": "@id"
     }, 
+    "Document": "crm:E31_Document", 
     "Aggregation": {
       "@context": {}, 
       "@id": "ore:Aggregation"
