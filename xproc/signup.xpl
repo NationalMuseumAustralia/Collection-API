@@ -38,6 +38,9 @@
 	<p:variable name="maximum-key-security" select="substring-before($base-uri, '/')"/><!-- 'public' or 'internal' -->
 	<p:variable name="relative-uri" select="substring-after($base-uri, '/')"/><!-- '' or 'register' -->
 	<p:choose>
+		<p:when test=" not($maximum-key-security = ('public', 'internal') ) ">
+			<z:not-found/>
+		</p:when>
 		<p:when test=" $relative-uri='' ">
 			<p:sink/>
 			<nma:signup-form>
@@ -357,7 +360,7 @@
 							<h1>Hi {$first-name},</h1>
 							<p>Thank you for registering for an API key. Your code is:</p>
 							<p><code>{/c:response/c:body/fn:map/fn:string[@key='key']}</code></p>
-							<p>To get started, <a href="https://github.com/Conal-Tuohy/NMA-API/wiki/Getting-started">view the documentation on GitHub</a>.</p>
+							<p>To get started, <a href="https://github.com/NationalMuseumAustralia/Collection-API/wiki/Getting-started">view the documentation on GitHub</a>.</p>
 							<p>We hope you enjoy using the API. Please let us know how you are using it, or email feedback or questions to <a href="mailto:api@nma.gov.au">api@nma.gov.au</a></p>
 							<p>National Museum of Australia</p>
 							<p>Collection Explorer</p>

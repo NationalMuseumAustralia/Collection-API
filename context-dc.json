@@ -1,0 +1,114 @@
+{
+  "@context": {
+    "nma": "https://api.nma.gov.au/term/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dc": "http://purl.org/dc/terms/",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "schema": "http://schema.org/",
+    "crm": "http://www.cidoc-crm.org/cidoc-crm/",
+    "ore": "http://www.openarchives.org/ore/terms/",
+
+    "id": "@id",
+    "type": "@type",
+    "seeAlso": "rdfs:seeAlso",
+
+    "StillImage": "dcmitype:StillImage",
+    "MovingImage": "dcmitype:MovingImage",
+    "Sound": "dcmitype:Sound",
+    "Text": "dcmitype:Text",
+    "place": "dc:Location",
+
+    "party": "foaf:Agent",
+
+    "narrative": "ore:Aggregation",
+    "Collection": "ore:Aggregation",
+
+    "object": "crm:E19_Physical_Object",
+
+    "media": "schema:MediaObject",
+    "ImageObject": "schema:ImageObject",
+    "VideoObject": "schema:VideoObject",
+    "AudioObject": "schema:AudioObject",
+    "Link": "schema:WebPage",
+
+    "title": "dc:title",
+    "creator": "dc:creator",
+    "contributor": "dc:contributor",
+    "spatial": "dc:spatial",
+    "temporal": "dc:temporal",
+    "description": "dc:description",
+    "physicalDescription": "dc:description",
+    "educationalSignificance": "dc:description",
+    "significanceStatement": "dc:description",
+    "publisher": "dc:publisher",
+    "issued": {
+      "@id": "dc:issued",
+      "@type": "xsd:dateTime"
+    },
+    "modified": {
+      "@id": "dc:modified",
+      "@type": "xsd:dateTime"
+    },
+    "extent": "dc:extent",
+    "medium": "dc:medium",
+    "identifier": "dc:identifier",
+    "source": "dc:source",
+    "relation": "dc:relation",
+    "isPartOf": "dc:isPartOf",
+    "hasPart": "dc:hasPart",
+    "isVersionOf": "dc:isVersionOf",
+    "hasVersion": "dc:hasVersion",
+    "hasFormat": "dc:hasFormat",
+    "rights": "dc:rights",
+
+    "name": "foaf:name",
+    "givenName": "foaf:givenName",
+    "familyName": "foaf:familyName",
+    "gender": "foaf:gender",
+
+    "collection": "ore:isAggregatedBy",
+    "aggregetes": "ore:aggregetes",
+    "isAggregetedBy": "ore:isAggregetedBy",
+    
+    "additionalType": "schema:additionalType",
+    "interactionType": "schema:interactionType",
+    "roleName": "schema:roleName",
+    "startDate": "schema:startDate",
+    "endDate": "schema:endDate",
+    "location": "schema:location",
+    "geo": "schema:geo",
+    "height": {
+      "@id": "schema:height",
+      "@type": "xsd:decimal"
+    },
+    "width": {
+      "@id": "schema:width",
+      "@type": "xsd:decimal"
+    },
+    "depth": {
+      "@id": "schema:depth",
+      "@type": "xsd:decimal"
+    },
+    "weight": {
+      "@id": "schema:weight",
+      "@type": "xsd:decimal"
+    },
+    "unitText": "schema:unitText",
+
+	"_meta": "nma:meta",
+    "weightUnitText": "nma:weightUnitText",
+    "rightsTitle": "nma:rightsTitle",
+    "rightsReason": "nma:rightsReason",
+    "acknowledgement": "nma:acknowledgement",
+    "middleName": "nma:middleName",
+    "alternativeNames": "nma:alternativeNames",
+    "diameter": {
+      "@id": "nma:diameter",
+      "@type": "xsd:decimal"
+    }
+  }
+}
+
