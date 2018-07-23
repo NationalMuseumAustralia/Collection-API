@@ -182,8 +182,7 @@ hr {
 
 	<script type="text/javascript">
 
-//var API_BASE = 'http://nma.conaltuohy.com/xproc-z';
-//var API_BASE = '/xproc-z';
+//var API_BASE = 'https://data.nma.gov.au';
 var API_BASE = '';
 
 $(function(){
@@ -213,10 +212,10 @@ $(function(){
 					displayResponse(json)
 				}).catch(function(ex) {
 					console.log('retrieve failed:', ex);
-					alert("Oh noes, an error: " + ex);
+					alert("There was an error: " + ex);
 				})
 			} catch (e) {
-				alert("Oh noes, an error: " + e.message);
+				alert("There was an error: " + e.message);
 			}
 	}
 
@@ -284,10 +283,10 @@ function doQuery(keywords, field, endpoint, format, sort, size, apiKey) {
 			displayResponse(json)
 		}).catch(function(ex) {
 			console.log('retrieve failed:', ex);
-			alert("Oh noes, an error: " + ex);
+			alert("There was an error: " + ex);
 		})
 	} catch (e) {
-		alert("Oh noes, an error: " + e.message);
+		alert("There was an error: " + e.message);
 	}
 }
 
