@@ -63,7 +63,7 @@
 					<xsl:variable name="search-parameters" select="
 						/c:param-set/c:param
 							[normalize-space(@value)]
-							[not(@name=('format', 'sort', 'offset', 'limit'))] 
+							[not(@name=('format', 'sort', 'offset', 'limit', 'apikey'))] 
 					"/>
 					
 					<xsl:attribute name="href" select="
