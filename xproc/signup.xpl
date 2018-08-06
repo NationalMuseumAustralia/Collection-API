@@ -410,6 +410,16 @@
 		-->
 		
 		<!-- Create response web page -->
+		<p:identity name="http-response">
+			<p:input port="source">
+				<p:inline>
+					<c:response status="303">
+						<c:header name="location" value="http://www.nma.gov.au/api/thankyou"/>
+					</c:response>
+				</p:inline>
+			</p:input>
+		</p:identity>
+		<!--
 		<p:template name="http-response">
 			<p:input port="parameters">
 				<p:pipe step="process-signup" port="fields"/>
@@ -436,7 +446,7 @@
 					</c:response>
 				</p:inline>
 			</p:input>
-		</p:template>
+		</p:template>-->
 	</p:declare-step>
 	
 	<p:declare-step name="read" type="kong:read">
