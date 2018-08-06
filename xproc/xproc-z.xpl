@@ -180,7 +180,7 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 			<p:input port="source">
 				<p:inline>
 					<c:response status="303">
-						<c:header name="location" value="http://www.nma.gov.au/api/landing"/>
+						<c:header name="location" value="http://www.nma.gov.au/collections/api/landing"/>
 					</c:response>
 				</p:inline>
 			</p:input>

@@ -414,7 +414,7 @@
 			<p:input port="source">
 				<p:inline>
 					<c:response status="303">
-						<c:header name="location" value="http://www.nma.gov.au/api/thankyou"/>
+						<c:header name="location" value="http://www.nma.gov.au/collections/api/thankyou"/>
 					</c:response>
 				</p:inline>
 			</p:input>
