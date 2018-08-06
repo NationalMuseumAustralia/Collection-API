@@ -274,6 +274,8 @@
 	</xsl:template>
 	
 	<xsl:template name="response-headers">
+		<!-- hint to cache for up to 24 hours -->
+		<c:header name="Cache-Control" value="max-age=43200"/><!-- cache for 12 hours -->
 		<xsl:if test="$is-search-request">
 			<!-- pagination headers are only useful for search requests because they produce multiple results -->
 			<c:header name="Result-Count" value="{$result-count}"/>
