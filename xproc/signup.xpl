@@ -337,57 +337,35 @@
 							<title>API Key Registration Complete</title>
 							<style type="text/css">
 								body {{
-									font-family: Helvetica, Arial, sans-serif;
-									font-size: 16pt;
-								}}
-								table {{
-									background: #e1e1e1;
-									color: #333;
-									padding: 15px;
-								}}
-								caption {{
-									color: #524e3e;
-								}}
-								th {{
-									text-align: right;
+									font-family: Calibri, Helvetica, Arial, sans-serif;
+									font-size: 11pt;
 								}}
 								h1 {{
-									font-size: 24pt;
+									font-size: 12pt;
+								}}
+								img {{
+									border: none;
+								}}
+								.label {{
+									font-weight: bold;
 								}}
 							</style>
 						</head>
 						<body>
-							<h1>Hi {$first-name},</h1>
-							<p>Thank you for registering for an API key. Your code is:</p>
+							<img src="http://collectionsearch.nma.gov.au/sites/all/themes/cs/logo.png" alt="National Museum of Australia"/>
+							<p>Thank you for registering for an API key. Your key is:</p>
 							<p><code>{/c:response/c:body/fn:map/fn:string[@key='key']}</code></p>
 							<p>To get started, <a href="https://github.com/NationalMuseumAustralia/Collection-API/wiki/Getting-started">view the documentation on GitHub</a>.</p>
-							<p>We hope you enjoy using the API. Please let us know how you are using it, or email feedback or questions to <a href="mailto:api@nma.gov.au">api@nma.gov.au</a></p>
-							<p>National Museum of Australia</p>
-							<p>Collection Explorer</p>
-							<table>
-								<caption>Registration Details</caption>
-								<tr>
-									<th>First name</th><td>{$first-name}</td>
-								</tr>
-								<tr>
-									<th>Last name</th><td>{$last-name}</td>
-								</tr>
-								<tr>
-									<th>Organisation</th><td>{$organisation}</td>
-								</tr>
-								<tr>
-									<th>Email</th><td>{$email}</td>
-								</tr>
-								<tr>
-									<th>User group</th><td>{$user-group}</td>
-								</tr>
-								<tr>
-									<th>Use of the API</th><td>{$use}</td>
-								</tr>
-								<tr>
-									<th>Website</th><td>{$website}</td>
-								</tr>
-							</table>
+							<h1>Registration details</h1>
+							<p><span class="label">First name:</span> {$first-name}</p>
+							<p><span class="label">Last name:</span> {$last-name}</p>
+							<p><span class="label">Organisation:</span> {$organisation}</p>
+							<p><span class="label">Email:</span> {$email}</p>
+							<p><span class="label">User group:</span> {$user-group}</p>
+							<p><span class="label">Use of the API:</span> {$use}</p>
+							<p><span class="label">Website:</span> {$website}</p>
+							<p>We hope you enjoy using the API. Please let us know how you are using it, or email feedback or questions to <a href="mailto:api@nma.gov.au">api@nma.gov.au</a>.</p>
+							<p>National Museum of Australia<br/>Collection API</p>
 						</body>
 					</html>		
 				</p:inline>
