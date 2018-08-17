@@ -1,17 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset='UTF-8' />
-<title>NMA API Explorer</title>
+<!-- CMS location: http://www.nma.gov.au/collections/our-apis/api-explorer -->
+<!-- CMS container properties: Raw HTML -->
+<!-- HTML 5.2 allows style tag inside body - older browsers may not support this -->
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<p>The best way to learn about our Collection API is to use the Collection API Explorer. 
+   It shows available search options and builds an API URL for you.
+</p>
+<ul>
+	<li><a href="http://www.nma.gov.au/collections/api">Collection API home</a></li>
+	<li><a href="https://github.com/NationalMuseumAustralia/Collection-API/wiki/Getting-started">View documentation on GitHub</a></li>
+</ul>
+
+<!-- Source: https://github.com/NationalMuseumAustralia/Collection-API/blob/master/apiexplorer.html -->
+
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
 <style>
 html {
-	background-color: #F39C12;
+//	background-color: #F39C12;
 	background-image: -moz-linear-gradient(center top, #5e8ec6, #E4E4E4);
 }
 body {
@@ -32,8 +37,8 @@ hr {
 	box-shadow: 0 0 5px #000000;
 	clear: left;
 	padding: 10px 0 0;
-	margin-top: 20px;
-	min-height: 800px;
+//	margin-top: 20px;
+//	min-height: 800px;
 }
 #page article {
 	margin: 0 43px;
@@ -64,15 +69,14 @@ hr {
 	margin-top: 20px;
 }
 </style>
-</head>
-<body>
+
 	<section id='page' class='container'>
 
 		<article>
 
-			<a href="http://www.nma.gov.au/collections/api">API home</a>
 			<div class='well'>
-				<h3>National Museum of Australia API Explorer</h3>
+				<h3>Collection API Explorer</h3>
+                <p>By using our API Explorer, you certify that you have read and agree to the <a href="./?a=580142">Collection API Terms of Use</a>.</p>
 
 				<div style="margin-top: 20px;">
 
@@ -182,8 +186,8 @@ hr {
 
 	<script type="text/javascript">
 
-//var API_BASE = 'https://data.nma.gov.au';
-var API_BASE = '';
+var API_BASE = 'https://data.nma.gov.au';
+//var API_BASE = '';
 
 $(function(){
 
@@ -273,7 +277,7 @@ function doQuery(keywords, field, endpoint, format, sort, size, apiKey) {
 		$('#searchUrl').html('<a href=\'' + url + '\'>' + url + '</a>');
 		
 		let apiHeaders = new Headers();
-//		apiHeaders.append('Access-Control-Allow-Origin', '*');
+//        apiHeaders.append('Access-Control-Allow-Origin', '*')
 //		fetch(url, {headers: apiHeaders, mode: "no-cors"})
 		fetch(url)
 		.then(_checkStatus)
@@ -499,5 +503,3 @@ function _getParameterByName(name, url) {
 }
 
 </script>
-</body>
-</html>
