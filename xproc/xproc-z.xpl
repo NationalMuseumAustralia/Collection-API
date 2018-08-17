@@ -132,6 +132,8 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 			<z:not-found/>
 		</p:otherwise>
 	</p:choose>
+	<!-- enable CORS -->
+	<z:add-response-header header-name="Access-Control-Allow-Origin" header-value="*"/>
 	
 	<p:declare-step name="format-result" type="nma:format-result">
 		<p:input port="source"/>
