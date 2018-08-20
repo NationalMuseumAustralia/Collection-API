@@ -306,7 +306,6 @@
 			else 
 				'public' 
 		"/>
-		<p:variable name="subject" select="concat('NMA Collections API Key for ', if (normalize-space($name)) then $name else 'you')"/>
 		
 		<!--		<cx:message message="getting API key ..."/>-->
 		<nma:get-api-key name="api-key">
@@ -372,20 +371,14 @@
 			</p:input>
 		</p:template>
 		<nma:send-email 
-			from="NMA API Registration (do not reply) &lt;no-reply@nma.gov.au&gt;">
-			<p:with-option name="subject" select="$subject"/>
+			from="National Museum of Australia &lt;api@nma.gov.au&gt;" 
+			bcc="National Museum of Australia &lt;api@nma.gov.au&gt;" 
+			subject="Collection API key">
 			<p:with-option name="to" select="concat($name, ' &lt;', $email, '&gt;') "/>
 			<p:input port="source">
 				<p:pipe step="email-response" port="result"/>
 			</p:input>
 		</nma:send-email>
-		<!--
-		<p:store href="/tmp/fields.xml">
-			<p:input port="source">
-				<p:pipe step="process-signup" port="fields"/>
-			</p:input>
-		</p:store>
-		-->
 		
 		<!-- Create response web page -->
 		<p:identity name="http-response">
@@ -397,34 +390,6 @@
 				</p:inline>
 			</p:input>
 		</p:identity>
-		<!--
-		<p:template name="http-response">
-			<p:input port="parameters">
-				<p:pipe step="process-signup" port="fields"/>
-			</p:input>
-			<p:input port="source">
-				<p:empty/>
-			</p:input>
-			<p:input port="template">
-				<p:inline>
-					<c:response status="200">
-						<c:header name="X-Powered-By" value="XProc using XML Calabash"/>
-						<c:header name="Server" value="XProc-Z"/>
-						<c:body content-type="application/xhtml+xml">
-							<html xmlns="http://www.w3.org/1999/xhtml">
-								<head>
-									<title>API Key Registration Complete</title>
-								</head>
-								<body>
-									<h1>API Key Registration Complete</h1>
-									<p>Thanks {$first-name}! Check your email address <strong>{$email}</strong> for your API key (remember to check in your spam filter, if you don't see the email)</p>
-								</body>
-							</html>						
-						</c:body>
-					</c:response>
-				</p:inline>
-			</p:input>
-		</p:template>-->
 	</p:declare-step>
 	
 	<p:declare-step name="read" type="kong:read">
