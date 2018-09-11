@@ -129,7 +129,9 @@
 			else
 				if ($result-count=0) then 
 					'404' 
-				else 
+				else if (not($is-search-request) and /response/result/doc/str[@name='status_code']) then
+					/response/result/doc/str[@name='status_code']
+				else
 					'200'
 		}">
 			<xsl:call-template name="response-headers"/>
@@ -189,10 +191,8 @@
 		<xsl:choose>
 			<xsl:when test="$response-format = 'json-ld'">
 				<xsl:choose>
-					<xsl:when test="/response/result/doc">
-						<xsl:apply-templates select="/response/result/doc"/>
-					</xsl:when>
-					<xsl:otherwise><!-- no object found with that id -->
+					<xsl:when test="$result-count = 0">
+						<!-- no object found with that id; return a 404 -->
 						{
 							"context": "/context.json",
 							"type": "Request",
@@ -204,6 +204,23 @@
 								"reason_phrase": "Not found"
 							}
 						}
+					</xsl:when>
+					<xsl:when test="/response/result/doc/str[@name='status_code']">
+						<!-- an explicit status code is stored; return that -->
+						{
+							"context": "/context.json",
+							"type": "Request",
+							"id": "<xsl:value-of select="$relative-uri"/>",
+							"request_uri": "<xsl:value-of select="$relative-uri"/>",
+							"response": {
+								"type": "Response",
+								"status_code_value": <xsl:value-of select="/response/result/doc/str[@name='status_code']"/>,
+								"reason_phrase": "<xsl:value-of select="/response/result/doc/str[@name='reason']"/>"
+							}
+						}
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:apply-templates select="/response/result/doc"/>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
@@ -212,6 +229,14 @@
 				<xsl:choose>
 					<xsl:when test="$result-count = 0">
 						<xsl:text>{"data": null, "errors": [{"status": "404", "title": "Not found"}]}</xsl:text>
+					</xsl:when>
+					<xsl:when test="/response/result/doc/str[@name='status_code']">
+						<!-- an explicit status code is stored; return that -->
+						<xsl:text>{"data": null, "errors": [{"status": "</xsl:text>
+						<xsl:value-of select="/response/result/doc/str[@name='status_code']"/>
+						<xsl:text>", "title": "</xsl:text>
+						<xsl:value-of select="/response/result/doc/str[@name='reason']"/>
+						<xsl:text>"}]}</xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:text>{"data": [</xsl:text>
