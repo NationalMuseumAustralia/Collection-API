@@ -527,37 +527,64 @@
 							<html xmlns="http://www.w3.org/1999/xhtml">
 								<head>
 									<title>National Museum of Australia Collections — API User Administration</title>
+									<style type="text/css">
+										body {
+											font-family: sans-serif;
+										}
+										table {
+											border-collapse: collapse; 
+											margin: 20px;
+										}
+										tr {
+											border-bottom-width: 1px;
+											border-bottom-style: solid;
+											border-bottom-color: rgb(221, 221, 221);
+										}
+										td {
+											text-align: left;
+											padding-top: 0.5em;
+											padding-right: 0.5em;
+											padding-left: 0.5em;
+											padding-bottom: 0em;
+										}
+									</style>
 								</head>
 								<body>
 									<h1>API users</h1>
 									<form action="#" method="post">
 										<table>
-											<tr>
-												<th>API Key</th>
-												<th>Name</th>
-												<th>Email</th>
-												<th>Group</th>
-												<th>Date</th>
-											</tr>
-											<xsl:for-each select="$keys">
-												<xsl:variable name="key-id" select="fn:string[@key='id']"/>
-												<xsl:variable name="key" select="fn:string[@key='key']"/>
-												<xsl:variable name="consumer-id" select="fn:string[@key='consumer_id']"/>
-												<xsl:variable name="consumer-custom-id" select="
-													key('consumer-by-id', $consumer-id)/fn:string[@key='custom_id']
-												"/>
-												<xsl:variable name="consumer" select="nma:parse-consumer($consumer-custom-id)"/>
+											<thead>
 												<tr>
-													<td>
-														<input type="checkbox" name="id" id="{$consumer-id}" value="{$consumer-id}"/>
-														<label for="{$consumer-id}"><code><xsl:value-of select="$key"/></code></label>
-													</td>
-													<td><xsl:value-of select="$consumer?name"/></td>
-													<td><xsl:value-of select="$consumer?email"/></td>
-													<td><xsl:value-of select="$consumer?group"/></td>
-													<td><xsl:value-of select="$consumer?date"/></td>
+													<th>API Key</th>
+													<th>Name</th>
+													<th>Email</th>
+													<th>Group</th>
+													<th>Date</th>
+													<th>Time</th>
 												</tr>
-											</xsl:for-each>
+											</thead>
+											<tbody>
+												<xsl:for-each select="$keys">
+													<xsl:variable name="key-id" select="fn:string[@key='id']"/>
+													<xsl:variable name="key" select="fn:string[@key='key']"/>
+													<xsl:variable name="consumer-id" select="fn:string[@key='consumer_id']"/>
+													<xsl:variable name="consumer-custom-id" select="
+														key('consumer-by-id', $consumer-id)/fn:string[@key='custom_id']
+													"/>
+													<xsl:variable name="consumer" select="nma:parse-consumer($consumer-custom-id)"/>
+													<tr>
+														<td>
+															<input type="checkbox" name="id" id="{$consumer-id}" value="{$consumer-id}"/>
+															<label for="{$consumer-id}"><code><xsl:value-of select="$key"/></code></label>
+														</td>
+														<td><xsl:value-of select="$consumer?name"/></td>
+														<td><a href="mailto:{$consumer?email}"><xsl:value-of select="$consumer?email"/></a></td>
+														<td><xsl:value-of select="$consumer?group"/></td>
+														<td><xsl:value-of select="$consumer?date"/></td>
+														<td><xsl:value-of select="$consumer?time"/></td>
+													</tr>
+												</xsl:for-each>
+											</tbody>
 										</table>
 										<button type="submit" name="delete">Delete Selected Users</button>
 									</form>
@@ -567,13 +594,14 @@
 						<xsl:function name="nma:parse-consumer">
 							<xsl:param name="consumer-custom-id"/>
 							<!-- e.g. "Conal Tuohy &lt;conal.tuohy+nma-dev-internal@gmail.com(internal [2018-09-18T15:28:36.235+10:00])&gt;" -->
-							<xsl:variable name="custom-id-regex">(.*) &lt;([^\(]*)\(([^ ]*) \[(.*)\].*</xsl:variable>
+							<xsl:variable name="custom-id-regex">(.*) &lt;([^\(]*)\(([^ ]*) \[([^T]*)T([^:]*:[^:]*).*</xsl:variable>
 							<xsl:sequence select="
 								map{
 									'name': replace($consumer-custom-id, $custom-id-regex, '$1'),
 									'email': replace($consumer-custom-id, $custom-id-regex, '$2'),
 									'group': replace($consumer-custom-id, $custom-id-regex, '$3'),
-									'date': replace($consumer-custom-id, $custom-id-regex, '$4')
+									'date': replace($consumer-custom-id, $custom-id-regex, '$4'),
+									'time': replace($consumer-custom-id, $custom-id-regex, '$5')
 								}
 							"/>
 						</xsl:function>
