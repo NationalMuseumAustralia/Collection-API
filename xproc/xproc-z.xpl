@@ -25,6 +25,7 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 	<p:output port="result" primary="true" sequence="true"/>
 	<p:import href="xproc-z-library.xpl"/>	
 	<p:import href="signup.xpl"/>
+	<p:import href="admin.xpl"/>
 	
 	<p:variable name="relative-uri" select="substring-after(/c:request/@href, '/xproc-z/')"/>
 	<!-- HTTP Header names are case-insensitive -->
@@ -46,6 +47,13 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 					<p:pipe step="main" port="source"/>
 				</p:input>
 			</nma:signup>
+		</p:when>
+		<p:when test="starts-with($relative-uri, 'admin/') ">
+			<nma:admin>
+				<p:input port="source">
+					<p:pipe step="main" port="source"/>
+				</p:input>
+			</nma:admin>
 		</p:when>
 		<!-- welcome page for the API, includes some sample invocations of the API -->
 		<p:when test=" $relative-uri = '' ">
