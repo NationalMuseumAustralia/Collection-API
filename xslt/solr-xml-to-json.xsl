@@ -52,6 +52,9 @@
 	<!-- the current API query URI, used when generating a "next" link -->
 	<xsl:param name="relative-uri"/>
 	
+	<!-- the dataset requested ("public" or "internal"); needed so that "internal" requests can be cached by proxies separately from "public" data -->
+	<xsl:param name="dataset"/>
+	
 	<!-- determine whether the request is a search request, or a retrieval of a single resource -->
 	<!-- by attempting to match the request URI to a pattern like "object/12345" --> 
 	<xsl:variable name="is-search-request" select="not(matches($relative-uri, '[^/]*/.*'))"/>
@@ -301,6 +304,15 @@
 	<xsl:template name="response-headers">
 		<!-- hint to cache for up to 24 hours -->
 		<c:header name="Cache-Control" value="max-age=43200"/><!-- cache for 12 hours -->
+		<xsl:if test="$accept and not($format)">
+			<!-- data format was selected using the "Accept" header -->
+			<c:header name="Vary" value="Accept"/>
+		</xsl:if>
+		<xsl:if test="$dataset='internal'">
+			<!-- data is for NMA internal use and should not be served to the public by downstream proxies -->
+			<c:header name="Vary" value="apikey"/>
+		</xsl:if>
+		<c:header name="Dataset" value="{$dataset}"/>
 		<xsl:if test="$is-search-request">
 			<!-- pagination headers are only useful for search requests because they produce multiple results -->
 			<c:header name="Result-Count" value="{$result-count}"/>

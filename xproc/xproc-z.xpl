@@ -23,6 +23,7 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 	
 	<p:input port='parameters' kind='parameter' primary='true'/>
 	<p:output port="result" primary="true" sequence="true"/>
+	<p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
 	<p:import href="xproc-z-library.xpl"/>	
 	<p:import href="signup.xpl"/>
 	<p:import href="admin.xpl"/>
@@ -111,6 +112,7 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 							<p:with-option name="format" select="$format"/>
 							<p:with-option name="accept" select="$accept"/>
 							<p:with-option name="relative-uri" select="$relative-uri"/>
+							<p:with-option name="dataset" select="$dataset"/>
 						</nma:format-result>
 					</p:group>
 				</p:group>
@@ -131,6 +133,7 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 					<nma:format-result>
 						<p:with-option name="accept" select="$accept"/>
 						<p:with-option name="relative-uri" select="$relative-uri"/>
+						<p:with-option name="dataset" select="$dataset"/>
 					</nma:format-result>
 				</p:catch>
 			</p:try>
@@ -149,11 +152,13 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 		<p:option name="accept" required="true"/>
 		<p:option name="format" select=" '' "/><!-- the 'format' URI parameter may not be present -->
 		<p:option name="relative-uri" required="true"/>
+		<p:option name="dataset" required="true"/>
 		<p:option name="rows"/>
 		<p:xslt>
 			<p:with-param name="accept" select="$accept"/>
 			<p:with-param name="format" select="$format"/>
 			<p:with-param name="relative-uri" select="$relative-uri"/>
+			<p:with-param name="dataset" select="$dataset"/>
 			<p:input port="stylesheet">
 				<p:document href="../xslt/solr-xml-to-json.xsl"/>
 			</p:input>
