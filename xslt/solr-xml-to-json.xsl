@@ -350,7 +350,7 @@
 	
 	<!-- Originally there was only one "simple" field; later this was split into multiple versions "simple_1", "simple_2" etc. -->
 	<!-- Here, as a transitional arrangement, we check whether the "simple" field still exists since this means we can't choose a specific version -->
-	<xsl:variable name="legacy-simple-field-exists" select="exists(*[@name='simple'])"/>
+	<xsl:variable name="legacy-simple-field-exists" select="exists(/response/result/doc[@name='simple'])"/>
 	<xsl:variable name="response-version" select="
 		if ($response-format='json-ld' or $legacy-simple-field-exists) then ()
 		else ($requested-version, $latest-version)[1]
