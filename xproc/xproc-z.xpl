@@ -34,9 +34,6 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 	<!-- the Kong 'x-consumer-groups' header will contain the dataset name 'internal' or 'public' -->
 	<p:variable name="dataset" select="/c:request/c:header[lower-case(@name)='x-consumer-groups']/@value"/>
 	
-	<cx:message>
-		<p:with-option name="message" select="concat('href=', /c:request/@href)"/>
-	</cx:message>
 	<p:choose>
 		<p:when test="/c:request/@href='http://localhost:8983/solr/core_nma_log/update'">
 			<!-- This request is an asynchronous request invoked by this pipeline itself, to log the details of an API request made by an end user -->

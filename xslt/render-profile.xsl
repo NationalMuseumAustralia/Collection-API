@@ -2,9 +2,9 @@
 	<xsl:param name="profile"/>
 	<!-- classify this profile URI as either supported (200=OK), no longer supported (410=GONE), or never supported (404=NOT FOUND) -->
 	<xsl:variable name="status" select="
-		if ($profile = ('nma-1', 'nma-2')) then
+		if ($profile = ('1', '2')) then
 			'200'
-		else if ($profile = ('nma-0')) then
+		else if ($profile = ('0')) then
 			'410'
 		else 
 			'404'

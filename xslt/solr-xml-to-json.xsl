@@ -7,6 +7,11 @@
 	<xsl:variable name="result-count-so-far" select="number(/response/result/@start) + count(/response/result/doc)"/>
 	<xsl:variable name="object-type" select="substring-before($relative-uri, '?')"/><!-- e.g. 'object', 'party' etc. -->
 	<xsl:variable name="query-parameters" select="tokenize(substring-after($relative-uri, '?'), '&amp;')"/>
+	<xsl:param name="host-name" select=" 'data.nma.gov.au' "/> 
+	
+	<!-- the latest version of the 'simple' data format; used when no particular version was requested explicitly -->
+	<xsl:variable name="latest-version" select=" '2' "/>
+	
 	<!-- Generate a link that points to the next page, by constructing a new API query URI with the old 'offset' parameter
 	removed, and a new 'offset' parameter which reflects the number of records returned in this response. -->
 	<xsl:variable name="next-page-link" select="
@@ -107,6 +112,18 @@
 			</xsl:analyze-string>
 		</xsl:element>
 	</xsl:variable>
+
+	<!-- If the user requested the 'simple' format, they can specialise that with a "profile" parameter that selects a specific version of that format -->
+	<!-- The profile parameter will look something like "http://nma-dev.conaltuohy.com/profile/1" -->
+	<xsl:variable name="requested-version" select="
+		if ($response-format = 'simple' and $accept-header-types/types/type[@name='application/vnd.api+json']/@profile) then
+			substring-after(
+				$accept-header-types/types/type[@name='application/vnd.api+json']/@profile,
+				'/profile/'
+			)
+		else
+			()
+	"/>
 	
 	<!-- This preference function returns a number from 0 to 1, representing the user's expressed preference for the given content type -->
 	<xsl:function name="nma:content-type-preference">
@@ -139,7 +156,15 @@
 		}">
 			<xsl:call-template name="response-headers"/>
 			<!-- specify which format the result is being returned in -->
-			<c:body content-type="{if ($response-format='json-ld') then 'application/ld+json' else 'application/json'}">
+			<c:body content-type="{
+				if ($response-format='json-ld') then 
+					'application/ld+json' 
+				else 
+					if ($response-version) then
+						concat('application/vnd.api+json;profile=http://', $host-name, '/profile/', $response-version)
+					else
+						'application/vnd.api+json'
+			}">
 				<xsl:choose>
 					<xsl:when test="/response/lst[@name='error']">
 						<xsl:call-template name="return-error"/>
@@ -323,10 +348,31 @@
 		</xsl:if>
 	</xsl:template>
 	
+	<!-- Originally there was only one "simple" field; later this was split into multiple versions "simple_1", "simple_2" etc. -->
+	<!-- Here, as a transitional arrangement, we check whether the "simple" field still exists since this means we can't choose a specific version -->
+	<xsl:variable name="legacy-simple-field-exists" select="exists(*[@name='simple'])"/>
+	<xsl:variable name="response-version" select="
+		if ($response-format='json-ld' or $legacy-simple-field-exists) then ()
+		else ($requested-version, $latest-version)[1]
+	"/>
 	
 	<!-- Represent an individual search result simply by selecting the appropriate format payload field from within it -->
 	<xsl:template match="doc">
-		<xsl:value-of select="arr[@name=$response-format]"/>
+		<xsl:variable name="payload-field-name" select="
+			if ($response-version) then
+				concat($response-format, '_', $response-version)
+			else
+				$response-format
+		"/>
+		<xsl:value-of select="*[@name=$payload-field-name]"/>
+		<!--
+		<xsl:message>
+			<xsl:value-of select="concat('legacy-simple-field-exists=', $legacy-simple-field-exists)"/>.
+			<xsl:value-of select="concat('response-format=', $response-format)"/>.
+			<xsl:value-of select="concat('requested-version=', $requested-version)"/>.
+			<xsl:value-of select="concat('payload-field-name=', $payload-field-name)"/>.
+		</xsl:message>
+		-->
 	</xsl:template>
 
 </xsl:stylesheet>
