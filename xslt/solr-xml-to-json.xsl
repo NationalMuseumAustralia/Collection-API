@@ -364,7 +364,14 @@
 			else
 				$response-format
 		"/>
-		<xsl:value-of select="*[@name=$payload-field-name]"/>
+		<xsl:choose>
+			<xsl:when test="exists(*[@name=$payload-field-name])">
+				<xsl:value-of select="*[@name=$payload-field-name]"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="*[@name='simple']"/>
+			</xsl:otherwise>
+		</xsl:choose>
 		<!--
 		<xsl:message>
 			<xsl:value-of select="concat('legacy-simple-field-exists=', $legacy-simple-field-exists)"/>.
