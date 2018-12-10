@@ -27,6 +27,7 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 	<p:import href="xproc-z-library.xpl"/>	
 	<p:import href="signup.xpl"/>
 	<p:import href="admin.xpl"/>
+	<p:import href="dashboard.xpl"/>
 	
 	<p:variable name="relative-uri" select="substring-after(/c:request/@href, '/xproc-z/')"/>
 	<!-- HTTP Header names are case-insensitive -->
@@ -41,6 +42,9 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 		</p:when>
 		<p:otherwise>
 			<p:choose>
+				<p:when test="starts-with($relative-uri, 'dashboard/')">
+					<nma:dashboard/>
+				</p:when>
 				<p:when test="$relative-uri='debug'">
 					<z:make-http-response>
 						<p:input port="source">

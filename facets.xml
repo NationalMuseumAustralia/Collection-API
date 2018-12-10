@@ -1,0 +1,86 @@
+		<facets>
+			<facet>
+				<group>request-header</group>
+				<name>security-group</name>
+				<field>header_x-consumer-groups</field>
+				<label>Security group</label>
+			</facet>
+			<facet>
+				<group>request-header</group>
+				<name>username</name>
+				<field>header_x-consumer-username</field>
+				<label>User id</label>
+			</facet>
+			<facet>
+				<group>request-header</group>
+				<name>ip</name>
+				<field>header_x-real-ip</field>
+				<label>User IP</label>
+			</facet>
+			<facet>
+				<group>request-header</group>
+				<name>anonymous</name>
+				<field>header_x-anonymous-consumer</field>
+				<label>Anonymous access</label>
+				<missing>true</missing>
+			</facet>
+			<facet>
+				<group>response-header</group>
+				<name>status</name>
+				<field>response_status</field>
+				<label>Response status code</label>
+			</facet>
+			<facet>
+				<group>request-header</group>
+				<name>month</name>
+				<range>MONTH</range>
+				<start>-1YEAR</start>
+				<field>datestamp</field>
+				<label>Request month</label>
+			</facet>
+			<facet>
+				<group>request-header</group>
+				<name>day</name>
+				<range>DAY</range>
+				<start>-1MONTH</start>
+				<field>datestamp</field>
+				<label>Request week</label>
+			</facet>
+			<facet>
+				<group>request-header</group>
+				<name>ua</name>
+				<field>header_user-agent</field>
+				<label>User agent</label>
+			</facet>
+			<facet>
+				<group>request-header</group>
+				<name>accept</name>
+				<field>header_accept</field>
+				<label>Accept header</label>
+				<missing>true</missing>
+			</facet>
+			<facet>
+				<group>parameter</group>
+				<name>entity-type</name>
+				<field>request_first-segment</field>
+				<label>Entity type</label>
+			</facet>
+			<facet>
+				<group>response-header</group>
+				<name>content-type</name>
+				<field>response_content-type</field>
+				<label>Content type</label>
+			</facet>
+			<facet>
+				<group>request-header</group>
+				<name>referrer</name>
+				<field>header_referer</field>
+				<label>Referrer URL</label>
+			</facet>
+			<facet group="parameter">
+				<name>text</name>
+				<field>parameter_text</field>
+				<label>Text</label>
+				<missing>true</missing>
+			</facet>
+		</facets>
