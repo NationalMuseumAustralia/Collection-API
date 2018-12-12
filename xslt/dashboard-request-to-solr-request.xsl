@@ -89,6 +89,7 @@
 							</xsl:otherwise>
 						</xsl:choose>
 						<f:string key="field"><xsl:value-of select="field"/></f:string>
+						<f:number key="limit">40</f:number>
 						<f:map key="domain">
 							<f:string key="excludeTags"><xsl:value-of select="name"/></f:string>
 						</f:map>
