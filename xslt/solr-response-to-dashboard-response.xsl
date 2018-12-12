@@ -3,54 +3,22 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:f="http://www.w3.org/2005/xpath-functions"
 	xmlns:c="http://www.w3.org/ns/xproc-step"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+	xmlns:dashboard="local-functions"
 	xmlns="http://www.w3.org/1999/xhtml"
-	exclude-result-prefixes="c f">
+	exclude-result-prefixes="c f dashboard map xs">
 	
+	<!-- the parameters from the request URL of the dashboard -->
 	<xsl:variable name="request" select="/*/c:param-set"/>
 	
-	<xsl:variable name="response" select="/*/c:body"/>
-	
+	<!-- the specification of the searchable facets; previously used to convert the above request parameters into a Solr search -->
 	<xsl:variable name="facet-spec" select="/*/facets"/>
-	
-		<!-- construct sequences of the constraints which are currently in force, and those available as options, e.g. -->
-		<!-- ('header_x-consumer-groups:"public"', ;header_x-consumer-groups:"internal"', response_status:"410", ... ) -->
-		<!--
-		<xsl:variable name="current-constraints" select="
-			lst[@name='responseHeader']/lst[@name='params']/(str[@name='fq'] | arr[@name='q']/str)
-		"/>
-		-->
-		
-		<!--
-		NB TODO: reconcile the difference between available-constraints and current-constraints:
-		Necessarily current-constraints are expressed as field-name/value-expression pairs, whereas available-constraints are facet-name, bucket-value pairs.
-		In the case of date-range facets, the bucket values are the dates of the start of each range, whereas the filters need to be range expressions.
-		
-		-->
-		<!--
-		<xsl:variable name="available-constraints" select="
-			for $bucket in $facets/f:array[@key='buckets']/f:map return
-				concat(
-					$bucket/../../@key, 
-					':&quot;', 
-					$bucket/f:string[@key='val'], 
-					'&quot;'
-				)
-		"/>
-		-->
-		
-	<!-- 
-	Generate a sequence of the constraints currently in force, e.g. 
-	('header_x-consumer-groups:"public"', 'header_x-consumer-groups:"internal"', 'response_status:"410"', ... )
-	-->
-	
-	<xsl:variable name="current-constraints" select="
-		for $filter in 
-			json-to-xml($response/f:map/f:map[@key='responseHeader']/f:map[@key='params']/f:string[@key='json'])
-				/f:map/f:array[@key='filter']/f:string
-		return
-			substring-after($filter, '}')
-	"/>
 
+	<!-- the response from Solr to the above search -->
+	<xsl:variable name="response" select="/*/c:body"/>
+
+	<!-- the facets returned by Solr -->
 	<xsl:variable name="solr-facets" select="
 		$response
 			/f:map
@@ -62,14 +30,6 @@
 					]
 	"/>	
 	
-	<xsl:variable name="available-constraints" select="
-		for $bucket in $solr-facets/f:array[@key='buckets']/f:map return
-			concat(
-				$bucket/../../@key,  
-				':',
-				$bucket/f:string[@key='val']
-			)
-	"/>
 			
 	<xsl:template match="/">
 		<html>
@@ -87,6 +47,7 @@
 						<xsl:variable name="facet-name" select="name"/>
 						<xsl:variable name="facet-label" select="label"/>
 						<xsl:variable name="field-name" select="field"/>
+						<xsl:variable name="facet-range" select="range"/><!-- e.g. MONTH, DAY -->
 						<!-- retrieve the matching Solr facet -->
 						<xsl:comment>facet: <xsl:value-of select="$facet-name"/></xsl:comment>
 						<xsl:variable name="solr-facet" select="$solr-facets[@key=$facet-name]"/>
@@ -104,7 +65,9 @@
 										<xsl:variable name="selected" select="$request/c:param[@name = $facet-name]/@value = $value"/>
 										<option value="{$value}">
 											<xsl:if test="$selected"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
-											<xsl:value-of select="concat($value, ' (', $count, ')')"/>
+											<!-- format the value for display -->
+											<xsl:value-of select="dashboard:display-value($value, $facet-range)"/>
+											<xsl:value-of select="concat(' (', $count, ')')"/>
 										</option>
 									</xsl:for-each>
 								</select>
@@ -113,9 +76,95 @@
 					</xsl:for-each>
 					<button>Apply filter</button>
 				</form>
+				<!-- render each facet as a bar chart, in which each bucket within a facet is rendered as a link which constrains that facet -->
+				<div class="charts">
+					<xsl:for-each select="$facet-spec/facet">
+						<xsl:variable name="facet-name" select="name"/>
+						<xsl:variable name="facet-label" select="label"/>
+						<xsl:variable name="field-name" select="field"/>
+						<xsl:variable name="facet-range" select="range"/><!-- e.g. MONTH, DAY -->
+						<!-- retrieve the matching Solr facet -->
+						<xsl:comment>facet: <xsl:value-of select="$facet-name"/></xsl:comment>
+						<xsl:variable name="solr-facet" select="$solr-facets[@key=$facet-name]"/>
+						<xsl:if test="$solr-facet"><!-- facet returned some result; this means that Solr results match the facet -->
+							<div class="chart">
+								<h2><xsl:value-of select="$facet-label"/></h2>
+								<xsl:variable name="buckets" select="$solr-facet/f:array[@key='buckets']/f:map[f:string[@key='val']/text()]"/>
+								<xsl:variable name="maximum-value" select="
+									max(
+										for $bucket in $buckets return xs:unsignedInt($bucket/f:number[@key='count'])
+									)
+								"/>
+								<xsl:for-each select="$buckets">
+									<xsl:variable name="value" select="f:string[@key='val']"/>
+									<xsl:variable name="count" select="xs:unsignedInt(f:number[@key='count'])"/>
+									<xsl:variable name="label" select="dashboard:display-value($value, $facet-range)"/>
+									<div class="bucket">
+										<div class="bar" style="width: {100 * $count div $maximum-value}%"> </div>
+										<div class="label">
+											<a 
+												title="{$label}"
+												href="{
+													concat(
+														'?',
+														string-join(
+															(
+																concat($facet-name, '=', $value),
+																for $param in $request/c:param
+																	[not(@name=$facet-name)]
+																	[normalize-space(@value)] 
+																return 
+																	concat($param/@name, '=', $param/@value)
+															),
+															'&amp;'
+														)
+													)
+												}"
+											><xsl:value-of select="$label"/></a>
+											<span> (<xsl:value-of select="$count"/>)</span>
+										</div>
+									</div>
+								</xsl:for-each>
+							</div>
+						</xsl:if>
+					</xsl:for-each>
+				</div>
+				<div class="api-calls">
+					<h2><xsl:value-of select="$response/f:map/f:map[@key='response']/f:number[@key='numFound']"/> API calls</h2>
+					<ul>
+						<xsl:for-each select="$response/f:map/f:map[@key='response']/f:array[@key='docs']/f:map/f:string[@key='request_uri']">
+							<li>
+								<a href="{.}"><xsl:value-of select="."/></a>
+							</li>
+						</xsl:for-each>
+					</ul>
+				</div>
 			</body>
 		</html>
 	</xsl:template>
+	
+	<!-- format a Solr field value for display -->
+	<xsl:function name="dashboard:display-value">
+		<xsl:param name="value"/>
+		<xsl:param name="format"/>
+		<xsl:choose>
+			<xsl:when test="$format='MONTH'">
+				<xsl:value-of select="format-dateTime(
+					xs:dateTime($value), 
+					'[MNn] [Y]', 'en', (), ()
+				)"/>
+			</xsl:when>
+			<xsl:when test="$format='DAY'">
+				<xsl:value-of select="format-dateTime(
+					xs:dateTime($value), 
+					'[D] [MNn] [Y]', 'en', (), ()
+				)"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="$value"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:function>
 	
 	<xsl:template name="css">
 		<style type="text/css">
@@ -124,15 +173,16 @@
 				font-size: 11pt;
 			}
 			h1 {
-				font-size: 12pt;
+				font-size: 13pt;
+			}
+			h2 {
+				font-size: 11pt;
 			}
 			img {
 				border: none;
 			}
-			.label {
-				font-weight: bold;
-			}
 			div.facet label {
+				font-weight: bold;
 				display: inline-block;
 				text-align: right;
 				width: 15em;
@@ -142,6 +192,26 @@
 			}
 			div.facet {
 				margin-bottom: 0.5em;
+			}
+			div.chart div.bucket {
+				position: relative; 
+				height: 1.5em;
+			}
+			div.chart div.bucket div.bar {
+				z-index: -1; 
+				position: absolute; 
+				background-color: lightsteelblue;
+				height: 1.2em;
+			}
+			div.chart div.bucket div.label {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			div.chart div.bucket div.label a {
+				text-decoration: none;
 			}
 		</style>
 	</xsl:template>
