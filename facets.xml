@@ -1,86 +1,414 @@
-		<facets>
-			<facet>
-				<group>request-header</group>
-				<name>security-group</name>
-				<field>header_x-consumer-groups</field>
-				<label>Security group</label>
-			</facet>
-			<facet>
-				<group>request-header</group>
-				<name>username</name>
-				<field>header_x-consumer-username</field>
-				<label>User id</label>
-			</facet>
-			<facet>
-				<group>request-header</group>
-				<name>ip</name>
-				<field>header_x-real-ip</field>
-				<label>User IP</label>
-			</facet>
-			<facet>
-				<group>request-header</group>
-				<name>anonymous</name>
-				<field>header_x-anonymous-consumer</field>
-				<label>Anonymous access</label>
-				<missing>true</missing>
-			</facet>
-			<facet>
-				<group>response-header</group>
-				<name>status</name>
-				<field>response_status</field>
-				<label>Response status code</label>
-			</facet>
-			<facet>
-				<group>request-header</group>
-				<name>month</name>
-				<range>MONTH</range>
-				<start>-1YEAR</start>
-				<field>datestamp</field>
-				<label>Request month</label>
-			</facet>
-			<facet>
-				<group>request-header</group>
-				<name>day</name>
-				<range>DAY</range>
-				<start>-1MONTH</start>
-				<field>datestamp</field>
-				<label>Request week</label>
-			</facet>
-			<facet>
-				<group>request-header</group>
-				<name>ua</name>
-				<field>header_user-agent</field>
-				<label>User agent</label>
-			</facet>
-			<facet>
-				<group>request-header</group>
-				<name>accept</name>
-				<field>header_accept</field>
-				<label>Accept header</label>
-				<missing>true</missing>
-			</facet>
-			<facet>
-				<group>parameter</group>
-				<name>entity-type</name>
-				<field>request_first-segment</field>
-				<label>Entity type</label>
-			</facet>
-			<facet>
-				<group>response-header</group>
-				<name>content-type</name>
-				<field>response_content-type</field>
-				<label>Content type</label>
-			</facet>
-			<facet>
-				<group>request-header</group>
-				<name>referrer</name>
-				<field>header_referer</field>
-				<label>Referrer URL</label>
-			</facet>
-			<facet group="parameter">
-				<name>text</name>
-				<field>parameter_text</field>
-				<label>Text</label>
-				<missing>true</missing>
-			</facet>
-		</facets>
+
+<facets>
+	<facet>
+		<group>HTTP Request Headers</group>
+		<name>security-group</name>
+		<field>header_x-consumer-groups</field>
+		<label>Security group</label>
+	</facet>
+	<facet>
+		<group>HTTP Request Headers</group>
+		<name>username</name>
+		<field>header_x-consumer-username</field>
+		<label>User id</label>
+	</facet>
+	<facet>
+		<group>HTTP Request Headers</group>
+		<name>ip</name>
+		<field>header_x-real-ip</field>
+		<label>User IP</label>
+	</facet>
+	<facet>
+		<group>HTTP Request Headers</group>
+		<name>anonymous</name>
+		<field>header_x-anonymous-consumer</field>
+		<label>Anonymous access</label>
+		<missing>true</missing>
+	</facet>
+	<facet>
+		<group>HTTP Response Headers</group>
+		<name>status</name>
+		<field>response_status</field>
+		<label>Response status code</label>
+	</facet>
+	<facet>
+		<group>HTTP Request Headers</group>
+		<name>month</name>
+		<range>MONTH</range>
+		<start>-1YEAR</start>
+		<field>datestamp</field>
+		<label>Month (in 1 year period)</label>
+	</facet>
+	<facet>
+		<group>HTTP Request Headers</group>
+		<name>day</name>
+		<range>DAY</range>
+		<start>-1MONTH</start>
+		<field>datestamp</field>
+		<label>Day (in 1 month period)</label>
+	</facet>
+	<facet>
+		<group>HTTP Request Headers</group>
+		<name>ua</name>
+		<field>header_user-agent</field>
+		<label>User agent</label>
+	</facet>
+	<facet>
+		<group>HTTP Request Headers</group>
+		<name>accept</name>
+		<field>header_accept</field>
+		<label>Accept header</label>
+		<missing>true</missing>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>entity-type</name>
+		<field>request_first-segment</field>
+		<label>Entity type</label>
+	</facet>
+	<facet>
+		<group>HTTP Response Headers</group>
+		<name>content-type</name>
+		<field>response_content-type</field>
+		<label>Content type</label>
+	</facet>
+	<facet>
+		<group>HTTP Request Headers</group>
+		<name>referrer</name>
+		<field>header_referer</field>
+		<label>Referrer URL</label>
+	</facet>
+	<!--
+	<facet>
+		<group>Search Parameters</group>
+		<name>text</name>
+		<field>parameter_text</field>
+		<label>Text</label>
+		<missing>true</missing>
+	</facet>
+	-->
+	<facet>
+		<group>Search Parameters</group>
+		<name>id</name>
+		<field>parameter_id</field>
+		<label>Id</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>type</name>
+		<field>parameter_type</field>
+		<label>Type</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>additionalType</name>
+		<field>parameter_additionalType</field>
+		<label>Additional Type</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>title</name>
+		<field>parameter_title</field>
+		<label>Title</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>name</name>
+		<field>parameter_name</field>
+		<label>Name</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>modified</name>
+		<field>parameter_modified</field>
+		<label>Modified</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>modified_date</name>
+		<field>parameter_modified_date</field>
+		<label>Modified Date</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>issued</name>
+		<field>parameter_issued</field>
+		<label>Issued</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>issued_date</name>
+		<field>parameter_issued_date</field>
+		<label>Issued Date</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>status_code</name>
+		<field>parameter_status_code</field>
+		<label>Status Code</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>reason</name>
+		<field>parameter_reason</field>
+		<label>Reason</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>collection_id</name>
+		<field>parameter_collection_id</field>
+		<label>Collection Id</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>collection</name>
+		<field>parameter_collection</field>
+		<label>Collection</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>identifier</name>
+		<field>parameter_identifier</field>
+		<label>Identifier</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>medium</name>
+		<field>parameter_medium</field>
+		<label>Medium</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>length</name>
+		<field>parameter_length</field>
+		<label>Length</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>height</name>
+		<field>parameter_height</field>
+		<label>Height</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>width</name>
+		<field>parameter_width</field>
+		<label>Width</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>depth</name>
+		<field>parameter_depth</field>
+		<label>Depth</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>diameter</name>
+		<field>parameter_diameter</field>
+		<label>Diameter</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>weight</name>
+		<field>parameter_weight</field>
+		<label>Weight</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>unitText</name>
+		<field>parameter_unitText</field>
+		<label>Unit Text</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>unitTextWeight</name>
+		<field>parameter_unitTextWeight</field>
+		<label>Unit Text Weight</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>contentDescription</name>
+		<field>parameter_contentDescription</field>
+		<label>Content Description</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>physicalDescription</name>
+		<field>parameter_physicalDescription</field>
+		<label>PhysicalDescription</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>significanceStatement</name>
+		<field>parameter_significanceStatement</field>
+		<label>Significance Statement</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>educationalSignificance</name>
+		<field>parameter_educationalSignificance</field>
+		<label>Educational Significance</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>creator_id</name>
+		<field>parameter_creator_id</field>
+		<label>Creator Id</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>creator</name>
+		<field>parameter_creator</field>
+		<label>Creator</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>spatial_id</name>
+		<field>parameter_spatial_id</field>
+		<label>Spatial Id</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>spatial</name>
+		<field>parameter_spatial</field>
+		<label>Spatial</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>spatial_geo</name>
+		<field>parameter_spatial_geo</field>
+		<label>Spatial Geo</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>temporal</name>
+		<field>parameter_temporal</field>
+		<label>Temporal</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>temporal_date</name>
+		<field>parameter_temporal_date</field>
+		<label>Temporal date</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>contributor_id</name>
+		<field>parameter_contributor_id</field>
+		<label>Contributor Id</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>contributor</name>
+		<field>parameter_contributor</field>
+		<label>Contributor</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>acknowledgement</name>
+		<field>parameter_acknowledgement</field>
+		<label>Acknowledgement</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>source</name>
+		<field>parameter_source</field>
+		<label>Source</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>rights</name>
+		<field>parameter_rights</field>
+		<label>Rights</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>location</name>
+		<field>parameter_location</field>
+		<label>Location</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>seeAlso</name>
+		<field>parameter_seeAlso</field>
+		<label>SeeAlso</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>isPartOf_object_id</name>
+		<field>parameter_isPartOf_object_id</field>
+		<label>IsPartOf Object Id</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>hasPart_object_id</name>
+		<field>parameter_hasPart_object_id</field>
+		<label>HasPart Object Id</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>related_object_id</name>
+		<field>parameter_related_object_id</field>
+		<label>Related Object Id</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>media_object_id</name>
+		<field>parameter_media_object_id</field>
+		<label>Media Object Id</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>media</name>
+		<field>parameter_media</field>
+		<label>Media</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>media_id</name>
+		<field>parameter_media_id</field>
+		<label>Media Id</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>description</name>
+		<field>parameter_description</field>
+		<label>Description</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>isPartOf_narrative_id</name>
+		<field>parameter_isPartOf_narrative_id</field>
+		<label>IsPartOf Narrative Id</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>isAggregatedBy_narrative_id</name>
+		<field>parameter_isAggregatedBy_narrative_id</field>
+		<label>IsAggregatedBy Narrative Id</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>hasPart_narrative_id</name>
+		<field>parameter_hasPart_narrative_id</field>
+		<label>HasPart Narrative Id</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>aggregates_object_id</name>
+		<field>parameter_aggregates_object_id</field>
+		<label>Aggregates Object Id</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>gender</name>
+		<field>parameter_gender</field>
+		<label>Gender</label>
+	</facet>
+	<facet>
+		<group>Search Parameters</group>
+		<name>geo</name>
+		<field>parameter_geo</field>
+		<label>Geo</label>
+	</facet>
+</facets>
