@@ -64,8 +64,6 @@
 		<p:input port="parameters"><p:empty/></p:input>
 		<p:input port="stylesheet"><p:document href="../xslt/solr-response-to-dashboard-response.xsl"/></p:input>
 	</p:xslt>
-	<!--
-	-->
-	<z:make-http-response/>
+	<z:make-http-response content-type="application/xhtml+xml"/>
 	
 </p:declare-step>
