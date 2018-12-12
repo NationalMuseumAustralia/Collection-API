@@ -1,5 +1,5 @@
 <?xml version="1.1"?>
-<xsl:stylesheet version="2.0" 
+<xsl:stylesheet version="3.0" 
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:f="http://www.w3.org/2005/xpath-functions"
 	xmlns:c="http://www.w3.org/ns/xproc-step"
@@ -77,64 +77,74 @@
 					<button>Apply filter</button>
 				</form>
 				<!-- render each facet as a bar chart, in which each bucket within a facet is rendered as a link which constrains that facet -->
-				<div class="charts">
-					<xsl:for-each select="$facet-spec/facet">
-						<xsl:variable name="facet-name" select="name"/>
-						<xsl:variable name="facet-label" select="label"/>
-						<xsl:variable name="field-name" select="field"/>
-						<xsl:variable name="facet-range" select="range"/><!-- e.g. MONTH, DAY -->
-						<!-- retrieve the matching Solr facet -->
-						<xsl:comment>facet: <xsl:value-of select="$facet-name"/></xsl:comment>
-						<xsl:variable name="solr-facet" select="$solr-facets[@key=$facet-name]"/>
-						<xsl:if test="$solr-facet"><!-- facet returned some result; this means that Solr results match the facet -->
-							<div class="chart">
-								<h2><xsl:value-of select="$facet-label"/></h2>
-								<xsl:variable name="buckets" select="$solr-facet/f:array[@key='buckets']/f:map[f:string[@key='val']/text()]"/>
-								<xsl:variable name="maximum-value" select="
-									max(
-										for $bucket in $buckets return xs:unsignedInt($bucket/f:number[@key='count'])
-									)
-								"/>
-								<xsl:for-each select="$buckets">
-									<xsl:variable name="value" select="f:string[@key='val']"/>
-									<xsl:variable name="count" select="xs:unsignedInt(f:number[@key='count'])"/>
-									<xsl:variable name="label" select="dashboard:display-value($value, $facet-range)"/>
-									<div class="bucket">
-										<div class="bar" style="width: {100 * $count div $maximum-value}%"> </div>
-										<div class="label">
-											<a 
-												title="{$label}"
-												href="{
-													concat(
-														'?',
-														string-join(
-															(
-																concat($facet-name, '=', $value),
-																for $param in $request/c:param
-																	[not(@name=$facet-name)]
-																	[normalize-space(@value)] 
-																return 
-																	concat($param/@name, '=', $param/@value)
-															),
-															'&amp;'
-														)
-													)
-												}"
-											><xsl:value-of select="$label"/></a>
-											<span> (<xsl:value-of select="$count"/>)</span>
-										</div>
+				<xsl:for-each-group select="$facet-spec/facet" group-by="group">
+					<div class="chart-group">
+						<h2><xsl:value-of select="current-group()[1]/group"/></h2>
+						<div class="charts">
+							<!--<xsl:for-each select="$facet-spec/facet">-->
+							<xsl:for-each select="$solr-facets[@key=current-group()/name]">
+								<xsl:sort select="count(f:array[@key='buckets']/f:map)"/>
+								<xsl:variable name="solr-facet" select="."/>
+								<xsl:variable name="solr-facet-key" select="@key"/>
+								<xsl:variable name="facet" select="$facet-spec/facet[name=$solr-facet-key]"/>
+								<xsl:if test="$solr-facet"><!-- facet returned some result; this means that Solr results match the facet -->
+									<div class="chart">
+										<h3><xsl:value-of select="$facet/label"/></h3>
+										<xsl:variable name="selected-value" select="$request/c:param[@name=$facet/name]/@value"/>
+										<xsl:variable name="all-buckets" select="$solr-facet/f:array[@key='buckets']/f:map[f:string[@key='val']/text()]"/>
+										<xsl:variable name="buckets" select="
+											if (normalize-space($selected-value)) then
+												$all-buckets[f:string[@key='val']/text() = $selected-value]
+											else
+												$all-buckets
+										"/>
+										<xsl:variable name="maximum-value" select="
+											max(
+												for $bucket in $buckets return xs:unsignedInt($bucket/f:number[@key='count'])
+											)
+										"/>
+										<xsl:for-each select="$buckets">
+											<xsl:variable name="value" select="f:string[@key='val']"/>
+											<xsl:variable name="count" select="xs:unsignedInt(f:number[@key='count'])"/>
+											<xsl:variable name="label" select="dashboard:display-value($value, $facet/range)"/>
+											<div class="bucket">
+												<div class="bar" style="width: {100 * $count div $maximum-value}%"> </div>
+												<div class="label">
+													<a 
+														title="{$label}"
+														href="{
+															concat(
+																'?',
+																string-join(
+																	(
+																		concat($facet/name, '=', $value),
+																		for $param in $request/c:param
+																			[not(@name=$facet/name)]
+																			[normalize-space(@value)] 
+																		return 
+																			concat($param/@name, '=', $param/@value)
+																	),
+																	'&amp;'
+																)
+															)
+														}"
+													><xsl:value-of select="$label"/></a>
+													<span> (<xsl:value-of select="$count"/>)</span>
+												</div>
+											</div>
+										</xsl:for-each>
 									</div>
-								</xsl:for-each>
-							</div>
-						</xsl:if>
-					</xsl:for-each>
-				</div>
+								</xsl:if>
+							</xsl:for-each>
+						</div>
+					</div>
+				</xsl:for-each-group>
 				<div class="api-calls">
 					<h2><xsl:value-of select="$response/f:map/f:map[@key='response']/f:number[@key='numFound']"/> API calls</h2>
 					<ul>
 						<xsl:for-each select="$response/f:map/f:map[@key='response']/f:array[@key='docs']/f:map/f:string[@key='request_uri']">
 							<li>
-								<a href="{.}"><xsl:value-of select="."/></a>
+								<a href="/{.}"><xsl:value-of select="."/></a>
 							</li>
 						</xsl:for-each>
 					</ul>
@@ -170,13 +180,16 @@
 		<style type="text/css">
 			body {
 				font-family: Calibri, Helvetica, Arial, sans-serif;
-				font-size: 11pt;
+				font-size: 10pt;
 			}
 			h1 {
 				font-size: 13pt;
 			}
 			h2 {
 				font-size: 11pt;
+			}
+			h3 {
+				font-size: 10pt;
 			}
 			img {
 				border: none;
@@ -192,6 +205,20 @@
 			}
 			div.facet {
 				margin-bottom: 0.5em;
+			}
+			div.chart-group {
+				padding: 1em;
+				margin-top: 1em;
+				background-color: #E5E5E5;
+			}
+			div.charts {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			div.chart {
+				background-color: #FFFFFF;
+				padding: 0.5em;
+				margin: 0.5em;
 			}
 			div.chart div.bucket {
 				position: relative; 
