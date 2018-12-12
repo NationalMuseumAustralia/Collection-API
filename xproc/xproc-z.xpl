@@ -152,35 +152,35 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 							</nma:format-result>
 						</p:catch>
 					</p:try>
+					<!-- enable CORS -->
+					<z:add-response-header name="response" header-name="Access-Control-Allow-Origin" header-value="*"/>	
+					
+					<!-- generate an HTTP POST request to Solr to log this API request -->
+					<nma:log-request name="log-request">
+						<p:with-option name="base-uri" select="concat(substring-before(/c:request/@href, '/xproc-z/'), '/xproc-z/')"/>
+						<p:input port="request">
+							<p:pipe step="main" port="source"/>
+						</p:input>
+						<p:input port="response">
+							<p:pipe step="response" port="result"/>
+						</p:input>
+					</nma:log-request>
+					
+					<!-- Sequence the API response, and the log request; the first document (the c:response) will be returned by XProc-Z to the HTTP user agent
+					which called this pipeline, while the second document (the c:request) will be asynchronously passed to another invocation of this pipeline,
+					which will then execute it, causing the log record therein to be written to Solr -->
+					<p:identity>
+						<p:input port="source">
+							<p:pipe step="response" port="result"/>
+							<p:pipe step="log-request" port="result"/>
+						</p:input>
+					</p:identity>
 				</p:when>
 				<!-- unknown request URI -->
 				<p:otherwise>
 					<z:not-found/>
 				</p:otherwise>
 			</p:choose>
-			<!-- enable CORS -->
-			<z:add-response-header name="response" header-name="Access-Control-Allow-Origin" header-value="*"/>	
-			
-			<!-- generate an HTTP POST request to Solr to log this API request -->
-			<nma:log-request name="log-request">
-				<p:with-option name="base-uri" select="concat(substring-before(/c:request/@href, '/xproc-z/'), '/xproc-z/')"/>
-				<p:input port="request">
-					<p:pipe step="main" port="source"/>
-				</p:input>
-				<p:input port="response">
-					<p:pipe step="response" port="result"/>
-				</p:input>
-			</nma:log-request>
-			
-			<!-- Sequence the API response, and the log request; the first document (the c:response) will be returned by XProc-Z to the HTTP user agent
-			which called this pipeline, while the second document (the c:request) will be asynchronously passed to another invocation of this pipeline,
-			which will then execute it, causing the log record therein to be written to Solr -->
-			<p:identity>
-				<p:input port="source">
-					<p:pipe step="response" port="result"/>
-					<p:pipe step="log-request" port="result"/>
-				</p:input>
-			</p:identity>
 		</p:otherwise>
 	</p:choose>
 			
