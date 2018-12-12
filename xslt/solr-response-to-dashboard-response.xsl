@@ -225,7 +225,7 @@
 				height: 1.5em;
 			}
 			div.chart div.bucket div.bar {
-				z-index: -1; 
+				z-index: 0; 
 				position: absolute; 
 				background-color: lightsteelblue;
 				height: 1.2em;
@@ -236,6 +236,7 @@
 				overflow: hidden;
 				white-space: nowrap;
 				text-overflow: ellipsis;
+				position: relative;
 			}
 			div.chart div.bucket div.label a {
 				text-decoration: none;
