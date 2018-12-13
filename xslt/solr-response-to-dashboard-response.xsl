@@ -89,7 +89,15 @@
 								<xsl:variable name="facet" select="$facet-spec/facet[name=$solr-facet-key]"/>
 								<xsl:if test="$solr-facet"><!-- facet returned some result; this means that Solr results match the facet -->
 									<div class="chart">
-										<h3><xsl:value-of select="$facet/label"/></h3>
+										<h3>
+											<xsl:value-of select="$facet/label"/>
+											<xsl:for-each select="$solr-facet/f:number[@key='numBuckets']">
+												<xsl:choose>
+													<xsl:when test=".=1"> (1 value)</xsl:when>
+													<xsl:otherwise> (<xsl:value-of select="."/> values)</xsl:otherwise>
+												</xsl:choose>
+											</xsl:for-each>
+										</h3>
 										<xsl:variable name="selected-value" select="$request/c:param[@name=$facet/name]/@value"/>
 										<xsl:variable name="all-buckets" select="$solr-facet/f:array[@key='buckets']/f:map[f:string[@key='val']/text()]"/>
 										<xsl:variable name="buckets" select="
