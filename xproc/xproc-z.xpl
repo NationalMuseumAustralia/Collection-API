@@ -82,7 +82,7 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 					<nma:json-context/>
 				</p:when>
 				<!-- retrieve record by id, OR matching search criteria -->
-				<p:when test="matches($relative-uri, '(object|party|place|narrative|media)(/|\?).+')">
+				<p:when test="matches($relative-uri, '(object|party|place|narrative|media|collection)(/|\?).+')">
 					<p:try name="decode-and-process-query-parameters">
 						<p:group>
 							<p:www-form-urldecode name="uri-parameters">
