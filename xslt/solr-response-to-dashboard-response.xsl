@@ -82,75 +82,77 @@
 				</form>
 				<!-- render each facet as a bar chart, in which each bucket within a facet is rendered as a link which constrains that facet -->
 				<xsl:for-each-group select="$facet-spec/facet" group-by="group">
-					<div class="chart-group" onclick="copy()">
-						<h2><xsl:value-of select="current-group()[1]/group"/></h2>
-						<div class="charts">
-							<!--<xsl:for-each select="$facet-spec/facet">-->
-							<xsl:for-each select="$solr-facets[@key=current-group()/name]">
-								<xsl:sort select="count(f:array[@key='buckets']/f:map)"/>
-								<xsl:variable name="solr-facet" select="."/>
-								<xsl:variable name="solr-facet-key" select="@key"/>
-								<xsl:variable name="facet" select="$facet-spec/facet[name=$solr-facet-key]"/>
-								<xsl:if test="$solr-facet"><!-- facet returned some result; this means that Solr results match the facet -->
-									<div class="chart">
-										<h3>
-											<xsl:value-of select="$facet/label"/>
-											<xsl:for-each select="$solr-facet/f:number[@key='numBuckets']">
-												<xsl:choose>
-													<xsl:when test=".=1"> (1 value)</xsl:when>
-													<xsl:otherwise> (<xsl:value-of select="."/> values)</xsl:otherwise>
-												</xsl:choose>
-											</xsl:for-each>
-										</h3>
-										<xsl:variable name="selected-value" select="$request/c:param[@name=$facet/name]/@value"/>
-										<xsl:variable name="all-buckets" select="$solr-facet/f:array[@key='buckets']/f:map[f:string[@key='val']/text()]"/>
-										<!-- the buckets to list for this facet are either the currently selected bucket, or if no bucket selected, all non-empty buckets -->
-										<xsl:variable name="buckets" select="
-											if (normalize-space($selected-value)) then
-												$all-buckets[f:string[@key='val']/text() = $selected-value]
-											else
-												$all-buckets[f:number[@key='count'] != '0']
-										"/>
-										<xsl:variable name="maximum-value" select="
-											max(
-												for $bucket in $buckets return xs:unsignedInt($bucket/f:number[@key='count'])
-											)
-										"/>
-										<xsl:for-each select="$buckets">
-											<xsl:variable name="value" select="f:string[@key='val']"/>
-											<xsl:variable name="count" select="xs:unsignedInt(f:number[@key='count'])"/>
-											<xsl:variable name="label" select="dashboard:display-value($value, $facet/range)"/>
-											<div class="bucket">
-												<div class="bar" style="width: {100 * $count div $maximum-value}%"> </div>
-												<div class="label">
-													<a 
-														title="{$label}"
-														href="{
-															concat(
-																'?',
-																string-join(
-																	(
-																		concat($facet/name, '=', $value),
-																		for $param in $request/c:param
-																			[not(@name=$facet/name)]
-																			[normalize-space(@value)] 
-																		return 
-																			concat($param/@name, '=', $param/@value)
-																	),
-																	'&amp;'
+					<xsl:variable name="solr-facets-in-group" select="$solr-facets[@key=current-group()/name]"/>
+					<xsl:if test="$solr-facets-in-group">
+						<div class="chart-group">
+							<h2><xsl:value-of select="current-group()[1]/group"/></h2>
+							<div class="charts">
+								<xsl:for-each select="$solr-facets-in-group">
+									<xsl:sort select="count(f:array[@key='buckets']/f:map)"/>
+									<xsl:variable name="solr-facet" select="."/>
+									<xsl:variable name="solr-facet-key" select="@key"/>
+									<xsl:variable name="facet" select="$facet-spec/facet[name=$solr-facet-key]"/>
+									<xsl:if test="$solr-facet"><!-- facet returned some result; this means that Solr results match the facet -->
+										<div class="chart">
+											<h3>
+												<xsl:value-of select="$facet/label"/>
+												<xsl:for-each select="$solr-facet/f:number[@key='numBuckets']">
+													<xsl:choose>
+														<xsl:when test=".=1"> (1 value)</xsl:when>
+														<xsl:otherwise> (<xsl:value-of select="."/> values)</xsl:otherwise>
+													</xsl:choose>
+												</xsl:for-each>
+											</h3>
+											<xsl:variable name="selected-value" select="$request/c:param[@name=$facet/name]/@value"/>
+											<xsl:variable name="all-buckets" select="$solr-facet/f:array[@key='buckets']/f:map[f:string[@key='val']/text()]"/>
+											<!-- the buckets to list for this facet are either the currently selected bucket, or if no bucket selected, all non-empty buckets -->
+											<xsl:variable name="buckets" select="
+												if (normalize-space($selected-value)) then
+													$all-buckets[f:string[@key='val']/text() = $selected-value]
+												else
+													$all-buckets[f:number[@key='count'] != '0']
+											"/>
+											<xsl:variable name="maximum-value" select="
+												max(
+													for $bucket in $buckets return xs:unsignedInt($bucket/f:number[@key='count'])
+												)
+											"/>
+											<xsl:for-each select="$buckets">
+												<xsl:variable name="value" select="f:string[@key='val']"/>
+												<xsl:variable name="count" select="xs:unsignedInt(f:number[@key='count'])"/>
+												<xsl:variable name="label" select="dashboard:display-value($value, $facet/range)"/>
+												<div class="bucket">
+													<div class="bar" style="width: {100 * $count div $maximum-value}%"> </div>
+													<div class="label">
+														<a 
+															title="{$label}"
+															href="{
+																concat(
+																	'?',
+																	string-join(
+																		(
+																			concat($facet/name, '=', $value),
+																			for $param in $request/c:param
+																				[not(@name=$facet/name)]
+																				[normalize-space(@value)] 
+																			return 
+																				concat($param/@name, '=', $param/@value)
+																		),
+																		'&amp;'
+																	)
 																)
-															)
-														}"
-													><xsl:value-of select="$label"/></a>
-													<span> (<xsl:value-of select="$count"/>)</span>
+															}"
+														><xsl:value-of select="$label"/></a>
+														<span> (<xsl:value-of select="$count"/>)</span>
+													</div>
 												</div>
-											</div>
-										</xsl:for-each>
-									</div>
-								</xsl:if>
-							</xsl:for-each>
+											</xsl:for-each>
+										</div>
+									</xsl:if>
+								</xsl:for-each>
+							</div>
 						</div>
-					</div>
+					</xsl:if>
 				</xsl:for-each-group>
 				<div class="api-calls">
 					<h2><xsl:value-of select="$response/f:map/f:map[@key='response']/f:number[@key='numFound']"/> API calls</h2>
