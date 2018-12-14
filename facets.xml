@@ -28,6 +28,7 @@
 	<facet>
 		<group>HTTP Response Headers</group>
 		<name>status</name>
+		<format>http status</format>
 		<field>response_status</field>
 		<label>Response status code</label>
 	</facet>
@@ -35,6 +36,7 @@
 		<group>HTTP Request Headers</group>
 		<name>month</name>
 		<range>MONTH</range>
+		<format>month</format>
 		<start>-1YEAR</start>
 		<field>datestamp</field>
 		<label>Month (in 1 year period)</label>
@@ -43,6 +45,7 @@
 		<group>HTTP Request Headers</group>
 		<name>day</name>
 		<range>DAY</range>
+		<format>day</format>
 		<start>-1MONTH</start>
 		<field>datestamp</field>
 		<label>Day (in 1 month period)</label>
@@ -410,5 +413,23 @@
 		<name>geo</name>
 		<field>parameter_geo</field>
 		<label>Geo</label>
+	</facet>
+	<facet>
+		<group>Pagination and Sorting</group>
+		<name>offset</name>
+		<field>parameter_offset</field>
+		<label>Offset</label>
+	</facet>
+	<facet>
+		<group>Pagination and Sorting</group>
+		<name>limit</name>
+		<field>parameter_limit</field>
+		<label>Limit</label>
+	</facet>
+	<facet>
+		<group>Pagination and Sorting</group>
+		<name>sort</name>
+		<field>parameter_sort</field>
+		<label>Sort</label>
 	</facet>
 </facets>

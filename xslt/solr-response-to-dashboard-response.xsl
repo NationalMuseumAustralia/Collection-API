@@ -48,6 +48,7 @@
 						<xsl:variable name="facet-label" select="label"/>
 						<xsl:variable name="field-name" select="field"/>
 						<xsl:variable name="facet-range" select="range"/><!-- e.g. MONTH, DAY -->
+						<xsl:variable name="facet-format" select="format"/><!-- e.g. "month", "day", "http status" -->
 						<!-- retrieve the matching Solr facet -->
 						<xsl:comment>facet: <xsl:value-of select="$facet-name"/></xsl:comment>
 						<xsl:variable name="solr-facet" select="$solr-facets[@key=$facet-name]"/>
@@ -70,7 +71,7 @@
 										<option value="{$value}">
 											<xsl:if test="$selected"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
 											<!-- format the value for display -->
-											<xsl:value-of select="dashboard:display-value($value, $facet-range)"/>
+											<xsl:value-of select="dashboard:display-value($value, $facet-format)"/>
 											<xsl:value-of select="concat(' (', $count, ')')"/>
 										</option>
 									</xsl:for-each>
@@ -120,7 +121,7 @@
 											<xsl:for-each select="$buckets">
 												<xsl:variable name="value" select="f:string[@key='val']"/>
 												<xsl:variable name="count" select="xs:unsignedInt(f:number[@key='count'])"/>
-												<xsl:variable name="label" select="dashboard:display-value($value, $facet/range)"/>
+												<xsl:variable name="label" select="dashboard:display-value($value, $facet/format)"/>
 												<div class="bucket">
 													<div class="bar" style="width: {100 * $count div $maximum-value}%"> </div>
 													<div class="label">
@@ -173,17 +174,30 @@
 		<xsl:param name="value"/>
 		<xsl:param name="format"/>
 		<xsl:choose>
-			<xsl:when test="$format='MONTH'">
+			<xsl:when test="$format='month'">
 				<xsl:value-of select="format-dateTime(
 					xs:dateTime($value), 
 					'[MNn] [Y]', 'en', (), ()
 				)"/>
 			</xsl:when>
-			<xsl:when test="$format='DAY'">
+			<xsl:when test="$format='day'">
 				<xsl:value-of select="format-dateTime(
 					xs:dateTime($value), 
 					'[D] [MNn] [Y]', 'en', (), ()
 				)"/>
+			</xsl:when>
+			<xsl:when test="$format='http status'">
+				<xsl:value-of select="
+					concat(
+						$value,
+						map{
+							'200' : ' OK',
+							'400' : ' Bad Request',
+							'404' : ' Not Found',
+							'410' : ' Gone'
+						}($value)
+					)
+				"/>
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:value-of select="$value"/>
