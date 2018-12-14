@@ -58,7 +58,11 @@
 									<option value="">				
 										<xsl:text>(any)</xsl:text>
 									</option>
-									<xsl:for-each select="$solr-facet/f:array[@key='buckets']/f:map[f:string[@key='val']/text()]">
+									<xsl:for-each select="
+										$solr-facet
+											/f:array[@key='buckets']
+												/f:map[f:string[@key='val']/text()][f:number[@key='count'] != '0']
+									">
 										<xsl:variable name="value" select="f:string[@key='val']"/>
 										<xsl:variable name="count" select="f:number[@key='count']"/>
 										<!-- list all the non-blank values of this facet as options -->
@@ -78,7 +82,7 @@
 				</form>
 				<!-- render each facet as a bar chart, in which each bucket within a facet is rendered as a link which constrains that facet -->
 				<xsl:for-each-group select="$facet-spec/facet" group-by="group">
-					<div class="chart-group">
+					<div class="chart-group" onclick="copy()">
 						<h2><xsl:value-of select="current-group()[1]/group"/></h2>
 						<div class="charts">
 							<!--<xsl:for-each select="$facet-spec/facet">-->
@@ -100,11 +104,12 @@
 										</h3>
 										<xsl:variable name="selected-value" select="$request/c:param[@name=$facet/name]/@value"/>
 										<xsl:variable name="all-buckets" select="$solr-facet/f:array[@key='buckets']/f:map[f:string[@key='val']/text()]"/>
+										<!-- the buckets to list for this facet are either the currently selected bucket, or if no bucket selected, all non-empty buckets -->
 										<xsl:variable name="buckets" select="
 											if (normalize-space($selected-value)) then
 												$all-buckets[f:string[@key='val']/text() = $selected-value]
 											else
-												$all-buckets
+												$all-buckets[f:number[@key='count'] != '0']
 										"/>
 										<xsl:variable name="maximum-value" select="
 											max(
@@ -224,9 +229,12 @@
 				flex-wrap: wrap;
 			}
 			div.chart {
-				background-color: #FFFFFF;
+				background-color: #D0E0E0;
 				padding: 0.5em;
 				margin: 0.5em;
+				border-style: solid;
+				border-width: 1px;
+				border-color: #007878;
 			}
 			div.chart div.bucket {
 				position: relative; 
