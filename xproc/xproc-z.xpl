@@ -81,100 +81,16 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 				<p:when test="$relative-uri = 'context.json'">
 					<nma:json-context/>
 				</p:when>
+				<p:when test="$relative-uri = 'status' ">
+					<nma:api-status/>
+				</p:when>
 				<!-- retrieve record by id, OR matching search criteria -->
 				<p:when test="matches($relative-uri, '(object|party|place|narrative|media|collection)(/|\?).+')">
-					<p:try name="decode-and-process-query-parameters">
-						<p:group>
-							<p:www-form-urldecode name="uri-parameters">
-								<p:with-option name="value" select="substring-after($relative-uri, '?')"/>
-							</p:www-form-urldecode>
-							<p:group>
-								<!-- the "format" parameter, if it exists, specifies a content type (overriding Accept header) -->
-								<p:variable name="format" select="/c:param-set/c:param[@name='format']/@value"/>
-								<!-- Translate the API request into a request to Solr -->
-								<p:try>
-									<p:group>
-										<p:xslt>
-											<p:with-param name="relative-uri" select="$relative-uri"/>
-											<p:with-param name="dataset" select="$dataset"/>
-											<p:input port="stylesheet">
-												<p:document href="../xslt/api-request-to-solr-request.xsl"/>
-											</p:input>
-										</p:xslt>
-										<!-- Make the HTTP request to Solr, extract response data from Solr's response and reformat it as an API response -->
-										<p:http-request/>
-									</p:group>
-									<p:catch name="solr-request-error">
-										<p:template>
-											<p:input port="parameters"><p:empty/></p:input>
-											<p:input port="source">
-												<p:pipe step="solr-request-error" port="error"/>
-											</p:input>
-											<p:input port="template">
-												<p:inline>
-													<response>
-														<lst name="error">
-															<int name="code">500</int>
-															<str name="msg">{string(.)}</str>
-														</lst>
-													</response>
-												</p:inline>
-											</p:input>
-										</p:template>
-									</p:catch>
-								</p:try>
-								<nma:format-result>
-									<p:with-option name="format" select="$format"/>
-									<p:with-option name="accept" select="$accept"/>
-									<p:with-option name="relative-uri" select="$relative-uri"/>
-									<p:with-option name="dataset" select="$dataset"/>
-								</nma:format-result>
-							</p:group>
-						</p:group>
-						<p:catch name="malformed-uri-parameters">
-							<!-- generate an error response in Solr's own error format -->
-							<p:identity name="solr-style-malformed-uri-parameters-error-response">
-								<p:input port="source">
-									<p:inline>
-										<response>
-											<lst name="error">
-												<int name="code">400</int>
-												<str name="msg">Malformed URI parameters</str>
-											</lst>
-										</response>
-									</p:inline>
-								</p:input>
-							</p:identity>
-							<nma:format-result>
-								<p:with-option name="accept" select="$accept"/>
-								<p:with-option name="relative-uri" select="$relative-uri"/>
-								<p:with-option name="dataset" select="$dataset"/>
-							</nma:format-result>
-						</p:catch>
-					</p:try>
-					<!-- enable CORS -->
-					<z:add-response-header name="response" header-name="Access-Control-Allow-Origin" header-value="*"/>	
-					
-					<!-- generate an HTTP POST request to Solr to log this API request -->
-					<nma:log-request name="log-request">
-						<p:with-option name="base-uri" select="concat(substring-before(/c:request/@href, '/xproc-z/'), '/xproc-z/')"/>
-						<p:input port="request">
-							<p:pipe step="main" port="source"/>
-						</p:input>
-						<p:input port="response">
-							<p:pipe step="response" port="result"/>
-						</p:input>
-					</nma:log-request>
-					
-					<!-- Sequence the API response, and the log request; the first document (the c:response) will be returned by XProc-Z to the HTTP user agent
-					which called this pipeline, while the second document (the c:request) will be asynchronously passed to another invocation of this pipeline,
-					which will then execute it, causing the log record therein to be written to Solr -->
-					<p:identity>
-						<p:input port="source">
-							<p:pipe step="response" port="result"/>
-							<p:pipe step="log-request" port="result"/>
-						</p:input>
-					</p:identity>
+					<nma:api-call>
+						<p:with-option name="dataset" select="$dataset"/>
+						<p:with-option name="relative-uri" select="$relative-uri"/>
+						<p:with-option name="accept" select="$accept"/>
+					</nma:api-call>
 				</p:when>
 				<!-- unknown request URI -->
 				<p:otherwise>
@@ -184,6 +100,105 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 		</p:otherwise>
 	</p:choose>
 			
+	<p:declare-step name="api-call" type="nma:api-call">
+		<p:input port="source"/>
+		<p:output port="result" sequence="true"/><!-- sequence is: a c:response, and a c:request (to add the API call to the log) -->
+		<p:option name="dataset"/>
+		<p:option name="relative-uri"/>
+		<p:option name="accept"/>
+		<p:try name="decode-and-process-query-parameters">
+			<p:group>
+				<p:www-form-urldecode name="uri-parameters">
+					<p:with-option name="value" select="substring-after($relative-uri, '?')"/>
+				</p:www-form-urldecode>
+				<p:group>
+					<!-- the "format" parameter, if it exists, specifies a content type (overriding Accept header) -->
+					<p:variable name="format" select="/c:param-set/c:param[@name='format']/@value"/>
+					<!-- Translate the API request into a request to Solr -->
+					<p:try>
+						<p:group>
+							<p:xslt>
+								<p:with-param name="relative-uri" select="$relative-uri"/>
+								<p:with-param name="dataset" select="$dataset"/>
+								<p:input port="stylesheet">
+									<p:document href="../xslt/api-request-to-solr-request.xsl"/>
+								</p:input>
+							</p:xslt>
+							<!-- Make the HTTP request to Solr, extract response data from Solr's response and reformat it as an API response -->
+							<p:http-request/>
+						</p:group>
+						<p:catch name="solr-request-error">
+							<p:template>
+								<p:input port="parameters"><p:empty/></p:input>
+								<p:input port="source">
+									<p:pipe step="solr-request-error" port="error"/>
+								</p:input>
+								<p:input port="template">
+									<p:inline>
+										<response>
+											<lst name="error">
+												<int name="code">500</int>
+												<str name="msg">{string(.)}</str>
+											</lst>
+										</response>
+									</p:inline>
+								</p:input>
+							</p:template>
+						</p:catch>
+					</p:try>
+					<nma:format-result>
+						<p:with-option name="format" select="$format"/>
+						<p:with-option name="accept" select="$accept"/>
+						<p:with-option name="relative-uri" select="$relative-uri"/>
+						<p:with-option name="dataset" select="$dataset"/>
+					</nma:format-result>
+				</p:group>
+			</p:group>
+			<p:catch name="malformed-uri-parameters">
+				<!-- generate an error response in Solr's own error format -->
+				<p:identity name="solr-style-malformed-uri-parameters-error-response">
+					<p:input port="source">
+						<p:inline>
+							<response>
+								<lst name="error">
+									<int name="code">400</int>
+									<str name="msg">Malformed URI parameters</str>
+								</lst>
+							</response>
+						</p:inline>
+					</p:input>
+				</p:identity>
+				<nma:format-result>
+					<p:with-option name="accept" select="$accept"/>
+					<p:with-option name="relative-uri" select="$relative-uri"/>
+					<p:with-option name="dataset" select="$dataset"/>
+				</nma:format-result>
+			</p:catch>
+		</p:try>
+		<!-- enable CORS -->
+		<z:add-response-header name="response" header-name="Access-Control-Allow-Origin" header-value="*"/>	
+		
+		<!-- generate an HTTP POST request to Solr to log this API request -->
+		<nma:log-request name="log-request">
+			<p:with-option name="base-uri" select="concat(substring-before(/c:request/@href, '/xproc-z/'), '/xproc-z/')"/>
+			<p:input port="request">
+				<p:pipe step="api-call" port="source"/>
+			</p:input>
+			<p:input port="response">
+				<p:pipe step="response" port="result"/>
+			</p:input>
+		</nma:log-request>
+		
+		<!-- Sequence the API response, and the log request; the first document (the c:response) will be returned by XProc-Z to the HTTP user agent
+		which called this pipeline, while the second document (the c:request) will be asynchronously passed to another invocation of this pipeline,
+		which will then execute it, causing the log record therein to be written to Solr. NB this is so that the logging does not delay the API response -->
+		<p:identity>
+			<p:input port="source">
+				<p:pipe step="response" port="result"/>
+				<p:pipe step="log-request" port="result"/>
+			</p:input>
+		</p:identity>
+	</p:declare-step>
 	
 	<p:declare-step name="format-result" type="nma:format-result">
 		<p:input port="source"/>
@@ -290,5 +305,62 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 				<p:document href="../xslt/api-request-to-solr-request-log-update.xsl"/>
 			</p:input>
 		</p:xslt>
+	</p:declare-step>
+	
+	<p:declare-step name="api-status" type="nma:api-status">
+		<p:input port="source"/>
+		<p:output port="result"/>
+		<p:try>
+			<p:group>
+				<p:http-request name="solr-status-query">
+					<p:input port="source">
+						<p:inline>
+							<c:request 
+								detailed="true"
+								method="get" 
+								href="http://localhost:8983/solr/core_nma_public/select?wt=xml&amp;q=*:*&amp;rows=0"
+							/>
+						</p:inline>
+					</p:input>
+				</p:http-request>
+			</p:group>
+			<p:catch name="http-error">
+				<p:identity>
+					<p:input port="source">
+						<p:pipe step="http-error" port="error"/>
+					</p:input>
+				</p:identity>
+			</p:catch>
+		</p:try>
+		<p:group>
+			<p:documentation>status to return is whatever solr returned, or 502 (bad gateway) if solr request failed</p:documentation>
+			<p:variable name="http-status" select="(/c:response/@status, '502')[1]"/>
+			<p:template name="solr-status-report">
+				<p:with-param name="count" select="/c:response/c:body/response/result/@numFound"/>
+				<p:with-param name="status" select="$http-status"/>
+				<p:input port="template">
+					<p:inline>
+						<html xmlns="http://www.w3.org/1999/xhtml">
+							<head>
+								<title>API Status</title>
+							</head>
+							<body>
+								<h1>API Status</h1>
+								<p>{
+									if ($status != '200') then
+										'API is down; error querying Solr'
+									else
+										concat('API is up; ', $count, ' records are online')
+								}</p>
+								<pre>{if ($status != '200') then /* else ''}</pre>
+							</body>
+						</html>
+					</p:inline>
+				</p:input>
+			</p:template>
+			<z:make-http-response content-type="application/xhtml+xml">
+				<p:with-option name="status" select="$http-status"/>
+			</z:make-http-response>
+		</p:group>
 	</p:declare-step>
 </p:declare-step>
