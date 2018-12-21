@@ -6,7 +6,7 @@
 host=$1
 from="nma-api-monitor@oceania.digital"
 to="conal.tuohy+nma-api-monitor@gmail.com api@nma.gov.au"
-url="https://$host/object?text=*"
+url="https://$host/status"
 if [ -f $host ]; then
 	current_status="up"
 else
