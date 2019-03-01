@@ -1,0 +1,13 @@
+prefix crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX ore: <http://www.openarchives.org/ore/terms/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+select ?resource_id 
+
+WHERE {
+	?object a crm:E19_Physical_Object.
+	# only include objects which have an identifier (sourced from EMu), since Piction records may have bogus IRNs that instantiate bogus Physical Objects
+	?object crm:P1_is_identified_by ?identifier
+	filter(isuri(?object)) # ignoring objects which have no URI (at present these are actually collections, but represented as physical objects
+  BIND(replace(str(?object), '(^[^/]*//[^/]*/)|#', '') AS resource_id)
+}
+limit 100
