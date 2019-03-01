@@ -100,6 +100,7 @@
 	
 	<xsl:function name="nma:encode-params-as-solr-query">
 		<xsl:param name="params"/><!-- sequence of c:param elements -->
+		<xsl:variable name="non-text-fields" select="('depth', 'width', 'length', 'height', 'diameter', 'weight')"/>
 		<xsl:variable name="query">
 			<xsl:for-each-group select="$params" group-by="@name">
 				<xsl:if test="position() &gt; 1">
@@ -112,19 +113,24 @@
 							$parameter/@name, 
 							if ($parameter/@value='*') then 
 								':*' 
-							else concat(
-								':&quot;', 
-								replace(
+							else if ($parameter/@name = $non-text-fields) then 
+								(: non text fields don't need quoting or proximity operator :)
+								concat(':', $parameter/@value)
+							else 
+								(: text fields must be quoted and have the proximity operator '~' appended :)
+								concat(
+									':&quot;', 
 									replace(
-										$parameter/@value,
-										'\\',
-										'\\\\'
-									),
-									'&quot;',
-									'\\&quot;'
-								), 
-								'&quot;~1000000'
-							)
+										replace(
+											$parameter/@value,
+											'\\',
+											'\\\\'
+										),
+										'&quot;',
+										'\\&quot;'
+									), 
+									'&quot;~1000000'
+								)
 						),
 						' OR '
 					)
