@@ -1,0 +1,4376 @@
+<data>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>irn</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>In summary info</Where_to_find_in_EMu>
+    <Display_label>Object record number</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>identified_by</LA_JSON>
+    <CRM_relation__rdf_value_>P1_is_identified_by</CRM_relation__rdf_value_>
+    <CRM_object_type>E42_Identifier</CRM_object_type>
+    <AAT_id>300404621</AAT_id>
+    <AAT_label>repository numbers</AAT_label>
+    <NMA_term_id />
+    <DC_term>id</DC_term>
+    <DC_term_source>rdf</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Unique catalogue internal record number for the object</Description>
+    <Examples>12345</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>N/A</Where_to_find_in_EMu>
+    <Display_label>Type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>type</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Over-arching object type, currently all records have the value of object</Description>
+    <Examples>object</Examples>
+    <TODO />
+    <Notes>Currently all values are object. See GitHub #23 in future development.</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>TitObjectName</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Title Tab &gt; Object Type</Where_to_find_in_EMu>
+    <Display_label>Object type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>classified_as</LA_JSON>
+    <CRM_relation__rdf_value_>P2_has_type/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>additionalType</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Type of object with the primary object type listed first, with a secondary object type listed on occasions.</Description>
+    <Examples>Rugs; Mineral specimens; Sculptures; Spearthrowers</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>TitSecondaryObjectType</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Title Tab &gt; Secondary Object Type</Where_to_find_in_EMu>
+    <Display_label>Additional object type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>classified_as</LA_JSON>
+    <CRM_relation__rdf_value_>P2_has_type/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>additionalType</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>Additional object type, listed under</Description>
+    <Examples>Woomeras</Examples>
+    <TODO>v1.0</TODO>
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>TitObjectTitle</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Title Tab &gt; Title/Name</Where_to_find_in_EMu>
+    <Display_label>Title</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>label</LA_JSON>
+    <CRM_relation__rdf_value_>rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>(literal)</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>title</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Title given to the object</Description>
+    <Examples>Bark canoe</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AccAccessionLotRef</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Title Tab &gt; Accession Lot</Where_to_find_in_EMu>
+    <Display_label>Collection record number</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>part_of</LA_JSON>
+    <CRM_relation__rdf_value_>P46i_forms_part_of</CRM_relation__rdf_value_>
+    <CRM_object_type>E78_Collection</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>collection/id</DC_term>
+    <DC_term_source>rdf</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Catalogue internal record number for the collection</Description>
+    <Examples>4567</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>N/A</Where_to_find_in_EMu>
+    <Display_label>Collection type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>collection/type</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>API entity type for the collection</Description>
+    <Examples>Collection</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AccAccessionLotRef &gt; AcqNmaCollectionTitle</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Accession Lots module &gt; Acquistion Tab &gt; Collection name</Where_to_find_in_EMu>
+    <Display_label>Collection title</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>collection/title</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>The name of the collection</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>TitObjectNumber</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Registration Tab &gt; Number</Where_to_find_in_EMu>
+    <Display_label>Accession number</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>identified_by</LA_JSON>
+    <CRM_relation__rdf_value_>P1_is_identified_by</CRM_relation__rdf_value_>
+    <CRM_object_type>E42_Identifier</CRM_object_type>
+    <AAT_id>300312355</AAT_id>
+    <AAT_label>accession numbers</AAT_label>
+    <NMA_term_id />
+    <DC_term>identifier</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Accession number assigned to the object</Description>
+    <Examples>1984.0010.0721</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>TitObjectType</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Title Tab &gt; Hierarchy Type</Where_to_find_in_EMu>
+    <Display_label>Record type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>Used by the API to determine if the object is a parent.</Description>
+    <Examples>Parent</Examples>
+    <TODO>v1.0</TODO>
+    <Notes>Confirm that this is used by the API to determine if the object is a parent.</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>PhyMaterials_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Production (2) Tab &gt; Materials</Where_to_find_in_EMu>
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>PhyMaterials_tab.PhyMaterials</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Production (2) Tab &gt; Materials</Where_to_find_in_EMu>
+    <Display_label>Materials</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>made_of</LA_JSON>
+    <CRM_relation__rdf_value_>P45_consists_of/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>E57_Material</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>medium</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Physical material types in the object</Description>
+    <Examples>Feather; Wax - non specific</Examples>
+    <TODO />
+    <Notes>Does EMu have source AAT IDs - no</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Dimension type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>extent/type</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>API entity type for the dimensions</Description>
+    <Examples>Measurement</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>PhyRegistrationLength</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Measurements Tab</Where_to_find_in_EMu>
+    <Display_label>Length</Display_label>
+    <Datatype>float</Datatype>
+    <LA_JSON>dimension</LA_JSON>
+    <CRM_relation__rdf_value_>P43_has_dimension</CRM_relation__rdf_value_>
+    <CRM_object_type>E54_Dimension</CRM_object_type>
+    <AAT_id>300055645</AAT_id>
+    <AAT_label>length</AAT_label>
+    <NMA_term_id />
+    <DC_term>extent/length</DC_term>
+    <DC_term_source>nma</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Length of the object</Description>
+    <Examples>123; 45.6</Examples>
+    <TODO />
+    <Notes>Could there be decimals? Karen believes there might be in weight. TBC.</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>PhyRegistrationHeight</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Measurements Tab</Where_to_find_in_EMu>
+    <Display_label>Height</Display_label>
+    <Datatype>float</Datatype>
+    <LA_JSON>dimension</LA_JSON>
+    <CRM_relation__rdf_value_>P43_has_dimension</CRM_relation__rdf_value_>
+    <CRM_object_type>E54_Dimension</CRM_object_type>
+    <AAT_id>300055644</AAT_id>
+    <AAT_label>height</AAT_label>
+    <NMA_term_id />
+    <DC_term>extent/height</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Height of the object</Description>
+    <Examples>123; 45.6</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>PhyRegistrationWidth</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Measurements Tab</Where_to_find_in_EMu>
+    <Display_label>Width</Display_label>
+    <Datatype>float</Datatype>
+    <LA_JSON>dimension</LA_JSON>
+    <CRM_relation__rdf_value_>P43_has_dimension</CRM_relation__rdf_value_>
+    <CRM_object_type>E54_Dimension</CRM_object_type>
+    <AAT_id>300055647</AAT_id>
+    <AAT_label>width</AAT_label>
+    <NMA_term_id />
+    <DC_term>extent/width</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Width of the object</Description>
+    <Examples>123; 45.6</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>PhyRegistrationDepth</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Measurements Tab</Where_to_find_in_EMu>
+    <Display_label>Depth</Display_label>
+    <Datatype>float</Datatype>
+    <LA_JSON>dimension</LA_JSON>
+    <CRM_relation__rdf_value_>P43_has_dimension</CRM_relation__rdf_value_>
+    <CRM_object_type>E54_Dimension</CRM_object_type>
+    <AAT_id>300072633</AAT_id>
+    <AAT_label>depth (size/dimension)</AAT_label>
+    <NMA_term_id />
+    <DC_term>extent/depth</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Depth of the object (dimension)</Description>
+    <Examples>123; 45.6</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>PhyRegistrationDiameter</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Measurements Tab</Where_to_find_in_EMu>
+    <Display_label>Diameter</Display_label>
+    <Datatype>float</Datatype>
+    <LA_JSON>dimension</LA_JSON>
+    <CRM_relation__rdf_value_>P43_has_dimension</CRM_relation__rdf_value_>
+    <CRM_object_type>E54_Dimension</CRM_object_type>
+    <AAT_id>300055624</AAT_id>
+    <AAT_label>diameter</AAT_label>
+    <NMA_term_id />
+    <DC_term>extent/diameter</DC_term>
+    <DC_term_source>nma</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Diameter of the object</Description>
+    <Examples>123; 45.6</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>PhyRegistrationWeight</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Measurements Tab</Where_to_find_in_EMu>
+    <Display_label>Weight</Display_label>
+    <Datatype>float</Datatype>
+    <LA_JSON>dimension</LA_JSON>
+    <CRM_relation__rdf_value_>P43_has_dimension</CRM_relation__rdf_value_>
+    <CRM_object_type>E54_Dimension</CRM_object_type>
+    <AAT_id>300056240</AAT_id>
+    <AAT_label>weight (heaviness attribute)</AAT_label>
+    <NMA_term_id />
+    <DC_term>extent/weight</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Weight of the object</Description>
+    <Examples>123; 45.6</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>PhyRegistrationUnitLength</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Measurements Tab</Where_to_find_in_EMu>
+    <Display_label>Length unit</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>dimension/unit</LA_JSON>
+    <CRM_relation__rdf_value_>P43_has_dimension/P91_has_unit/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>E58_Measurement_Unit</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>extent/unitText</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Unit type for the object's size measurements</Description>
+    <Examples>mm; cm; m</Examples>
+    <TODO />
+    <Notes>mm | MM | cm | m</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>PhyRegistrationUnitWeight</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Measurements Tab</Where_to_find_in_EMu>
+    <Display_label>Weight unit</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>dimension/unit</LA_JSON>
+    <CRM_relation__rdf_value_>P43_has_dimension/P91_has_unit/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>E58_Measurement_Unit</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>extent/unitTextWeight</DC_term>
+    <DC_term_source>nma</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Unit type for the object's weight</Description>
+    <Examples>g; kg; oz; lb; tonne</Examples>
+    <TODO />
+    <Notes>g | kg | tonne | oz | lb</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>PhyContentDescription</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Description Tab &gt; Content Description</Where_to_find_in_EMu>
+    <Display_label>Description</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>subject_of</LA_JSON>
+    <CRM_relation__rdf_value_>P129i_is_subject_of</CRM_relation__rdf_value_>
+    <CRM_object_type>E33_Linguistic_Object</CRM_object_type>
+    <AAT_id>300411780</AAT_id>
+    <AAT_label>descriptions (documents)</AAT_label>
+    <NMA_term_id>contentDescription</NMA_term_id>
+    <DC_term>description</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Description of the object and its signficance.</Description>
+    <Examples>This hat was worn by Muriel McPhee. McPhee's family believe that around 1916 McPhee became engaged, although they don't know to whom. They believe he was killed on the Western Front. Following the loss of her fiancé during the First World War, McPhee wore black clothing and accessories as a reminder of her loss and grief. They are signifiers of her unstated yet lifelong mourning.</Examples>
+    <TODO />
+    <Notes>LA suggests AAT 300080091 'description (activity)'
+FW changed display label to: Description</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>PhyDescription</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Description Tab &gt; Physical Description</Where_to_find_in_EMu>
+    <Display_label>Physical description</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>subject_of</LA_JSON>
+    <CRM_relation__rdf_value_>P129i_is_subject_of</CRM_relation__rdf_value_>
+    <CRM_object_type>E33_Linguistic_Object</CRM_object_type>
+    <AAT_id>300411780</AAT_id>
+    <AAT_label>descriptions (documents)</AAT_label>
+    <NMA_term_id>physicalDescription</NMA_term_id>
+    <DC_term>physicalDescription</DC_term>
+    <DC_term_source>nma</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Physical description of the object</Description>
+    <Examples>Glass plate negative</Examples>
+    <TODO />
+    <Notes>LA suggests AAT 300080091 'description (activity)'</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>StaNmaSOSPublic</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Title Tab &gt; Accession Lot module (click on blue arrow next to accession lot) &gt; SoS Public</Where_to_find_in_EMu>
+    <Display_label>Statement of significance</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>subject_of</LA_JSON>
+    <CRM_relation__rdf_value_>P129i_is_subject_of</CRM_relation__rdf_value_>
+    <CRM_object_type>E33_Linguistic_Object</CRM_object_type>
+    <AAT_id>300379612</AAT_id>
+    <AAT_label>significance assessments (surveys)</AAT_label>
+    <NMA_term_id>significanceStatement</NMA_term_id>
+    <DC_term>significanceStatement</DC_term>
+    <DC_term_source>nma</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Describes the collection in which the objects belongs and its significance.</Description>
+    <Examples>This collection consists of a number of objects relating to the life of Muriel McPhee (1899 -1986). These include shoes, a hat and hatbox, gold bracelet and ring, mourning brooch, WWI era cards and photographs, lamp, women's clothing and undergarments, stockings, gloves, handmade post-partum abdominal binder and breast-feeding camisole, grocers invoices and hand-embroidered doily.</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>CreProvenance</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Education &gt; Educational Significance</Where_to_find_in_EMu>
+    <Display_label>Educational significance</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>subject_of</LA_JSON>
+    <CRM_relation__rdf_value_>P129i_is_subject_of</CRM_relation__rdf_value_>
+    <CRM_object_type>E33_Linguistic_Object</CRM_object_type>
+    <AAT_id>300379612</AAT_id>
+    <AAT_label>significance assessments (surveys)</AAT_label>
+    <NMA_term_id>educationalSignificance</NMA_term_id>
+    <DC_term>educationalSignificance</DC_term>
+    <DC_term_source>nma</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Information about the object of educational value</Description>
+    <Examples>This is a plaster death mask of the head of bushranger Ned Kelly, including the neck and partial right shoulder. &#xD;
+&#xD;
+Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immediately after his body was taken down from the gallows, his hair and beard were shaved off and a mould taken of his head by Maximilien Kreitmayer. The mask is a unique three-dimensional representation of one of Australia's better-known historical figures, created shortly after his death...</Examples>
+    <TODO />
+    <Notes>Labelled Educational Significance in the Emu frontend</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionParties</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Parties module</Where_to_find_in_EMu>
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>EMu module that continas the parties</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionParty</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Parties module</Where_to_find_in_EMu>
+    <Display_label>-</Display_label>
+    <Datatype>object</Datatype>
+    <LA_JSON>produced_by/consists_of</LA_JSON>
+    <CRM_relation__rdf_value_>P108i_was_produced_by/P9_consists_of</CRM_relation__rdf_value_>
+    <CRM_object_type>E12_Production/E7_Activity</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>(container element)</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionParty.ProPersonRef_tab.irn</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Parties module &gt; IRN in top right</Where_to_find_in_EMu>
+    <Display_label>Creator record number</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>produced_by/consists_of/carried_out_by/identified_by</LA_JSON>
+    <CRM_relation__rdf_value_>P108i_was_produced_by/P9_consists_of/P14_carried_out_by/P1_is_identified_by</CRM_relation__rdf_value_>
+    <CRM_object_type>E42_Identifier</CRM_object_type>
+    <AAT_id>300404621</AAT_id>
+    <AAT_label>repository numbers</AAT_label>
+    <NMA_term_id />
+    <DC_term>creator/id</DC_term>
+    <DC_term_source>rdf</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Catalogue internal record number for the creator</Description>
+    <Examples>8230</Examples>
+    <TODO />
+    <Notes>Discussed using creator but decided to use contributor as this is more ocmmonly used, and not all production parties will be creators.</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API (from parties.xml NamPartyType)</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Parties module &gt; Person or Organisation tab &gt; Party Type</Where_to_find_in_EMu>
+    <Display_label>Creator type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>creator/type</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>The type of creator. This will either be a person or an organisation.</Description>
+    <Examples>Person; Organisation</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API (from parties.xml NamFullName)</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Parties module &gt; Person or Organisation tab</Where_to_find_in_EMu>
+    <Display_label>Creator name</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>creator/title</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>The name of the creator</Description>
+    <Examples>Angkaliya Brumby</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionParty.ProPersonType_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Production Tab &gt; Person &gt; Role</Where_to_find_in_EMu>
+    <Display_label>Creator role</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>produced_by/consists_of/label</LA_JSON>
+    <CRM_relation__rdf_value_>P108i_was_produced_by/P9_consists_of/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>(literal)</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>creator/roleName</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>The role this creator played in creating the object</Description>
+    <Examples>maker; photographer; builder</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionParty.ProPersonNotes_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Production Tab &gt; Person &gt; Notes</Where_to_find_in_EMu>
+    <Display_label>Creator notes</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>produced_by/consists_of/subject_of</LA_JSON>
+    <CRM_relation__rdf_value_>P108i_was_produced_by/P9_consists_of/P129i_is_subject_of</CRM_relation__rdf_value_>
+    <CRM_object_type>E33_Linguistic_Object</CRM_object_type>
+    <AAT_id>300411780</AAT_id>
+    <AAT_label>descriptions (documents)</AAT_label>
+    <NMA_term_id />
+    <DC_term>creator/description</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Notes about this part of creating the object</Description>
+    <Examples>There are other branches noted: London, Melbourne and Brisbane.</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Creator action type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>creator/interactionType</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>The type of action taken by the creator</Description>
+    <Examples>Production</Examples>
+    <TODO />
+    <Notes>Inserted into DC (not CRM) to flag production events</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionParty.ProPersonKey_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Creator key</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>The production party key</Description>
+    <Examples />
+    <TODO>v2.0</TODO>
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedParties</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedParty</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>object</Datatype>
+    <LA_JSON>present_at</LA_JSON>
+    <CRM_relation__rdf_value_>P12i_was_present_at</CRM_relation__rdf_value_>
+    <CRM_object_type>E5_Event</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>(container element)</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedParty.AssPersonRef_tab.irn</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Associated party record number</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>present_at/involved/identified_by</LA_JSON>
+    <CRM_relation__rdf_value_>P12i_was_present_at/P12_occurred_in_the_presence_of/P1_is_identified_by</CRM_relation__rdf_value_>
+    <CRM_object_type>E42_Identifier</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>contributor/id</DC_term>
+    <DC_term_source>rdf</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>NMA EMu Catalogue record number for the associated party</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Associated party type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>contributor/type</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>API entity type for the associated party</Description>
+    <Examples>Person; Organisation</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Associated party name</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>contributor/title</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>The name of the associated party</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedParty.AssPersonType_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Associated party role</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>present_at/label</LA_JSON>
+    <CRM_relation__rdf_value_>P12i_was_present_at/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>(literal)</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>contributor/roleName</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>How this party is associated with the object</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedParty.AssPersonNotes_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Associated party notes</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>present_at/subject_of</LA_JSON>
+    <CRM_relation__rdf_value_>P12i_was_present_at/P129i_is_subject_of</CRM_relation__rdf_value_>
+    <CRM_object_type>E33_Linguistic_Object</CRM_object_type>
+    <AAT_id>300411780</AAT_id>
+    <AAT_label>descriptions (documents)</AAT_label>
+    <NMA_term_id />
+    <DC_term>contributor/description</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Notes about this party's association with the object</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedParty.AssPersonKey_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Key</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>The associated party key</Description>
+    <Examples />
+    <TODO>v2.0</TODO>
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionPlaces</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionPlace</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>object</Datatype>
+    <LA_JSON>produced_by/consists_of/took_place_at</LA_JSON>
+    <CRM_relation__rdf_value_>P108i_was_produced_by/P9_consists_of/P7_took_place_at</CRM_relation__rdf_value_>
+    <CRM_object_type>E12_Production/E7_Activity/E53_Place</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionPlace.ProPlaceRef_tab.irn</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Place record number</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>produced_by/consists_of/took_place_at/identified_by</LA_JSON>
+    <CRM_relation__rdf_value_>P108i_was_produced_by/P9_consists_of/P7_took_place_at/P1_is_identified_by</CRM_relation__rdf_value_>
+    <CRM_object_type>E42_Identifier</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>spatial/id</DC_term>
+    <DC_term_source>rdf</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>NMA EMu Catalogue record number for the place</Description>
+    <Examples />
+    <TODO />
+    <Notes>FW - suggest this is coverage rather than spatial</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Place type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>spatial/type</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>API entity type for the place</Description>
+    <Examples>Place</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Place name</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>spatial/title</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>The name of the place</Description>
+    <Examples>Auckland</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionPlace.ProPlaceType_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Place role</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>produced_by/consists_of/label</LA_JSON>
+    <CRM_relation__rdf_value_>P108i_was_produced_by/P9_consists_of/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>(literal)</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>spatial/roleName</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>The role this place played in this part of creating the object</Description>
+    <Examples>Place designed</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionPlace.ProPlaceNotes_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Place notes</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>produced_by/consists_of/subject_of</LA_JSON>
+    <CRM_relation__rdf_value_>P108i_was_produced_by/P9_consists_of/P129i_is_subject_of</CRM_relation__rdf_value_>
+    <CRM_object_type>E33_Linguistic_Object</CRM_object_type>
+    <AAT_id>300411780</AAT_id>
+    <AAT_label>descriptions (documents)</AAT_label>
+    <NMA_term_id />
+    <DC_term>spatial/description</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>Notes about this place's part of creating the object</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Place action type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>spatial/interactionType</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>The type of action that the place was involved in</Description>
+    <Examples>Production</Examples>
+    <TODO />
+    <Notes>Inserted into DC (not CRM) to flag production events</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Place geo coordinates</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>produced_by/consists_of/took_place_at/place_is_defined_by/value</LA_JSON>
+    <CRM_relation__rdf_value_>P108i_was_produced_by/P9_consists_of/P7_took_place_at/P168_place_is_defined_by</CRM_relation__rdf_value_>
+    <CRM_object_type>E94_Space_Primitive</CRM_object_type>
+    <AAT_id>300380194</AAT_id>
+    <AAT_label>geospatial data</AAT_label>
+    <NMA_term_id />
+    <DC_term>spatial/geo</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>The GPS lat/long co-ordinates for the place</Description>
+    <Examples>-35.3,149.13</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionPlace.ProPlaceKey_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Key</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v2.0</TODO>
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedPlaces</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedPlace</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>object</Datatype>
+    <LA_JSON>present_at</LA_JSON>
+    <CRM_relation__rdf_value_>P12i_was_present_at</CRM_relation__rdf_value_>
+    <CRM_object_type>E5_Event</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedPlace.AssociatedPlaceRef_tab.irn</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Associated place record number</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>present_at/involved/identified_by</LA_JSON>
+    <CRM_relation__rdf_value_>P12i_was_present_at/P12_occurred_in_the_presence_of/P1_is_identified_by</CRM_relation__rdf_value_>
+    <CRM_object_type>E42_Identifier</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>spatial/id</DC_term>
+    <DC_term_source>rdf</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Associated place type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>spatial/type</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>API entity type for the place</Description>
+    <Examples>Place</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Associated place name</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>spatial/title</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>The name of the place</Description>
+    <Examples>Auckland</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedPlace.AssociatedPlaceType_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Associated place role</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>present_at/label</LA_JSON>
+    <CRM_relation__rdf_value_>P12i_was_present_at/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>(literal)</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>spatial/roleName</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>How this location is associated with the object</Description>
+    <Examples>Place collected</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedPlace.AssociatedPlaceNotes_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Associated place notes</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>present_at/subject_of</LA_JSON>
+    <CRM_relation__rdf_value_>P12i_was_present_at/P129i_is_subject_of</CRM_relation__rdf_value_>
+    <CRM_object_type>E33_Linguistic_Object</CRM_object_type>
+    <AAT_id>300411780</AAT_id>
+    <AAT_label>descriptions (documents)</AAT_label>
+    <NMA_term_id />
+    <DC_term>spatial/description</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Notes about this location's association with the object</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Associated place geo coordinates</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>produced_by/consists_of/took_place_at/place_is_defined_by/value</LA_JSON>
+    <CRM_relation__rdf_value_>P12i_was_present_at/P12_occurred_in_the_presence_of/P168_place_is_defined_by</CRM_relation__rdf_value_>
+    <CRM_object_type>E94_Space_Primitive</CRM_object_type>
+    <AAT_id>300380194</AAT_id>
+    <AAT_label>geospatial data</AAT_label>
+    <NMA_term_id />
+    <DC_term>spatial/geo</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>The GPS lat/long co-ordinates for the place</Description>
+    <Examples>-35.3,149.13</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedPlace.AssociatedPlaceKey_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Key</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v2.0</TODO>
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionDates</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionDate</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>object</Datatype>
+    <LA_JSON>produced_by/consists_of</LA_JSON>
+    <CRM_relation__rdf_value_>P108i_was_produced_by/P9_consists_of</CRM_relation__rdf_value_>
+    <CRM_object_type>E12_Production/E7_Activity</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>(container element)</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Production date type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>temporal/type</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>API entity type for the date</Description>
+    <Examples>Event</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionDate.ProDate0</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Production date</Display_label>
+    <Datatype>date</Datatype>
+    <LA_JSON>produced_by/consists_of/timespan/label</LA_JSON>
+    <CRM_relation__rdf_value_>P108i_was_produced_by/P9_consists_of/P4_has_time-span/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>E52_Time-Span</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>temporal/title</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>Display version of the date or date range</Description>
+    <Examples>1912 - 2 June 1940</Examples>
+    <TODO />
+    <Notes>The label is constructed from the available earliest/latest dates</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionDate.ProDateType_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Production date role</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>produced_by/consists_of/label</LA_JSON>
+    <CRM_relation__rdf_value_>P108i_was_produced_by/P9_consists_of/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>(literal)</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>temporal/roleName</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>The role this date played in this part of creating the object</Description>
+    <Examples>Date photographed</Examples>
+    <TODO />
+    <Notes>Also used to show if the date is the Production date.</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionDate.ProEarliestDate0</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Production date start</Display_label>
+    <Datatype>date</Datatype>
+    <LA_JSON>produced_by/consists_of/timespan/begin_of_the_begin</LA_JSON>
+    <CRM_relation__rdf_value_>P108i_was_produced_by/P9_consists_of/P4_has_time-span/P82a_begin_of_the_begin</CRM_relation__rdf_value_>
+    <CRM_object_type>(literal - xsd:date/xsd:gYear/xsd:gYearMonth)</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>temporal/startDate</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>Encoded version of the start of the date range</Description>
+    <Examples>1912</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionDate.ProLatestDate0</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Production date end</Display_label>
+    <Datatype>date</Datatype>
+    <LA_JSON>produced_by/consists_of/timespan/end_of_the_end</LA_JSON>
+    <CRM_relation__rdf_value_>P108i_was_produced_by/P9_consists_of/P4_has_time-span/P82b_end_of_the_end</CRM_relation__rdf_value_>
+    <CRM_object_type>(literal - xsd:date/xsd:gYear/xsd:gYearMonth)</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>temporal/endDate</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>Encoded version of the end of the date range</Description>
+    <Examples>1940-06-02</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Production date action type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>temporal/interactionType</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>The type of action that the date was involved in</Description>
+    <Examples>Production</Examples>
+    <TODO />
+    <Notes>Inserted into DC (not CRM) to flag production events</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionDate.ProDateNotes_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Production date notes</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>produced_by/consists_of/subject_of</LA_JSON>
+    <CRM_relation__rdf_value_>P108i_was_produced_by/P9_consists_of/P129i_is_subject_of</CRM_relation__rdf_value_>
+    <CRM_object_type>E33_Linguistic_Object</CRM_object_type>
+    <AAT_id>300411780</AAT_id>
+    <AAT_label>descriptions (documents)</AAT_label>
+    <NMA_term_id />
+    <DC_term>temporal/description</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>Notes about this date's part of creating the object</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>ProductionDate.ProDateKey_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Key</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description />
+    <Examples />
+    <TODO>v2.0</TODO>
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedDates</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedDates</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>object</Datatype>
+    <LA_JSON>present_at</LA_JSON>
+    <CRM_relation__rdf_value_>P12i_was_present_at</CRM_relation__rdf_value_>
+    <CRM_object_type>E5_Event</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>(container element)</Description>
+    <Examples />
+    <TODO />
+    <Notes>Yes, fieldname is plural</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Associated date type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>temporal/type</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>API entity type for the date</Description>
+    <Examples>Event</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedDates.AssDate0</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Associated date</Display_label>
+    <Datatype>date</Datatype>
+    <LA_JSON>present_at/timespan/label</LA_JSON>
+    <CRM_relation__rdf_value_>P12i_was_present_at/P4_has_time-span/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>E52_Time-Span</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>temporal/title</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Associated date</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedDates.AssDateType_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Role</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>present_at/label</LA_JSON>
+    <CRM_relation__rdf_value_>P12i_was_present_at/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>(literal)</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>temporal/roleName</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>How this date is associated with the object</Description>
+    <Examples>Date photographed</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedDates.AssEarliestDate0</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Associated date earliest</Display_label>
+    <Datatype>date</Datatype>
+    <LA_JSON>present_at/timespan/begin_of_the_begin</LA_JSON>
+    <CRM_relation__rdf_value_>P12i_was_present_at/P4_has_time-span/P82a_begin_of_the_begin</CRM_relation__rdf_value_>
+    <CRM_object_type>(literal - xsd:date/xsd:gYear/xsd:gYearMonth)</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>temporal/startDate</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Earliest associated date</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedDates.AssLatestDate0</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Associated date latest</Display_label>
+    <Datatype>date</Datatype>
+    <LA_JSON>present_at/timespan/end_of_the_end</LA_JSON>
+    <CRM_relation__rdf_value_>P12i_was_present_at/P4_has_time-span/P82b_end_of_the_end</CRM_relation__rdf_value_>
+    <CRM_object_type>(literal - xsd:date/xsd:gYear/xsd:gYearMonth)</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>temporal/endDate</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Latest associated date</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedDates.AssDateNotes_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Notes</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>present_at/subject_of</LA_JSON>
+    <CRM_relation__rdf_value_>P12i_was_present_at/P129i_is_subject_of</CRM_relation__rdf_value_>
+    <CRM_object_type>E33_Linguistic_Object</CRM_object_type>
+    <AAT_id>300411780</AAT_id>
+    <AAT_label>descriptions (documents)</AAT_label>
+    <NMA_term_id />
+    <DC_term>temporal/description</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Notes about this date's association with the object</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssociatedDates.AssDateKey_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Key</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v2.0</TODO>
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>RigCreditLine2</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Credit line</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>referred_to_by</LA_JSON>
+    <CRM_relation__rdf_value_>P67i_is_referred_to_by</CRM_relation__rdf_value_>
+    <CRM_object_type>E33_Linguistic_Object</CRM_object_type>
+    <AAT_id>300026687</AAT_id>
+    <AAT_label>acknowledgements</AAT_label>
+    <NMA_term_id />
+    <DC_term>acknowledgement</DC_term>
+    <DC_term_source>nma</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Statement to display acknowledging the donor of the object</Description>
+    <Examples />
+    <TODO />
+    <Notes>Exclude if RigAcknowledgement=no</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>RigAcknowledgement</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Acknowledgement</Display_label>
+    <Datatype>boolean</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>Used to exclude RigCreditLine2</Description>
+    <Examples />
+    <TODO />
+    <Notes>Not in XML export - XML exportor uses to decide whether to include RigCreditLine2</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>InwardLoan</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Title &gt; Category Type = Inward Loan</Where_to_find_in_EMu>
+    <Display_label>Inward loan</Display_label>
+    <Datatype>boolean</Datatype>
+    <LA_JSON>custody_transferred_through</LA_JSON>
+    <CRM_relation__rdf_value_>P30i_custody_transferred_through</CRM_relation__rdf_value_>
+    <CRM_object_type>E10_Transfer_of_Custody</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>source</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>Present if the object is on loan to NMA</Description>
+    <Examples>Inward loan to NMA</Examples>
+    <TODO>v2.0</TODO>
+    <Notes>Only relevant for the internal API as the Publci API will not include loan objects.</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>DisplayGallery</EMu_field>
+    <Checked_2019-01>Y (but not seeAlso)</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Exhibit</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>used_for/took_place_at/label</LA_JSON>
+    <CRM_relation__rdf_value_>P16i_was_used_for/P7_took_place_at/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>E7_Activity/E53_Place/(literal)</CRM_object_type>
+    <AAT_id>300054766</AAT_id>
+    <AAT_label>exhibitions (events)</AAT_label>
+    <NMA_term_id />
+    <DC_term>location</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>The gallery at the NMA that the object is on display at</Description>
+    <Examples>Landmarks: People and Places across Australia gallery</Examples>
+    <TODO>v1.0 DC</TODO>
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>LocCurrentLocationRef</EMu_field>
+    <Checked_2019-01>Y (but not seeAlso)</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>object</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>LocCurrentLocationRef.LocLevel1</EMu_field>
+    <Checked_2019-01>Y (but not seeAlso)</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Gallery location 1</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>used_for/took_place_at/label</LA_JSON>
+    <CRM_relation__rdf_value_>P16i_was_used_for/P7_took_place_at/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>E53_Place/(literal)</CRM_object_type>
+    <AAT_id>300054766</AAT_id>
+    <AAT_label>exhibitions (events)</AAT_label>
+    <NMA_term_id />
+    <DC_term>location</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>1st level of the object location hierarchy</Description>
+    <Examples />
+    <TODO>v1.0 DC</TODO>
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>LocCurrentLocationRef.LocLevel2</EMu_field>
+    <Checked_2019-01>Y (but not seeAlso)</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Gallery location 2</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>used_for/took_place_at/label</LA_JSON>
+    <CRM_relation__rdf_value_>P16i_was_used_for/P7_took_place_at/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>E53_Place/(literal)</CRM_object_type>
+    <AAT_id>300054766</AAT_id>
+    <AAT_label>exhibitions (events)</AAT_label>
+    <NMA_term_id />
+    <DC_term>location</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>2nd level of the object location hierarchy</Description>
+    <Examples />
+    <TODO>v1.0 DC</TODO>
+    <Notes>Check full gallery names are displaying</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>LocCurrentLocationRef.LocLevel3</EMu_field>
+    <Checked_2019-01>Y (but not seeAlso)</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Gallery location 3</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>used_for/took_place_at/label</LA_JSON>
+    <CRM_relation__rdf_value_>P16i_was_used_for/P7_took_place_at/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>E53_Place/(literal)</CRM_object_type>
+    <AAT_id>300054766</AAT_id>
+    <AAT_label>exhibitions (events)</AAT_label>
+    <NMA_term_id />
+    <DC_term>location</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>3rd level of the object location hierarchy</Description>
+    <Examples />
+    <TODO>V1.0 Int</TODO>
+    <Notes>For internal API only</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>LocCurrentLocationRef.LocLevel4</EMu_field>
+    <Checked_2019-01>Y (but not seeAlso)</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Gallery location 4</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>used_for/took_place_at/label</LA_JSON>
+    <CRM_relation__rdf_value_>P16i_was_used_for/P7_took_place_at/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>E53_Place/(literal)</CRM_object_type>
+    <AAT_id>300054766</AAT_id>
+    <AAT_label>exhibitions (events)</AAT_label>
+    <NMA_term_id />
+    <DC_term>location</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>4th level of the object location hierarchy</Description>
+    <Examples />
+    <TODO>V1.0 Int</TODO>
+    <Notes>For internal API only</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>LocCurrentLocationRef.LocLevel5</EMu_field>
+    <Checked_2019-01>Y (but not seeAlso)</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Gallery location 5</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>used_for/took_place_at/label</LA_JSON>
+    <CRM_relation__rdf_value_>P16i_was_used_for/P7_took_place_at/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>E53_Place/(literal)</CRM_object_type>
+    <AAT_id>300054766</AAT_id>
+    <AAT_label>exhibitions (events)</AAT_label>
+    <NMA_term_id />
+    <DC_term>location</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>5th level of the object location hierarchy</Description>
+    <Examples />
+    <TODO>V1.0 Int</TODO>
+    <Notes>For internal API only</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>LocCurrentLocationRef.LocLevel6</EMu_field>
+    <Checked_2019-01>Y (but not seeAlso)</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Gallery location 6</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>used_for/took_place_at/label</LA_JSON>
+    <CRM_relation__rdf_value_>P16i_was_used_for/P7_took_place_at/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>E53_Place/(literal)</CRM_object_type>
+    <AAT_id>300054766</AAT_id>
+    <AAT_label>exhibitions (events)</AAT_label>
+    <NMA_term_id />
+    <DC_term>location</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>6th level of the object location hierarchy</Description>
+    <Examples />
+    <TODO>V1.0 Int</TODO>
+    <Notes>For internal API only</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>LocCurrentLocationRef.LocLevel7</EMu_field>
+    <Checked_2019-01>Y (but not seeAlso)</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Gallery location 7</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>used_for/took_place_at/label</LA_JSON>
+    <CRM_relation__rdf_value_>P16i_was_used_for/P7_took_place_at/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>E53_Place/(literal)</CRM_object_type>
+    <AAT_id>300054766</AAT_id>
+    <AAT_label>exhibitions (events)</AAT_label>
+    <NMA_term_id />
+    <DC_term>location</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>7th level of the object location hierarchy</Description>
+    <Examples />
+    <TODO>V1.0 Int</TODO>
+    <Notes>For internal API only</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AssParentObjectRef</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Parent record</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>part_of</LA_JSON>
+    <CRM_relation__rdf_value_>P46i_forms_part_of</CRM_relation__rdf_value_>
+    <CRM_object_type>E19_Physical_Object</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>isPartOf</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>The parent object that this object is part of</Description>
+    <Examples />
+    <TODO>v1.0</TODO>
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Child record</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>part</LA_JSON>
+    <CRM_relation__rdf_value_>P46_is_composed_of</CRM_relation__rdf_value_>
+    <CRM_object_type>E19_Physical_Object</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>hasPart</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Child objects that are parts of this object</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>RelRelatedObjects_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>(container element)</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>RelatedObject</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>object</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v1.0</TODO>
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>RelatedObject.relirn</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Related object record number</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>relation</LA_JSON>
+    <CRM_relation__rdf_value_>dc:relation</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>relation/id</DC_term>
+    <DC_term_source>rdf</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>NMA EMu Catalogue record number for the related object</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Related object type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>relation/type</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>API entity type for the related object</Description>
+    <Examples>object</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Related object title</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>relation/title</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>The title of the related object</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>RelatedObject.RelRelationship_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Relationship type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>How the other object is related to this object</Description>
+    <Examples />
+    <TODO>v1.0</TODO>
+    <Notes>DC Jan 2019 - does this field exist in EMu?</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>RelatedObject.RelPublishedonCE</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>boolean</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>Used to decide if the relationship is to be included in the API. Currently if this value=api then it can be included. However we wish to change this as I do not see why we would resirct showing a relationship in the API. TBC.</Description>
+    <Examples />
+    <TODO>v2.0</TODO>
+    <Notes>Details TBC re whether this needs an exclusion.</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>RelatedObject.RelAcsAPI_tab.AcsAPI</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label />
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>Which API related object is in: Public</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>NotText0</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>object</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source>-</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>(container element)</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Web link type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>seeAlso/type</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>API entity type for the web link</Description>
+    <Examples>Link</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Web link label</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>seeAlso/title</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Label for the web link</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>NotText0.note_text</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Web link URL</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>seeAlso/identified_by</LA_JSON>
+    <CRM_relation__rdf_value_>rdfs:seeAlso/P1_is_identified_by</CRM_relation__rdf_value_>
+    <CRM_object_type>E42_Identifier</CRM_object_type>
+    <AAT_id>300264578</AAT_id>
+    <AAT_label>web pages (documents)</AAT_label>
+    <NMA_term_id />
+    <DC_term>seeAlso/identifier</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>URL to any related links or references</Description>
+    <Examples />
+    <TODO>v1.0</TODO>
+    <Notes>Can be v2.0</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>NotText0.note_type</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>List of notes of type ‘Web Link’ put into the objects ‘Notes’ tab</Description>
+    <Examples />
+    <TODO>v1.0</TODO>
+    <Notes>Can be v2.0</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>WebFeatureItem</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Featured item</Display_label>
+    <Datatype>boolean</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>Yes/No field - denotes if it's an item of interest. Could be used to display object on a homepage</Description>
+    <Examples />
+    <TODO>v2.0</TODO>
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>WebProject_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>WebProject</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Project title</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v2.0</TODO>
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AcsAPI_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Access Tab &gt; API</Where_to_find_in_EMu>
+    <Display_label>API access flag</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>Public | Public Restricted | Internal</Description>
+    <Examples />
+    <TODO>V2.0</TODO>
+    <Notes>This is primarily for filtering content, however both APIs need to include this field in each record. If the record is 'Removed' it is embedded in the record. Note - the "Public Restricted" was to identify those records that we may not reelase without a key. However I think this is out of scope for this project, but worth keeping this field in as it may have uses in the future, and will def be used for the internal API.</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>WebLargeImageReleased</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Largest image size released</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>If we should show 640x640 on CE, might have to investigate why we have this field and it’s function</Description>
+    <Examples />
+    <TODO>n/a</TODO>
+    <Notes>Not applicable for the API, as this indicates whether an image on Collection Explorer needs to be restricted in size. However, the API uses the Creative Commons fields so does not need this.</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AdmPublishWebNoPassword</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Published in CE</Display_label>
+    <Datatype>boolean</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source>-</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Yes/No field - used to identify if the object is published on Collection Explorer</Description>
+    <Examples />
+    <TODO>V1.0 Int</TODO>
+    <Notes>For internal APi only as public API will only include objects published to CE</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>HasEmuImage</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Has image</Display_label>
+    <Datatype>boolean</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source>-</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>If the object has at least one image release to the web from EMu. i.e. the lower resolution image.</Description>
+    <Examples />
+    <TODO>n/a</TODO>
+    <Notes>This field does not need to be included in the API metadata, however it may help you filter the images as htis shows which ones have an EMu image.</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>WebMultiMediaRef_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>image</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>object</Datatype>
+    <LA_JSON>representation</LA_JSON>
+    <CRM_relation__rdf_value_>P138i_has_representation</CRM_relation__rdf_value_>
+    <CRM_object_type>E36_Visual_Item</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes>Also P2_has_type of nma:emu-mage, nma:piction-image, nma:preferred</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>image.media_irn</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Media record number</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>representation</LA_JSON>
+    <CRM_relation__rdf_value_>P138i_has_representation/rdf:about</CRM_relation__rdf_value_>
+    <CRM_object_type />
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>hasVersion/id</DC_term>
+    <DC_term_source>rdf</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>NMA EMu Catalogue record number for the media</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Media type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>hasVersion/type</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>API entity type for the media</Description>
+    <Examples>StillImage</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AcsCCStatus</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Access Tab &gt; Creative Commons / Status</Where_to_find_in_EMu>
+    <Display_label>Copyright status of media URI</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>aggregates/subject_to/component</LA_JSON>
+    <CRM_relation__rdf_value_>ore:aggregation/P104_is_subject_to/P148_has_component</CRM_relation__rdf_value_>
+    <CRM_object_type>ore:Aggregation/E30_Right/E30_Right</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>hasVersion/rights</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>URI for the rights or licence for media representations of the object</Description>
+    <Examples>https://creativecommons.org/licenses/by-nc-sa/4.0/; http://rightsstatements.org/vocab/InC/1.0/</Examples>
+    <TODO />
+    <Notes>Fw - rights needs to differentiate between the image and textual data. See DC summary info doc. I think the CC status should also be represented as a Creative Commons status of the image, so users can easily search for images of a particular status.
+FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the license ref is where we put the rights for the text.</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Access Tab &gt; Creative Commons / Status</Where_to_find_in_EMu>
+    <Display_label>Copyright status of media</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>aggregates/subject_to/component</LA_JSON>
+    <CRM_relation__rdf_value_>ore:aggregation/P104_is_subject_to/P148_has_component/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>(literal)</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>hasVersion/rightsTitle</DC_term>
+    <DC_term_source>nma</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Label for the rights or licence for media representations of the object</Description>
+    <Examples>Public Domain; CC BY-SA 4.0; CC BY-NC-SA 4.0; Copyright not evaluated; Copyright undetermined; All Rights Reserved</Examples>
+    <TODO />
+    <Notes>Fw - rights needs to differentiate between the image and textual data. See DC summary info doc. I think the CC status should also be represented as a Creative Commons status of the image, so users can easily search for images of a particular status.
+FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the license ref is where we put the rights for the text.</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AcsCCRestrictionReason</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu>Access Tab &gt; Creative Commons / Reason for Restriction</Where_to_find_in_EMu>
+    <Display_label>Reason for copyright restriction</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>aggregates/subject_to/subject_of</LA_JSON>
+    <CRM_relation__rdf_value_>ore:aggregation/P104_is_subject_to/P129i_is_subject_of</CRM_relation__rdf_value_>
+    <CRM_object_type>E33_Linguistic_Object</CRM_object_type>
+    <AAT_id>300404457</AAT_id>
+    <AAT_label>purpose (information indicator)</AAT_label>
+    <NMA_term_id />
+    <DC_term>hasVersion/rightsReason</DC_term>
+    <DC_term_source>nma</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v1.0</TODO>
+    <Notes>Only "Depicts something" ?</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>image.media_mimeformat</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>MIME format</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>MIME format of the media file</Description>
+    <Examples>image; application</Examples>
+    <TODO>v1.0</TODO>
+    <Notes>Will probably map to dc:format</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>image.media_mimetype</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>MIME type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>MIME type of the media file</Description>
+    <Examples>tiff; jpeg; png; pdf</Examples>
+    <TODO>v1.0</TODO>
+    <Notes>Will probably map to dc:format</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>image.res640px</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>object</Datatype>
+    <LA_JSON>representation/representation</LA_JSON>
+    <CRM_relation__rdf_value_>P138i_has_representation/P138i_has_representation</CRM_relation__rdf_value_>
+    <CRM_object_type>E36_Visual_Item</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Media type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>hasVersion/hasVersion/type</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>API entity type for the media file</Description>
+    <Examples>StillImage</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Media version</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>hasVersion/hasVersion/version</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Version of the media file</Description>
+    <Examples>thumbnail image; preview image</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>image.res640px.image_path</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Media location</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>representation/representation/about</LA_JSON>
+    <CRM_relation__rdf_value_>P138i_has_representation/P138i_has_representation/rdf:about</CRM_relation__rdf_value_>
+    <CRM_object_type>nma:preview</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>hasVersion/hasVersion/identifier</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>URL to retrieve the media file</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>image.res640px.image_width</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Media width</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>representation/representation/dimension</LA_JSON>
+    <CRM_relation__rdf_value_>P138i_has_representation/P138i_has_representation/P43_has_dimension</CRM_relation__rdf_value_>
+    <CRM_object_type>E54_Dimension</CRM_object_type>
+    <AAT_id>300055647</AAT_id>
+    <AAT_label>width</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source>-</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v1.0 DC</TODO>
+    <Notes>Not mapped to DC yet</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>image.res640px.image_height</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Media height</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>representation/representation/dimension</LA_JSON>
+    <CRM_relation__rdf_value_>P138i_has_representation/P138i_has_representation/P43_has_dimension</CRM_relation__rdf_value_>
+    <CRM_object_type>E54_Dimension</CRM_object_type>
+    <AAT_id>300055644</AAT_id>
+    <AAT_label>height</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source>-</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v1.0 DC</TODO>
+    <Notes>Not mapped to DC yet</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>image.res200px</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>object</Datatype>
+    <LA_JSON>representation/representation</LA_JSON>
+    <CRM_relation__rdf_value_>P138i_has_representation/P138i_has_representation</CRM_relation__rdf_value_>
+    <CRM_object_type>E36_Visual_Item</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source>-</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Media type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>hasVersion/hasVersion/type</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>API entity type for the media file</Description>
+    <Examples>StillImage</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Media version</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>hasVersion/hasVersion/version</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>Version of the media</Description>
+    <Examples>thumbnail image</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>image.res200px.image_path</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Media location</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>representation/representation/about</LA_JSON>
+    <CRM_relation__rdf_value_>P138i_has_representation/P138i_has_representation/rdf:about</CRM_relation__rdf_value_>
+    <CRM_object_type />
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>hasVersion/hasVersion/identifier</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description>URL to retrieve the medai</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>image.res200px.image_width</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Media width</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>representation/representation/dimension</LA_JSON>
+    <CRM_relation__rdf_value_>P138i_has_representation/P138i_has_representation/P43_has_dimension</CRM_relation__rdf_value_>
+    <CRM_object_type>E54_Dimension</CRM_object_type>
+    <AAT_id>300055647</AAT_id>
+    <AAT_label>width</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source>-</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description />
+    <Examples />
+    <TODO>v1.0 DC</TODO>
+    <Notes>Not mapped to DC yet</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>image.res200px.image_height</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Media height</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>representation/representation/dimension</LA_JSON>
+    <CRM_relation__rdf_value_>P138i_has_representation/P138i_has_representation/P43_has_dimension</CRM_relation__rdf_value_>
+    <CRM_object_type>E54_Dimension</CRM_object_type>
+    <AAT_id>300055644</AAT_id>
+    <AAT_label>height</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source>-</DC_term_source>
+    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Description />
+    <Examples />
+    <TODO>v1.0 DC</TODO>
+    <Notes>Not mapped to DC yet</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>AdmDateModified</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Last modified</Display_label>
+    <Datatype>date</Datatype>
+    <LA_JSON>documented_in/modified</LA_JSON>
+    <CRM_relation__rdf_value_>P70i_is_documented_in/dc:modified</CRM_relation__rdf_value_>
+    <CRM_object_type>E31_Document/(literal)</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>_meta/modified</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Date the record was last modified in Emu</Description>
+    <Examples>2018-03-26</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>WebReleaseDate</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Web release date</Display_label>
+    <Datatype>date</Datatype>
+    <LA_JSON>documented_in/issued</LA_JSON>
+    <CRM_relation__rdf_value_>P70i_is_documented_in/dc:issued</CRM_relation__rdf_value_>
+    <CRM_object_type>(literal)</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>_meta/issued</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Date the record was released to NMA's Collection Explorer website</Description>
+    <Examples>2008-10-01</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Collection Explorer link</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>subject_of</LA_JSON>
+    <CRM_relation__rdf_value_>P129i_is_subject_of</CRM_relation__rdf_value_>
+    <CRM_object_type>E33_Linguistic_Object</CRM_object_type>
+    <AAT_id>300264578</AAT_id>
+    <AAT_label>web pages (documents)</AAT_label>
+    <NMA_term_id />
+    <DC_term>_meta/hasFormat</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>URL to view the object in NMA's Collection Explorer website</Description>
+    <Examples>http://collectionsearch.nma.gov.au/object/64620</Examples>
+    <TODO />
+    <Notes />
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Record data copyright</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>_meta/copyright</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>Copyright statement for the metadata record</Description>
+    <Examples>Copyright National Museum of Australia / CC BY-NC</Examples>
+    <TODO>v1.0</TODO>
+    <Notes>For Trove</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Record data licence</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>_meta/licence</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>Licence URI for the metadata record</Description>
+    <Examples>https://creativecommons.org/licenses/by-nc/4.0/</Examples>
+    <TODO>v1.0</TODO>
+    <Notes>For Trove</Notes>
+  </Object>
+  <Object>
+    <Source>Object</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Free to read</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v1.0</TODO>
+    <Notes>ali:free_to_read - For Trove</Notes>
+  </Object>
+  <Party>
+    <Source>Party</Source>
+    <EMu_field>IRN</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Party record number</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>identified_by</LA_JSON>
+    <CRM_relation__rdf_value_>P1_is_identified_by</CRM_relation__rdf_value_>
+    <CRM_object_type>E42_Identifier</CRM_object_type>
+    <AAT_id>300404621</AAT_id>
+    <AAT_label>repository numbers</AAT_label>
+    <NMA_term_id />
+    <DC_term>id</DC_term>
+    <DC_term_source>rdf</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>NMA EMu Catalogue record number for the party</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Party>
+  <Party>
+    <Source>Party</Source>
+    <EMu_field>SummaryData</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Surname ordered name</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Party>
+  <Party>
+    <Source>Party</Source>
+    <EMu_field>NamPartyType</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Party type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>rdf:type</CRM_relation__rdf_value_>
+    <CRM_object_type>E21_Person; E74_Group</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>type</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>API entity type for the party</Description>
+    <Examples>Person; Organisation</Examples>
+    <TODO />
+    <Notes>Person | Organisation</Notes>
+  </Party>
+  <Party>
+    <Source>Party</Source>
+    <EMu_field>NamFirst</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Given name</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>identified_by/part</LA_JSON>
+    <CRM_relation__rdf_value_>P1_is_identified_by/P106_is_composed_of</CRM_relation__rdf_value_>
+    <CRM_object_type>la:Name</CRM_object_type>
+    <AAT_id>300404651</AAT_id>
+    <AAT_label>first names</AAT_label>
+    <NMA_term_id />
+    <DC_term>givenName</DC_term>
+    <DC_term_source>foaf</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Person's given name</Description>
+    <Examples>Mildred</Examples>
+    <TODO />
+    <Notes>First name, when type=Person</Notes>
+  </Party>
+  <Party>
+    <Source>Party</Source>
+    <EMu_field>NamMiddle</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Middle name</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>identified_by/part</LA_JSON>
+    <CRM_relation__rdf_value_>P1_is_identified_by/P106_is_composed_of</CRM_relation__rdf_value_>
+    <CRM_object_type>la:Name</CRM_object_type>
+    <AAT_id>300404654</AAT_id>
+    <AAT_label>middle names</AAT_label>
+    <NMA_term_id />
+    <DC_term>middleName</DC_term>
+    <DC_term_source>nma</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Person's middle name</Description>
+    <Examples>Mary</Examples>
+    <TODO />
+    <Notes>Middle name, when type=Person</Notes>
+  </Party>
+  <Party>
+    <Source>Party</Source>
+    <EMu_field>NamLast</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Family name</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>identified_by/part</LA_JSON>
+    <CRM_relation__rdf_value_>P1_is_identified_by/P106_is_composed_of</CRM_relation__rdf_value_>
+    <CRM_object_type>la:Name</CRM_object_type>
+    <AAT_id>300404652</AAT_id>
+    <AAT_label>last names</AAT_label>
+    <NMA_term_id />
+    <DC_term>familyName</DC_term>
+    <DC_term_source>foaf</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Person's family name</Description>
+    <Examples>Turner</Examples>
+    <TODO />
+    <Notes>Last name, when type=Person</Notes>
+  </Party>
+  <Party>
+    <Source>Party</Source>
+    <EMu_field>NamFullName</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Display name</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>identified_by</LA_JSON>
+    <CRM_relation__rdf_value_>P1_is_identified_by</CRM_relation__rdf_value_>
+    <CRM_object_type>la:Name</CRM_object_type>
+    <AAT_id>300404670 &amp; 300404688</AAT_id>
+    <AAT_label>preferred terms &amp; full names (personal names)</AAT_label>
+    <NMA_term_id />
+    <DC_term>name</DC_term>
+    <DC_term_source>foaf</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Party's full name, including title and designations</Description>
+    <Examples>Mildred M. Turner</Examples>
+    <TODO />
+    <Notes>Full name with title and designations, when type=Person</Notes>
+  </Party>
+  <Party>
+    <Source>Party</Source>
+    <EMu_field>NamSex</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Gender</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>identified_by/member</LA_JSON>
+    <CRM_relation__rdf_value_>P1_is_identified_by/P107i_is_current_or_former_member_of</CRM_relation__rdf_value_>
+    <CRM_object_type>E74_Group</CRM_object_type>
+    <AAT_id>300055147</AAT_id>
+    <AAT_label>sex role</AAT_label>
+    <NMA_term_id />
+    <DC_term>gender</DC_term>
+    <DC_term_source>foaf</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Person's gender</Description>
+    <Examples>Female; Male &amp; Female</Examples>
+    <TODO />
+    <Notes>Male | Female | Male &amp; Female | Unknown | Unkown</Notes>
+  </Party>
+  <Party>
+    <Source>Party</Source>
+    <EMu_field>NamOtherNames_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label />
+    <Datatype>list</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>(container element)</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Party>
+  <Party>
+    <Source>Party</Source>
+    <EMu_field>NamOtherNames_tab.NamOtherName</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Other names</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>identified_by/part</LA_JSON>
+    <CRM_relation__rdf_value_>P1_is_identified_by/P106_is_composed_of</CRM_relation__rdf_value_>
+    <CRM_object_type>la:Name</CRM_object_type>
+    <AAT_id>300264273</AAT_id>
+    <AAT_label>nonpreferred terms</AAT_label>
+    <NMA_term_id />
+    <DC_term>alternativeNames</DC_term>
+    <DC_term_source>nma</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Person's other recorded names</Description>
+    <Examples>Mildred Mary Raymond</Examples>
+    <TODO />
+    <Notes />
+  </Party>
+  <Party>
+    <Source>Party</Source>
+    <EMu_field>NamOrganisation</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Organisation name</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>label</LA_JSON>
+    <CRM_relation__rdf_value_>rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>title</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Organisation's name (duplicated in Display name)</Description>
+    <Examples>South Coast Land Council</Examples>
+    <TODO />
+    <Notes>Organisation name, when type=Organisation</Notes>
+  </Party>
+  <Place>
+    <Source>Place</Source>
+    <EMu_field>IRN</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Place record number</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>identified_by</LA_JSON>
+    <CRM_relation__rdf_value_>P1_is_identified_by</CRM_relation__rdf_value_>
+    <CRM_object_type>E42_Identifier</CRM_object_type>
+    <AAT_id>300404621</AAT_id>
+    <AAT_label>repository numbers</AAT_label>
+    <NMA_term_id />
+    <DC_term>id</DC_term>
+    <DC_term_source>rdf</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>EMu Sites record number</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Place>
+  <Place>
+    <Source>Place</Source>
+    <EMu_field>SummaryData</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Display title</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>Concatenated town, country, etc. but has gaps</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Place>
+  <Place>
+    <Source>Place</Source>
+    <EMu_field>LocOcean_tab</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Ocean</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>spatially_within</LA_JSON>
+    <CRM_relation__rdf_value_>P89_falls_within</CRM_relation__rdf_value_>
+    <CRM_object_type>E53_Place</CRM_object_type>
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v2.0</TODO>
+    <Notes />
+  </Place>
+  <Place>
+    <Source>Place</Source>
+    <EMu_field>LocContinent_tab</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Continent</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>spatially_within</LA_JSON>
+    <CRM_relation__rdf_value_>P89_falls_within</CRM_relation__rdf_value_>
+    <CRM_object_type>E53_Place</CRM_object_type>
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v2.0</TODO>
+    <Notes />
+  </Place>
+  <Place>
+    <Source>Place</Source>
+    <EMu_field>LocCountry_tab</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Country</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>spatially_within</LA_JSON>
+    <CRM_relation__rdf_value_>P89_falls_within</CRM_relation__rdf_value_>
+    <CRM_object_type>E53_Place</CRM_object_type>
+    <AAT_id>300387506</AAT_id>
+    <AAT_label>countries (sovereign states)</AAT_label>
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v2.0</TODO>
+    <Notes />
+  </Place>
+  <Place>
+    <Source>Place</Source>
+    <EMu_field>LocProvinceStateTerritory_tab</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>State, territory or shire</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>spatially_within</LA_JSON>
+    <CRM_relation__rdf_value_>P89_falls_within</CRM_relation__rdf_value_>
+    <CRM_object_type>E53_Place</CRM_object_type>
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v2.0</TODO>
+    <Notes />
+  </Place>
+  <Place>
+    <Source>Place</Source>
+    <EMu_field>LocDistrictCountyShire_tab</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>District, county or shire</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>spatially_within</LA_JSON>
+    <CRM_relation__rdf_value_>P89_falls_within</CRM_relation__rdf_value_>
+    <CRM_object_type>E53_Place</CRM_object_type>
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v2.0</TODO>
+    <Notes />
+  </Place>
+  <Place>
+    <Source>Place</Source>
+    <EMu_field>LocTownship_tab</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>City, town or suburb</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>label</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>E53_Place</CRM_object_type>
+    <AAT_id>300008375</AAT_id>
+    <AAT_label>towns</AAT_label>
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v2.0</TODO>
+    <Notes />
+  </Place>
+  <Place>
+    <Source>Place</Source>
+    <EMu_field>LocNearestNamedPlace_tab</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Feature or locality</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>label</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>E53_Place</CRM_object_type>
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v2.0</TODO>
+    <Notes />
+  </Place>
+  <Place>
+    <Source>Place</Source>
+    <EMu_field>LocSpecialGeographicUnit_tab</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Natural feature</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>label</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>E53_Place</CRM_object_type>
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>Natural feature e.g river, rock, mountain</Description>
+    <Examples />
+    <TODO>v2.0</TODO>
+    <Notes />
+  </Place>
+  <Place>
+    <Source>Place</Source>
+    <EMu_field>LatCentroidLatitude0</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Geo centroid Latitude HMS</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>Latitude - DMS</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Place>
+  <Place>
+    <Source>Place</Source>
+    <EMu_field>LatCentroidLongitude0</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Geo centroid Longitude HMS</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>Longitude - DMS</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Place>
+  <Place>
+    <Source>Place</Source>
+    <EMu_field>LatCentroidLatitudeDec_tab</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Geo centroid Latitude Decimal</Display_label>
+    <Datatype>float</Datatype>
+    <LA_JSON>(not in LA)</LA_JSON>
+    <CRM_relation__rdf_value_>P168_place_is_defined_by</CRM_relation__rdf_value_>
+    <CRM_object_type>E94_Space_Primitive</CRM_object_type>
+    <AAT_id>300380194</AAT_id>
+    <AAT_label>geospatial data</AAT_label>
+    <NMA_term_id />
+    <DC_term>location</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Latitude - Decimal</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Place>
+  <Place>
+    <Source>Place</Source>
+    <EMu_field>LatCentroidLongitudeDec_tab</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Geo centroid Longitude Decimal</Display_label>
+    <Datatype>float</Datatype>
+    <LA_JSON>(not in LA)</LA_JSON>
+    <CRM_relation__rdf_value_>P168_place_is_defined_by</CRM_relation__rdf_value_>
+    <CRM_object_type>E94_Space_Primitive</CRM_object_type>
+    <AAT_id>300380194</AAT_id>
+    <AAT_label>geospatial data</AAT_label>
+    <NMA_term_id />
+    <DC_term>location</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Longitude - Decimal</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Place>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>irn</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Narrative record number</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>EMu Narrative record number (likely to use 'set' for user created groupings)</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>NarTitle</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Title</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>label</LA_JSON>
+    <CRM_relation__rdf_value_>rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>(literal)</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>title</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>AdmDateModified</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Last modified</Display_label>
+    <Datatype>date</Datatype>
+    <LA_JSON>(not in LA)</LA_JSON>
+    <CRM_relation__rdf_value_>P70i_is_documented_in/dc:modified</CRM_relation__rdf_value_>
+    <CRM_object_type>(literal)</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>_meta/modified</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Date the record was last modified in Emu</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>AssMasterNarrativeRef</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Parent record number</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes>Ignore as we get the relationship from SubNarrative</Notes>
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>DesPurpose</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Narrative purpose</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>May be used to segregate narratives for different subsites</Description>
+    <Examples />
+    <TODO>v1.0 int</TODO>
+    <Notes>For internal API only</Notes>
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>DetNarrativeIdentifier</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Narrative identifier</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>May be used for grouping narratives</Description>
+    <Examples />
+    <TODO>v1.0</TODO>
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>DesVersionDate</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Created</Display_label>
+    <Datatype>date</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>Date was first exported from EMu ??</Description>
+    <Examples />
+    <TODO>V2.0</TODO>
+    <Notes>We use this for ordering in CE TBC. If so, then this would also be useful in the API.</Notes>
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>DesType_tab</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>DesType</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Narrative type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>classified_as</LA_JSON>
+    <CRM_relation__rdf_value_>P2_has_type/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v1.0 DC int</TODO>
+    <Notes>Used in CE, probably not needed in public API but needed in internal API.</Notes>
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>DesIntendedAudience_tab</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>V1.0 int</TODO>
+    <Notes>For internal API only</Notes>
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>DesIntendedAudience</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Audience</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>classified_as</LA_JSON>
+    <CRM_relation__rdf_value_>P2_has_type</CRM_relation__rdf_value_>
+    <CRM_object_type>E55_Type</CRM_object_type>
+    <AAT_id>300192793</AAT_id>
+    <AAT_label>audiences</AAT_label>
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>This is used to filter the narratives.</Description>
+    <Examples />
+    <TODO>v1.0 DC</TODO>
+    <Notes>Field to be included in internal API only. Value to be used to filter what narratives are to be included in the public API - only those with "Collection explorer publish". Internal API to include all narratives</Notes>
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>NarAuthorsRef_tab</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Description</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>aggregates/value</LA_JSON>
+    <CRM_relation__rdf_value_>ore:aggregates</CRM_relation__rdf_value_>
+    <CRM_object_type>E33_Linguistic_Object</CRM_object_type>
+    <AAT_id>300263751</AAT_id>
+    <AAT_label>texts (documents)</AAT_label>
+    <NMA_term_id />
+    <DC_term>description</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>Narrative body, may contain HTML markup</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field />
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>NarAuthorsRef</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Party record number</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>IRN of narrative author</Description>
+    <Examples />
+    <TODO>v1.0</TODO>
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>SubNarratives</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>SubNarrative</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>object</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>Subnarratives may be side bars or links within the document</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>SubNarrative."SubNarrative.irn"</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Narrative record number</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>aggregates</LA_JSON>
+    <CRM_relation__rdf_value_>ore:aggregates</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>hasPart</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>SubNarrative."SubNarrative.title"</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Narrative title</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes>Ignore as we get from the target narrative later</Notes>
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>MulMultiMediaRef_tab</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>image</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>object</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>banner_small</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Small banner location</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>aggregates/representation</LA_JSON>
+    <CRM_relation__rdf_value_>ore:aggregates/P138i_has_representation</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>Relative path on Collection Explorer</Description>
+    <Examples />
+    <TODO>V1.0 int</TODO>
+    <Notes>For internal API only</Notes>
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>banner_large</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Large banner location</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>aggregates/representation</LA_JSON>
+    <CRM_relation__rdf_value_>ore:aggregates/P138i_has_representation</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>Relative path on Collection Explorer</Description>
+    <Examples />
+    <TODO>V1.0 int</TODO>
+    <Notes>For internal API only</Notes>
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>ObjObjectsRef_tab</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>Object | Parent | Pending</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>ObjObjectsRef</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>object</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>ObjObjectsRef.irn</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Object record number</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>aggregates</LA_JSON>
+    <CRM_relation__rdf_value_>ore:aggregates</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>aggregates</DC_term>
+    <DC_term_source>ore</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>ObjObjectsRef.AdmPublishWebNoPassword</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Published in CE</Display_label>
+    <Datatype>boolean</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>n/a</TODO>
+    <Notes>Used in CE to determine if objects in a narrative have been published to the web, and if not, then they do not display in the Set. So ther emay be instances when a narrative has children objects that are not in the API, so some way to exclude these is needed. You could use this field for this, or simply exclude if not able to be found.</Notes>
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>ObjObjectsRef.AcsAPI_tab</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>ObjObjectsRef.AcsAPI_tab.AcsAPI</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>API Access</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>Values are: Public | Public Restricted | Internal</Description>
+    <Examples />
+    <TODO>v1.0</TODO>
+    <Notes>Used to filter the records. Publlic API to include values of Public and Public Restricted. Internal API to include all records. Both APIs to include the value of this field. TBC as not sure why this is under narratives, maybe it is confirming the API status of the objects in that narrative.</Notes>
+  </Narrative>
+  <Piction>
+    <Source>Piction</Source>
+    <EMu_field>EMu IRN for Media Asset</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>?</Display_label>
+    <Datatype>?</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes>Ignore as usually empty</Notes>
+  </Piction>
+  <Piction>
+    <Source>Piction</Source>
+    <EMu_field>EMu IRN for Related Objects</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Object record number</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON>represents</LA_JSON>
+    <CRM_relation__rdf_value_>P138_represents</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>Object IRN this media file represents</Description>
+    <Examples />
+    <TODO>v1.0 DC</TODO>
+    <Notes />
+  </Piction>
+  <Piction>
+    <Source>Piction</Source>
+    <EMu_field>Multimedia ID</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Multimedia record number</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>representation</LA_JSON>
+    <CRM_relation__rdf_value_>P138i_has_representation</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>hasVersion/id</DC_term>
+    <DC_term_source>rdf</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Piction>
+  <Piction>
+    <Source>Piction</Source>
+    <EMu_field>Other Numbers Kind</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Accession number</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes>Ignore as using object IRN rather than accession no</Notes>
+  </Piction>
+  <Piction>
+    <Source>Piction</Source>
+    <EMu_field>Other Numbers Value</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Accession number</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes>Ignore as using object IRN rather than accession no</Notes>
+  </Piction>
+  <Piction>
+    <Source>Piction</Source>
+    <EMu_field>Page Number</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>?</Display_label>
+    <Datatype>integer</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v1.0</TODO>
+    <Notes>Is this field used much? This field is used to determine the order of images to be diaplayed. It is only populated when there is a preferred order. So if populated, a value of 1 means that should be the preferred image. If not populated, then the first image is the one to use. I know we previously stated that the image order in the XML is the preferred order, but this seems to contradict this. I have made this for v1.0, however if complicated it can wait until v2.0.</Notes>
+  </Piction>
+  <Piction>
+    <Source>Piction</Source>
+    <EMu_field>Photographer</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Media creator</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>created_by/carried_out_by/label</LA_JSON>
+    <CRM_relation__rdf_value_>P94i_was_created_by/P14_carried_out_by/rdf:label</CRM_relation__rdf_value_>
+    <CRM_object_type>E21_Person</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>v1.0 DC</TODO>
+    <Notes />
+  </Piction>
+  <Piction>
+    <Source>Piction</Source>
+    <EMu_field>Title</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Object title</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>representation/title</LA_JSON>
+    <CRM_relation__rdf_value_>P138i_has_representation/rdf:label</CRM_relation__rdf_value_>
+    <CRM_object_type>E36_Visual_Item</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes>Media title is ignored during Solr extraction</Notes>
+  </Piction>
+  <Piction>
+    <Source>Piction</Source>
+    <EMu_field>thumbnail</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Thumbnail media location</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>representation/representation</LA_JSON>
+    <CRM_relation__rdf_value_>P138i_has_representation/P138i_has_representation</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>hasVersion/hasVersion/identifier</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>200px image</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Piction>
+  <Piction>
+    <Source>Piction</Source>
+    <EMu_field>web</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Preview media location</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>representation/representation</LA_JSON>
+    <CRM_relation__rdf_value_>P138i_has_representation/P138i_has_representation</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>hasVersion/hasVersion/identifier</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>800px image</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Piction>
+  <Piction>
+    <Source>Piction</Source>
+    <EMu_field>original_2</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Hi-res media location</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>representation/representation</LA_JSON>
+    <CRM_relation__rdf_value_>P138i_has_representation/P138i_has_representation</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>hasVersion/hasVersion/identifier</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>2000px image (internal use only)</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Piction>
+  <Piction>
+    <Source>Piction</Source>
+    <EMu_field>original_3</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Full media location</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>representation/representation</LA_JSON>
+    <CRM_relation__rdf_value_>P138i_has_representation/P138i_has_representation</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>hasVersion/hasVersion/identifier</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>1600px image</Description>
+    <Examples />
+    <TODO />
+    <Notes />
+  </Piction>
+  <Piction>
+    <Source>Piction</Source>
+    <EMu_field>original_4</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Old preview image location</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>640px image (old)</Description>
+    <Examples />
+    <TODO />
+    <Notes>Ignore as old data</Notes>
+  </Piction>
+  <Piction>
+    <Source>Piction</Source>
+    <EMu_field>original_5</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Old thumbnail image location</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Exclude_from_DC_help />
+    <Description>200px image (old)</Description>
+    <Examples />
+    <TODO />
+    <Notes>Ignore as old data</Notes>
+  </Piction>
+</data>
+
