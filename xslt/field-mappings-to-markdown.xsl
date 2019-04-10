@@ -6,6 +6,12 @@
 
 	<xsl:param name="dataset" select=" 'Object' " />
 	<xsl:param name="displayMode" select=" 'list' " />
+	
+	<xsl:variable name="cidocLink" select=" 'http://www.cidoc-crm.org/search/content/' " />
+	<xsl:variable name="laLink" select=" 'https://linked.art/ns/v1/linked-art.json' " />
+	<xsl:variable name="aatLink" select=" 'http://vocab.getty.edu/aat/' " />
+	<xsl:variable name="dcLink" select=" 'http://www.dublincore.org/specifications/dublin-core/dcmi-terms/#terms-' " />
+	<xsl:variable name="schemaLink" select=" 'https://schema.org/' " />
 
 	<xsl:template match="/">
 		<xsl:choose>
@@ -51,8 +57,17 @@
 
 	<xsl:template name="displayFieldReferenceHeader">
 		<xsl:text>&#xa;</xsl:text>
-		<xsl:text>| Path | Field | Label | Datatype | Description | Examples | Linked Art |&#xa;</xsl:text>
-		<xsl:text>| ---- | ----- | ----- | -------- | ----------- | -------- | ---------- |&#xa;</xsl:text>
+		<xsl:call-template name="displayAnchor">
+			<xsl:with-param name="type" select=" 'name' " />
+			<xsl:with-param name="dataset" select="$dataset" />
+			<xsl:with-param name="field" select=" 'field-reference' " />
+		</xsl:call-template>
+		<xsl:text>&#xa;</xsl:text>
+		<xsl:text>## </xsl:text>
+		<xsl:value-of select="$dataset" />
+		<xsl:text> field reference&#xa;</xsl:text>
+		<xsl:text>| Path | Field | Label | Datatype | Description | Examples |&#xa;</xsl:text>
+		<xsl:text>| ---- | ----- | ----- | -------- | ----------- | -------- |&#xa;</xsl:text>
 	</xsl:template>
 
 	<xsl:template name="displayFieldReferenceRow">
@@ -62,7 +77,15 @@
 		<xsl:variable name="pathParts" select="tokenize(normalize-space($fieldName), '/')" />
     	<xsl:variable name="path" select="$pathParts[last() - 1]"/>
     	<xsl:variable name="term" select="$pathParts[last()]"/>
-		<xsl:text>| `</xsl:text>
+		<xsl:text>|</xsl:text>
+		<!-- Link anchor -->
+		<xsl:call-template name="displayAnchor">
+			<xsl:with-param name="type" select=" 'name' " />
+			<xsl:with-param name="dataset" select="$dataset" />
+			<xsl:with-param name="field" select="$fieldName" />
+		</xsl:call-template>
+		<xsl:text> `</xsl:text>
+		<!-- Path -->
 		<!-- loop so duplicates are preserved -->
 		<xsl:for-each select="tokenize(normalize-space($fieldName), '/')">
 			<xsl:if test="position() != last()">
@@ -73,14 +96,19 @@
 			</xsl:if>
 		</xsl:for-each>
 		<xsl:text>` | `</xsl:text>
+		<!-- Field -->
 		<xsl:value-of select="$term" />
 		<xsl:text>` | </xsl:text>
+		<!-- Label -->
 		<xsl:value-of select="$record/Display_label" />
 		<xsl:text> | </xsl:text>
+		<!-- Datatype -->
 		<xsl:value-of select="$record/Datatype" />
 		<xsl:text> | </xsl:text>
+		<!-- Desription -->
 		<xsl:value-of select="$record/Description" />
 		<xsl:text> | </xsl:text>
+		<!-- Examples -->
 		<!-- split examples by semi-colons -->
 		<xsl:for-each select="tokenize($record/Examples,';')">
 			<xsl:if test="position() != 1">
@@ -90,51 +118,184 @@
 			<xsl:value-of select="normalize-space(.)" />
 			<xsl:text>` </xsl:text>
 		</xsl:for-each>
-		<xsl:text>| `</xsl:text>
-		<xsl:value-of select="$record/LA_JSON" />
-		<xsl:text>`</xsl:text>
-		<!-- indicate which classified_by to use to get this unique field -->
-		<xsl:if test="$record/NMA_term_id/text() and not($record/NMA_term_id/text() = '-')">
-			<xsl:text>&lt;br /&gt;(`classified_as nma:</xsl:text>
-			<xsl:value-of select="$record/NMA_term_id/text()" />
-			<xsl:text>`)</xsl:text>
-		</xsl:if>
-		<xsl:if test="$record/AAT_id/text() and not($record/AAT_id/text() = '-')">
-			<xsl:text>&lt;br /&gt;(`classified_as aat:</xsl:text>
-			<xsl:value-of select="$record/AAT_id/text()" />
-			<xsl:text>`)</xsl:text>
-		</xsl:if>
 		<xsl:text>|&#xa;</xsl:text>
 	</xsl:template>
 
 	<xsl:template name="displayFieldMapHeader">
 		<xsl:text>&#xa;</xsl:text>
-		<xsl:text>| Title | CIDOC-CRM | CRM type | Linked Art JSON-LD | AAT type | DC | DC source | EMu |&#xa;</xsl:text>
-		<xsl:text>| ----- | --------- | -------- | ------------------ | -------- | -- | --------- | --- |&#xa;</xsl:text>
+		<xsl:text>| Title | CIDOC-CRM | CRM type | Linked Art JSON-LD | AAT type | DC | DC source | NMA EMu |&#xa;</xsl:text>
+		<xsl:text>| ----- | --------- | -------- | ------------------ | -------- | -- | --------- | ------- |&#xa;</xsl:text>
 	</xsl:template>
 
 	<xsl:template name="displayFieldMapRow">
 		<xsl:param name="fieldName" />
 		<xsl:param name="record" />
 		<xsl:text>| `</xsl:text>
+
+		<!-- Field name -->
 		<xsl:value-of select="Display_label" />
-		<xsl:text>` | `</xsl:text>
-		<xsl:value-of select="normalize-space($fieldName)" />
-		<xsl:text>` | `</xsl:text>
-		<xsl:value-of select="CRM_object_type" />
-		<xsl:text>` | `</xsl:text>
-		<xsl:value-of select="LA_JSON" />
-		<xsl:text>` | `</xsl:text>
-		<xsl:value-of select="AAT_id" />
-		<xsl:text>` (</xsl:text>
+		<xsl:text>` | </xsl:text>
+
+		<!-- CIDOC property -->
+		<xsl:variable name="cidocPropertyId">
+			<xsl:call-template name="extractCidocId">
+				<xsl:with-param name="value" select="normalize-space($fieldName)" />
+			</xsl:call-template>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="$cidocPropertyId != ''">
+				<xsl:call-template name="displayAnchor">
+					<xsl:with-param name="link" select="concat($cidocLink,'type:property ')" />
+					<xsl:with-param name="field" select="$cidocPropertyId" />
+					<xsl:with-param name="text" select="normalize-space($fieldName)" />
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text>`</xsl:text>
+				<xsl:value-of select="normalize-space($fieldName)" />
+				<xsl:text>`</xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
+		<xsl:text> | </xsl:text>
+
+		<!-- CIDOC entity -->
+		<xsl:variable name="cidocEntityId">
+			<xsl:call-template name="extractCidocId">
+				<xsl:with-param name="value" select="normalize-space(CRM_object_type)" />
+			</xsl:call-template>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="$cidocEntityId != ''">
+				<xsl:call-template name="displayAnchor">
+					<xsl:with-param name="link" select="concat($cidocLink,'type:entity ')" />
+					<xsl:with-param name="field" select="$cidocEntityId" />
+					<xsl:with-param name="text" select="normalize-space(CRM_object_type)" />
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text>`</xsl:text>
+				<xsl:value-of select="normalize-space(CRM_object_type)" />
+				<xsl:text>`</xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
+		<xsl:text> | </xsl:text>
+
+		<!-- Linked Art -->
+		<xsl:variable name="laPathParts" select="tokenize(normalize-space(LA_JSON), '/')" />
+		<xsl:variable name="laTerm" select="$laPathParts[last()]"/>
+		<xsl:call-template name="displayAnchor">
+			<xsl:with-param name="link" select="$laLink" />
+			<xsl:with-param name="field" select="concat('#',$laTerm)" />
+			<xsl:with-param name="text" select="LA_JSON" />
+		</xsl:call-template>
+		<xsl:text> | </xsl:text>
+
+		<!-- AAT type -->
+		<xsl:choose>
+			<xsl:when test="AAT_id != '-'">
+				<xsl:call-template name="displayAnchor">
+					<xsl:with-param name="link" select="$aatLink" />
+					<xsl:with-param name="field" select="AAT_id" />
+					<xsl:with-param name="text" select="AAT_id" />
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text>`</xsl:text>
+				<xsl:value-of select="AAT_id" />
+				<xsl:text>`</xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
+		<xsl:text> (</xsl:text>
 		<xsl:value-of select="AAT_label" />
-		<xsl:text>) | `</xsl:text>
-		<xsl:value-of select="DC_term" />
-		<xsl:text>` | `</xsl:text>
-		<xsl:value-of select="DC_term_source" />
-		<xsl:text>` | `</xsl:text>
+		<xsl:text>) | </xsl:text>
+
+		<!-- Simple DC -->
+		<xsl:choose>
+			<xsl:when test="DC_term != '-'">
+				<xsl:call-template name="displayAnchor">
+					<xsl:with-param name="dataset" select="concat('#',$dataset)" />
+					<xsl:with-param name="field" select="DC_term" />
+					<xsl:with-param name="text" select="DC_term" />
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text>`</xsl:text>
+				<xsl:value-of select="DC_term" />
+				<xsl:text>`</xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
+		<xsl:text> | </xsl:text>
+
+		<!-- Simple field source -->
+		<xsl:choose>
+			<xsl:when test="DC_term_source = 'dc'">
+				<xsl:variable name="dcPathParts" select="tokenize(normalize-space(DC_term), '/')" />
+    			<xsl:variable name="dcTerm" select="$dcPathParts[last()]"/>
+				<xsl:call-template name="displayAnchor">
+					<xsl:with-param name="link" select="$dcLink" />
+					<xsl:with-param name="field" select="$dcTerm" />
+					<xsl:with-param name="text" select="DC_term_source" />
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:when test="DC_term_source = 'schema'">
+				<xsl:variable name="schemaPathParts" select="tokenize(normalize-space(DC_term), '/')" />
+    			<xsl:variable name="schemaTerm" select="$schemaPathParts[last()]"/>
+				<xsl:call-template name="displayAnchor">
+					<xsl:with-param name="link" select="$schemaLink" />
+					<xsl:with-param name="field" select="$schemaTerm" />
+					<xsl:with-param name="text" select="DC_term_source" />
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text>`</xsl:text>
+				<xsl:value-of select="DC_term_source" />
+				<xsl:text>`</xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
+		<xsl:text> | `</xsl:text>
+
+		<!-- EMu -->
 		<xsl:value-of select="EMu_field" />
 		<xsl:text>` |&#xa;</xsl:text>
 	</xsl:template>
 
+	<!-- displays: <a type="[link][dataset][-][field]">[text]</a> -->
+	<xsl:template name="displayAnchor">
+		<xsl:param name="type" select=" 'href' " />
+		<xsl:param name="link" select=" '' " />
+		<xsl:param name="dataset" select=" '' " />
+		<xsl:param name="field" select=" '' " />
+		<xsl:param name="text" select=" '' " />
+		<xsl:text>&lt;a </xsl:text>
+		<xsl:value-of select="$type" />
+		<xsl:text>="</xsl:text>
+		<xsl:value-of select="$link" />
+		<xsl:value-of select="$dataset" />
+		<xsl:if test="$field">
+			<xsl:if test="$dataset">
+				<xsl:text>-</xsl:text>
+			</xsl:if>
+			<xsl:value-of select="translate($field,'/','-')" />
+		</xsl:if>
+		<xsl:text>"&gt;</xsl:text>
+		<xsl:if test="$type = 'href'">
+			<xsl:text>`</xsl:text>
+		</xsl:if>
+		<xsl:value-of select="$text" />
+		<xsl:if test="$type = 'href'">
+			<xsl:text>`</xsl:text>
+		</xsl:if>
+		<xsl:text>&lt;/a&gt;</xsl:text>
+	</xsl:template>
+
+	<!-- TODO: Remove trailing i, eg. P12i -->
+
+	<xsl:template name="extractCidocId">
+		<xsl:param name="value" />
+		<xsl:variable name="pathParts" select="tokenize(normalize-space($value), '/')" />
+		<xsl:variable name="term" select="$pathParts[last()]"/>
+		<xsl:if test="starts-with($term, 'P') or starts-with($term, 'E')">
+			<xsl:value-of select="substring-before($term, '_')" />
+		</xsl:if>
+	</xsl:template>
 </xsl:stylesheet>
