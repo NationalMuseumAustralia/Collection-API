@@ -4,6 +4,9 @@
 	<xsl:output method="text" indent="no" encoding="UTF-8"
 		omit-xml-declaration="yes" />
 
+	<!-- Converts a single documentation markdown section (from field mappings sheet) -->
+	<!-- Call multiple times to create a full field reference page -->
+	
 	<xsl:param name="dataset" select=" 'Object' " />
 	<xsl:param name="displayMode" select=" 'list' " />
 	
@@ -14,6 +17,7 @@
 	<xsl:variable name="schemaLink" select=" 'https://schema.org/' " />
 
 	<xsl:template match="/">
+		<!-- use appropriate templates -->
 		<xsl:choose>
 			<xsl:when test="$displayMode = 'map'">
 				<xsl:apply-templates select="data" mode="map" />
@@ -28,14 +32,18 @@
 		</xsl:choose>
 	</xsl:template>
 
+	<!-- Display header and body for field reference list -->
 	<xsl:template match="/data" mode="list">
-		<xsl:call-template
-			name="displayFieldReferenceHeader" />
+		<xsl:param name="dataset" select=" 'Object' " />
+		<xsl:call-template name="displayFieldReferenceHeader">
+			<xsl:with-param name="dataset" select="$dataset" />
+		</xsl:call-template>
 		<xsl:for-each
 			select="./*[Source=$dataset and not(DC_term = '') and not(DC_term = '-') and Exclude_from_DC_help = '']">
 			<xsl:variable name="record" select="." />
 			<xsl:for-each select="tokenize(DC_term,',')">
 				<xsl:call-template name="displayFieldReferenceRow">
+					<xsl:with-param name="dataset" select="$dataset" />
 					<xsl:with-param name="fieldName" select="." />
 					<xsl:with-param name="record" select="$record" />
 				</xsl:call-template>
@@ -43,11 +51,16 @@
 		</xsl:for-each>
 	</xsl:template>
 
+	<!-- Display header and body for field mappings -->
 	<xsl:template match="/data" mode="map">
-		<xsl:call-template name="displayFieldMapHeader" />
+		<xsl:param name="dataset" select=" 'Object' " />
+		<xsl:call-template name="displayFieldMapHeader">
+			<xsl:with-param name="dataset" select="$dataset" />
+		</xsl:call-template>
 		<xsl:for-each
 			select="./*[Source=$dataset and not(CRM_relation__rdf_value_ = '') and not(CRM_relation__rdf_value_ = '-')]">
 			<xsl:call-template name="displayFieldMapRow">
+				<xsl:with-param name="dataset" select="$dataset" />
 				<xsl:with-param name="fieldName"
 					select="CRM_relation__rdf_value_" />
 				<xsl:with-param name="record" select="." />
@@ -56,6 +69,8 @@
 	</xsl:template>
 
 	<xsl:template name="displayFieldReferenceHeader">
+		<xsl:param name="dataset" select=" 'Object' " />
+
 		<xsl:text>&#xa;</xsl:text>
 		<xsl:call-template name="displayAnchor">
 			<xsl:with-param name="type" select=" 'name' " />
@@ -63,6 +78,7 @@
 			<xsl:with-param name="field" select=" 'field-reference' " />
 		</xsl:call-template>
 		<xsl:text>&#xa;</xsl:text>
+
 		<xsl:text>## </xsl:text>
 		<xsl:value-of select="$dataset" />
 		<xsl:text> field reference&#xa;</xsl:text>
@@ -71,12 +87,14 @@
 	</xsl:template>
 
 	<xsl:template name="displayFieldReferenceRow">
+		<xsl:param name="dataset" select=" 'Object' " />
 		<xsl:param name="fieldName" />
 		<xsl:param name="record" />
 		<!-- split path from term -->
 		<xsl:variable name="pathParts" select="tokenize(normalize-space($fieldName), '/')" />
     	<xsl:variable name="path" select="$pathParts[last() - 1]"/>
     	<xsl:variable name="term" select="$pathParts[last()]"/>
+
 		<xsl:text>|</xsl:text>
 		<!-- Link anchor -->
 		<xsl:call-template name="displayAnchor">
@@ -122,14 +140,28 @@
 	</xsl:template>
 
 	<xsl:template name="displayFieldMapHeader">
+		<xsl:param name="dataset" select=" 'Object' " />
+
 		<xsl:text>&#xa;</xsl:text>
+		<xsl:call-template name="displayAnchor">
+			<xsl:with-param name="type" select=" 'name' " />
+			<xsl:with-param name="dataset" select="$dataset" />
+			<xsl:with-param name="field" select=" 'field-map' " />
+		</xsl:call-template>
+		<xsl:text>&#xa;</xsl:text>
+
+		<xsl:text>## </xsl:text>
+		<xsl:value-of select="$dataset" />
+		<xsl:text> field map&#xa;</xsl:text>
 		<xsl:text>| Title | CIDOC-CRM | CRM type | Linked Art JSON-LD | AAT type | DC | DC source | NMA EMu |&#xa;</xsl:text>
 		<xsl:text>| ----- | --------- | -------- | ------------------ | -------- | -- | --------- | ------- |&#xa;</xsl:text>
 	</xsl:template>
 
 	<xsl:template name="displayFieldMapRow">
+		<xsl:param name="dataset" />
 		<xsl:param name="fieldName" />
 		<xsl:param name="record" />
+
 		<xsl:text>| `</xsl:text>
 
 		<!-- Field name -->
@@ -259,13 +291,14 @@
 		<xsl:text>` |&#xa;</xsl:text>
 	</xsl:template>
 
-	<!-- displays: <a type="[link][dataset][-][field]">[text]</a> -->
+	<!-- displays anchor or href: <a type="[link][dataset][-][field]">[text]</a> -->
 	<xsl:template name="displayAnchor">
 		<xsl:param name="type" select=" 'href' " />
 		<xsl:param name="link" select=" '' " />
 		<xsl:param name="dataset" select=" '' " />
 		<xsl:param name="field" select=" '' " />
 		<xsl:param name="text" select=" '' " />
+
 		<xsl:text>&lt;a </xsl:text>
 		<xsl:value-of select="$type" />
 		<xsl:text>="</xsl:text>
@@ -288,14 +321,23 @@
 		<xsl:text>&lt;/a&gt;</xsl:text>
 	</xsl:template>
 
-	<!-- TODO: Remove trailing i, eg. P12i -->
-
+	<!-- Extract just the basic CRM code, e.g. P46i_forms_part_of -> P46 -->
+	<!-- Can't link directly to CIDOC page so run canned search for CRM code -->
 	<xsl:template name="extractCidocId">
 		<xsl:param name="value" />
 		<xsl:variable name="pathParts" select="tokenize(normalize-space($value), '/')" />
 		<xsl:variable name="term" select="$pathParts[last()]"/>
 		<xsl:if test="starts-with($term, 'P') or starts-with($term, 'E')">
-			<xsl:value-of select="substring-before($term, '_')" />
+			<xsl:variable name="code" select="substring-before($term, '_')"/>
+			<xsl:choose>
+				<xsl:when test="ends-with($code, 'i')">
+					<xsl:value-of select="substring-before($code, 'i')" />
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="$code" />
+				</xsl:otherwise>
+			</xsl:choose>
 		</xsl:if>
 	</xsl:template>
+
 </xsl:stylesheet>
