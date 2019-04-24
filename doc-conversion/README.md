@@ -28,18 +28,29 @@ Move the file to your local git clone: `/Collection-API/doc-conversion/resources
 
 5) Run the conversion
 
+#### Unix
+
+```
+> cd {git-location}/Collection-API/doc-conversion
+> ./convert-mappings-to-field-list-page.sh
+```
+
+#### Windows
+
 The Windows batch file expects the git repository to be cloned into `%USERPROFILE%\Git\NMA\Collection-API`  Edit the batch file to use a different location.
 
 ```
-> cd {git-location}/Collection-API/doc-conversion/resources
-> convert-mappings-to-markdown.bat
+> cd {git-location}/Collection-API/doc-conversion
+> convert-mappings-to-field-list-page.bat
 ```
 
+#### Output
+
 The converted markdown is placed in:
-`/Collection-API/doc-conversion/resources/field-list.md`
+`/Collection-API/doc-conversion/resources/field-list-page.md`
 
 Optionally commit this new version of the XML and MD files
 
 6) Update the wiki page
 
-Ignore the XML wrapper `<c:result>`. Edit the wiki page, copy&paste the table data.
+Ignore the XML wrapper `<c:result...>`. Edit the wiki page, copy&paste the contents list and table data.

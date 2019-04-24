@@ -9,6 +9,8 @@
 	<xsl:template match="/">
 
 		<!-- ToC -->
+		<xsl:text>&#xa;</xsl:text>
+		<xsl:text>&#xa;</xsl:text>
 		<xsl:text>On this page:&#xa;</xsl:text>
 		<xsl:call-template name="displayToC">
 			<xsl:with-param name="value" select=" 'Object' " />
@@ -37,6 +39,7 @@
 		<xsl:call-template name="displaySection">
 			<xsl:with-param name="value" select=" 'Place' " />
 		</xsl:call-template>
+		<xsl:text>&#xa;</xsl:text>
 
 	</xsl:template>
 

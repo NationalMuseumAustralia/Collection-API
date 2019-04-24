@@ -20,7 +20,7 @@
 
 	<!-- NB: Requires -Xallow-text-results in Calabash command line call -->
 
-	<!-- Might be able to get rid of XML wrapper element see https://stackoverflow.com/questions/13307936/transformation-outputs-non-xml-documents -->
+	<!-- TODO: Might be able to get rid of XML wrapper element see https://stackoverflow.com/questions/13307936/transformation-outputs-non-xml-documents -->
 
 	<p:input port="source" primary="true" />
 	<p:input port="parameters" kind="parameter" />
@@ -28,7 +28,7 @@
 
 	<p:xslt name="convert">
 		<p:input port="stylesheet">
-			<p:document href="../xslt/field-mappings-to-markdown.xsl" />
+			<p:document href="../xslt/field-mappings-to-field-list-page.xsl" />
 		</p:input>
 	</p:xslt>
 
