@@ -1,13 +1,13 @@
 <?xml version="1.1"?>
 <xsl:stylesheet version="2.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:output method="text" indent="no" encoding="UTF-8"
-		omit-xml-declaration="yes" />
 
 	<xsl:import href="field-mappings-to-markdown.xsl" />
 
 	<xsl:template match="/">
-
+	
+		<markdown>
+		
 		<!-- ToC -->
 		<xsl:text>&#xa;</xsl:text>
 		<xsl:text>&#xa;</xsl:text>
@@ -41,6 +41,8 @@
 		</xsl:call-template>
 		<xsl:text>&#xa;</xsl:text>
 
+		</markdown>
+
 	</xsl:template>
 
 	<xsl:template name="displayToC">
@@ -63,9 +65,8 @@
 		<xsl:param name="value" />
 
 		<!-- headings -->
-		<xsl:text>&lt;a name="</xsl:text>
-		<xsl:value-of select="$value" />
-		<xsl:text>-field"&gt;&lt;/a&gt;&#xa;</xsl:text>
+		<a name="{$value}-field"></a>
+		<xsl:text>&#xa;</xsl:text>
 		<xsl:text># </xsl:text>
 		<xsl:value-of select="$value" />
 		<xsl:text> fields&#xa;</xsl:text>

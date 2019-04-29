@@ -1,8 +1,6 @@
 <?xml version="1.1"?>
 <xsl:stylesheet version="2.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:output method="text" indent="no" encoding="UTF-8"
-		omit-xml-declaration="yes" />
 
 	<!-- Converts a single documentation markdown section (from field mappings sheet) -->
 	<!-- Call multiple times to create a full field reference page -->
@@ -130,7 +128,7 @@
 		<!-- split examples by semi-colons -->
 		<xsl:for-each select="tokenize($record/Examples,';')">
 			<xsl:if test="position() != 1">
-				<xsl:text>&lt;br /&gt;</xsl:text>
+				<br />
 			</xsl:if>
 			<xsl:text>`</xsl:text>
 			<xsl:value-of select="normalize-space(.)" />
@@ -177,7 +175,7 @@
 		<xsl:choose>
 			<xsl:when test="$cidocPropertyId != ''">
 				<xsl:call-template name="displayAnchor">
-					<xsl:with-param name="link" select="concat($cidocLink,'type:property ')" />
+					<xsl:with-param name="link" select="concat($cidocLink,'type:property+')" />
 					<xsl:with-param name="field" select="$cidocPropertyId" />
 					<xsl:with-param name="text" select="normalize-space($fieldName)" />
 				</xsl:call-template>
@@ -199,7 +197,7 @@
 		<xsl:choose>
 			<xsl:when test="$cidocEntityId != ''">
 				<xsl:call-template name="displayAnchor">
-					<xsl:with-param name="link" select="concat($cidocLink,'type:entity ')" />
+					<xsl:with-param name="link" select="concat($cidocLink,'type:entity+')" />
 					<xsl:with-param name="field" select="$cidocEntityId" />
 					<xsl:with-param name="text" select="normalize-space(CRM_object_type)" />
 				</xsl:call-template>
@@ -298,27 +296,28 @@
 		<xsl:param name="dataset" select=" '' " />
 		<xsl:param name="field" select=" '' " />
 		<xsl:param name="text" select=" '' " />
-
-		<xsl:text>&lt;a </xsl:text>
-		<xsl:value-of select="$type" />
-		<xsl:text>="</xsl:text>
-		<xsl:value-of select="$link" />
-		<xsl:value-of select="$dataset" />
-		<xsl:if test="$field">
-			<xsl:if test="$dataset">
-				<xsl:text>-</xsl:text>
+		
+		<xsl:variable name="separator">
+			<xsl:if test="$field">
+				<xsl:if test="$dataset">
+					<xsl:text>-</xsl:text>
+				</xsl:if>
 			</xsl:if>
-			<xsl:value-of select="translate($field,'/','-')" />
-		</xsl:if>
-		<xsl:text>"&gt;</xsl:text>
+		</xsl:variable>
+
 		<xsl:if test="$type = 'href'">
-			<xsl:text>`</xsl:text>
+			<a href="{$link}{$dataset}{$separator}{translate($field,'/','-')}">
+				<xsl:text>`</xsl:text>
+				<xsl:value-of select="$text" />
+				<xsl:text>`</xsl:text>
+			</a>
 		</xsl:if>
-		<xsl:value-of select="$text" />
-		<xsl:if test="$type = 'href'">
-			<xsl:text>`</xsl:text>
+		<xsl:if test="$type = 'name'">
+			<a name="{$link}{$dataset}{$separator}{translate($field,'/','-')}">
+				<xsl:value-of select="$text" />
+			</a>
 		</xsl:if>
-		<xsl:text>&lt;/a&gt;</xsl:text>
+
 	</xsl:template>
 
 	<!-- Extract just the basic CRM code, e.g. P46i_forms_part_of -> P46 -->

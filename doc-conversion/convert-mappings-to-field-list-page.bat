@@ -11,5 +11,5 @@ set FILE_IN=%DATA_DIR_IN:\=/%/schema-field-mappings.xml
 set FILE_OUT=%DATA_DIR_OUT:\=/%/field-list-page.md
 
 echo Converting to: %FILE_OUT%
-java -cp %CALABASH_HOME%\xmlcalabash-1.1.21-98.jar com.xmlcalabash.drivers.Main -Xallow-text-results -i source=%FILE_IN% -o result=%FILE_OUT% %XPROC_FILE% 
+java -cp %CALABASH_HOME%\xmlcalabash-1.1.21-98.jar com.xmlcalabash.drivers.Main -i source=%FILE_IN% -o result=%FILE_OUT% %XPROC_FILE% 
 EXIT /B 0
