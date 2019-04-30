@@ -12,6 +12,7 @@
 	<xsl:variable name="laLink" select=" 'https://linked.art/ns/v1/linked-art.json' " />
 	<xsl:variable name="aatLink" select=" 'http://vocab.getty.edu/aat/' " />
 	<xsl:variable name="dcLink" select=" 'http://www.dublincore.org/specifications/dublin-core/dcmi-terms/#terms-' " />
+	<xsl:variable name="foafLink" select=" 'http://xmlns.com/foaf/spec/#term_' " />
 	<xsl:variable name="schemaLink" select=" 'https://schema.org/' " />
 
 	<xsl:template match="/">
@@ -100,18 +101,24 @@
 			<xsl:with-param name="dataset" select="$dataset" />
 			<xsl:with-param name="field" select="$fieldName" />
 		</xsl:call-template>
-		<xsl:text> `</xsl:text>
 		<!-- Path -->
-		<!-- loop so duplicates are preserved -->
-		<xsl:for-each select="tokenize(normalize-space($fieldName), '/')">
-			<xsl:if test="position() != last()">
-				<xsl:value-of select="." />
-			</xsl:if>
-			<xsl:if test="position() &lt; (last() - 1)">
-				<xsl:text>/</xsl:text>
-			</xsl:if>
-		</xsl:for-each>
-		<xsl:text>` | `</xsl:text>
+		<xsl:variable name="fieldPath">
+			<!-- loop so duplicates are preserved -->
+			<xsl:for-each select="tokenize(normalize-space($fieldName), '/')">
+				<xsl:if test="position() != last()">
+					<xsl:value-of select="." />
+				</xsl:if>
+				<xsl:if test="position() &lt; (last() - 1)">
+					<xsl:text>/</xsl:text>
+				</xsl:if>
+			</xsl:for-each>
+		</xsl:variable>
+		<xsl:if test="$fieldPath != '' ">
+			<xsl:text> `</xsl:text>
+			<xsl:value-of select="$fieldPath" />
+			<xsl:text>`</xsl:text>
+		</xsl:if>
+		<xsl:text> | `</xsl:text>
 		<!-- Field -->
 		<xsl:value-of select="$term" />
 		<xsl:text>` | </xsl:text>
@@ -125,15 +132,9 @@
 		<xsl:value-of select="$record/Description" />
 		<xsl:text> | </xsl:text>
 		<!-- Examples -->
-		<!-- split examples by semi-colons -->
-		<xsl:for-each select="tokenize($record/Examples,';')">
-			<xsl:if test="position() != 1">
-				<br />
-			</xsl:if>
-			<xsl:text>`</xsl:text>
-			<xsl:value-of select="normalize-space(.)" />
-			<xsl:text>` </xsl:text>
-		</xsl:for-each>
+		<xsl:call-template name="splitBySemicolon">
+			<xsl:with-param name="value" select="$record/Examples" />
+		</xsl:call-template>
 		<xsl:text>|&#xa;</xsl:text>
 	</xsl:template>
 
@@ -151,8 +152,8 @@
 		<xsl:text>## </xsl:text>
 		<xsl:value-of select="$dataset" />
 		<xsl:text> field map&#xa;</xsl:text>
-		<xsl:text>| Title | CIDOC-CRM | CRM type | Linked Art JSON-LD | AAT type | DC | DC source | NMA EMu |&#xa;</xsl:text>
-		<xsl:text>| ----- | --------- | -------- | ------------------ | -------- | -- | --------- | ------- |&#xa;</xsl:text>
+		<xsl:text>| NMA Title | CIDOC-CRM | CRM type | Linked Art JSON-LD | AAT type | NMA Simple | Simple source | NMA EMu |&#xa;</xsl:text>
+		<xsl:text>| --------- | --------- | -------- | ------------------ | -------- | ---------- | ------------- | ------- |&#xa;</xsl:text>
 	</xsl:template>
 
 	<xsl:template name="displayFieldMapRow">
@@ -160,11 +161,11 @@
 		<xsl:param name="fieldName" />
 		<xsl:param name="record" />
 
-		<xsl:text>| `</xsl:text>
+		<xsl:text>| </xsl:text>
 
 		<!-- Field name -->
 		<xsl:value-of select="Display_label" />
-		<xsl:text>` | </xsl:text>
+		<xsl:text> | </xsl:text>
 
 		<!-- CIDOC property -->
 		<xsl:variable name="cidocPropertyId">
@@ -195,7 +196,7 @@
 			</xsl:call-template>
 		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="$cidocEntityId != ''">
+			<xsl:when test="$cidocEntityId != '' ">
 				<xsl:call-template name="displayAnchor">
 					<xsl:with-param name="link" select="concat($cidocLink,'type:entity+')" />
 					<xsl:with-param name="field" select="$cidocEntityId" />
@@ -228,16 +229,14 @@
 					<xsl:with-param name="field" select="AAT_id" />
 					<xsl:with-param name="text" select="AAT_id" />
 				</xsl:call-template>
+				<xsl:text> - </xsl:text>
+				<xsl:value-of select="AAT_label" />
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:text>`</xsl:text>
 				<xsl:value-of select="AAT_id" />
-				<xsl:text>`</xsl:text>
 			</xsl:otherwise>
 		</xsl:choose>
-		<xsl:text> (</xsl:text>
-		<xsl:value-of select="AAT_label" />
-		<xsl:text>) | </xsl:text>
+		<xsl:text> | </xsl:text>
 
 		<!-- Simple DC -->
 		<xsl:choose>
@@ -257,22 +256,27 @@
 		<xsl:text> | </xsl:text>
 
 		<!-- Simple field source -->
+		<xsl:variable name="dcPathParts" select="tokenize(normalize-space(DC_term), '/')" />
+		<xsl:variable name="dcTerm" select="$dcPathParts[last()]"/>
 		<xsl:choose>
 			<xsl:when test="DC_term_source = 'dc'">
-				<xsl:variable name="dcPathParts" select="tokenize(normalize-space(DC_term), '/')" />
-    			<xsl:variable name="dcTerm" select="$dcPathParts[last()]"/>
 				<xsl:call-template name="displayAnchor">
 					<xsl:with-param name="link" select="$dcLink" />
 					<xsl:with-param name="field" select="$dcTerm" />
 					<xsl:with-param name="text" select="DC_term_source" />
 				</xsl:call-template>
 			</xsl:when>
+			<xsl:when test="DC_term_source = 'foaf'">
+				<xsl:call-template name="displayAnchor">
+					<xsl:with-param name="link" select="$foafLink" />
+					<xsl:with-param name="field" select="$dcTerm" />
+					<xsl:with-param name="text" select="DC_term_source" />
+				</xsl:call-template>
+			</xsl:when>
 			<xsl:when test="DC_term_source = 'schema'">
-				<xsl:variable name="schemaPathParts" select="tokenize(normalize-space(DC_term), '/')" />
-    			<xsl:variable name="schemaTerm" select="$schemaPathParts[last()]"/>
 				<xsl:call-template name="displayAnchor">
 					<xsl:with-param name="link" select="$schemaLink" />
-					<xsl:with-param name="field" select="$schemaTerm" />
+					<xsl:with-param name="field" select="$dcTerm" />
 					<xsl:with-param name="text" select="DC_term_source" />
 				</xsl:call-template>
 			</xsl:when>
@@ -337,6 +341,19 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:if>
+	</xsl:template>
+
+	<!-- Split multi-value data to separate lines, using HTML <br/> -->
+	<xsl:template name="splitBySemicolon">
+		<xsl:param name="value" />
+		<xsl:for-each select="tokenize($value,';')">
+			<xsl:if test="position() != 1">
+				<br />
+			</xsl:if>
+			<xsl:text>`</xsl:text>
+			<xsl:value-of select="normalize-space(.)" />
+			<xsl:text>` </xsl:text>
+		</xsl:for-each>
 	</xsl:template>
 
 </xsl:stylesheet>
