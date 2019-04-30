@@ -3101,8 +3101,8 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <LA_JSON>identified_by</LA_JSON>
     <CRM_relation__rdf_value_>P1_is_identified_by</CRM_relation__rdf_value_>
     <CRM_object_type>la:Name</CRM_object_type>
-    <AAT_id>300404670 &amp; 300404688</AAT_id>
-    <AAT_label>preferred terms &amp; full names (personal names)</AAT_label>
+    <AAT_id>300404670; 300404688</AAT_id>
+    <AAT_label>preferred terms; full names (personal names)</AAT_label>
     <NMA_term_id />
     <DC_term>name</DC_term>
     <DC_term_source>foaf</DC_term_source>
@@ -3214,6 +3214,48 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <Exclude_from_DC_help />
     <Description>EMu Sites record number</Description>
     <Examples />
+    <TODO />
+    <Notes />
+  </Place>
+  <Place>
+    <Source>Place</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu />
+    <Display_label>Place type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>type</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>API entity type for the place</Description>
+    <Examples>place</Examples>
+    <TODO />
+    <Notes />
+  </Place>
+  <Place>
+    <Source>Place</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01 />
+    <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
+    <Display_label>Place title</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term>title</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Exclude_from_DC_help />
+    <Description>The name of the place</Description>
+    <Examples>Binda, New South Wales, Australia</Examples>
     <TODO />
     <Notes />
   </Place>
@@ -3455,13 +3497,13 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <Where_to_find_in_EMu />
     <Display_label>Geo centroid Latitude Decimal</Display_label>
     <Datatype>float</Datatype>
-    <LA_JSON>(not in LA)</LA_JSON>
+    <LA_JSON>place_is_defined_by</LA_JSON>
     <CRM_relation__rdf_value_>P168_place_is_defined_by</CRM_relation__rdf_value_>
     <CRM_object_type>E94_Space_Primitive</CRM_object_type>
     <AAT_id>300380194</AAT_id>
     <AAT_label>geospatial data</AAT_label>
     <NMA_term_id />
-    <DC_term>location</DC_term>
+    <DC_term>geo</DC_term>
     <DC_term_source>schema</DC_term_source>
     <Exclude_from_DC_help />
     <Description>Latitude - Decimal</Description>
@@ -3476,13 +3518,13 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <Where_to_find_in_EMu />
     <Display_label>Geo centroid Longitude Decimal</Display_label>
     <Datatype>float</Datatype>
-    <LA_JSON>(not in LA)</LA_JSON>
+    <LA_JSON>place_is_defined_by</LA_JSON>
     <CRM_relation__rdf_value_>P168_place_is_defined_by</CRM_relation__rdf_value_>
     <CRM_object_type>E94_Space_Primitive</CRM_object_type>
     <AAT_id>300380194</AAT_id>
     <AAT_label>geospatial data</AAT_label>
     <NMA_term_id />
-    <DC_term>location</DC_term>
+    <DC_term>geo</DC_term>
     <DC_term_source>schema</DC_term_source>
     <Exclude_from_DC_help />
     <Description>Longitude - Decimal</Description>
@@ -3539,7 +3581,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <Where_to_find_in_EMu />
     <Display_label>Last modified</Display_label>
     <Datatype>date</Datatype>
-    <LA_JSON>(not in LA)</LA_JSON>
+    <LA_JSON>-</LA_JSON>
     <CRM_relation__rdf_value_>P70i_is_documented_in/dc:modified</CRM_relation__rdf_value_>
     <CRM_object_type>(literal)</CRM_object_type>
     <AAT_id>-</AAT_id>
