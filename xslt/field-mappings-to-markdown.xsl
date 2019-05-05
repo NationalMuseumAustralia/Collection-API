@@ -41,7 +41,7 @@
 			<xsl:with-param name="dataset" select="$dataset" />
 		</xsl:call-template>
 		<xsl:for-each
-			select="./*[Source=$dataset and not(DC_term = '') and not(DC_term = '-') and Exclude_from_DC_help = '']">
+			select="./*[Source=$dataset and not(DC_term = '') and not(DC_term = '-') and Internal = '' and Exclude_from_DC_help = '']">
 			<xsl:variable name="record" select="." />
 			<xsl:for-each select="tokenize(DC_term,',')">
 				<xsl:call-template name="displayFieldReferenceRow">
@@ -60,7 +60,7 @@
 			<xsl:with-param name="dataset" select="$dataset" />
 		</xsl:call-template>
 		<xsl:for-each
-			select="./*[Source=$dataset and not(CRM_relation__rdf_value_ = '') and not(CRM_relation__rdf_value_ = '-')]">
+			select="./*[Source=$dataset and not(CRM_relation__rdf_value_ = '') and not(CRM_relation__rdf_value_ = '-') and Internal = '']">
 			<xsl:call-template name="displayFieldMapRow">
 				<xsl:with-param name="dataset" select="$dataset" />
 				<xsl:with-param name="fieldName"
@@ -158,9 +158,9 @@
 		<xsl:value-of select="$dataset" />
 		<xsl:text> field map&#xa;</xsl:text>
 		<xsl:text>Mappings between the fields in different data formats (follow the links to definitions for each field):&#xa;</xsl:text>
-		<xsl:text>* **rdf**: [CIDOC Conceptual Reference Model (CRM)](http://www.cidoc-crm.org/) property fields, and the CRM entity types of their property values&#xa;</xsl:text>
-		<xsl:text>* **json-ld**: [Linked Art](https://linked.art/) JSON-LD property fields, and the [Art and Architecture Thesaurus (AAT)](https://www.getty.edu/research/tools/vocabularies/aat/) types of their property values&#xa;</xsl:text>
-		<xsl:text>* **simple**: NMA's Collection API 'simple' format field and the source schema it is from&#xa;</xsl:text>
+		<xsl:text>* **rdf**: [CIDOC Conceptual Reference Model (CRM)](http://www.cidoc-crm.org/) property fields, and the CRM entity types of the property values&#xa;</xsl:text>
+		<xsl:text>* **json-ld**: [Linked Art](https://linked.art/) JSON-LD property fields, and the [Art and Architecture Thesaurus (AAT)](https://www.getty.edu/research/tools/vocabularies/aat/) types of the property values&#xa;</xsl:text>
+		<xsl:text>* **simple**: NMA's Collection API 'simple' format field and the source schema the field is from&#xa;</xsl:text>
 		<xsl:text>* **source**: NMA's EMu collection management system field&#xa;</xsl:text>
 		<xsl:text>&#xa;</xsl:text>
 		<xsl:text>| NMA field title | CIDOC-CRM field | CRM type | Linked Art field | AAT type | NMA Simple field | Simple source | NMA EMu field |&#xa;</xsl:text>
