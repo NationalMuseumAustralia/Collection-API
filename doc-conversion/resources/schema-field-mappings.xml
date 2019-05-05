@@ -14,6 +14,7 @@
     <NMA_term_id />
     <DC_term>id</DC_term>
     <DC_term_source>rdf</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Unique catalogue internal record number for the object</Description>
     <Examples>12345</Examples>
@@ -27,14 +28,15 @@
     <Where_to_find_in_EMu>N/A</Where_to_find_in_EMu>
     <Display_label>Type</Display_label>
     <Datatype>string</Datatype>
-    <LA_JSON />
-    <CRM_relation__rdf_value_ />
-    <CRM_object_type />
-    <AAT_id />
-    <AAT_label />
+    <LA_JSON>type</LA_JSON>
+    <CRM_relation__rdf_value_>rdf:type</CRM_relation__rdf_value_>
+    <CRM_object_type>E19_Physical_Object</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
     <NMA_term_id />
     <DC_term>type</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Over-arching object type, currently all records have the value of object</Description>
     <Examples>object</Examples>
@@ -55,7 +57,8 @@
     <AAT_label>-</AAT_label>
     <NMA_term_id />
     <DC_term>additionalType</DC_term>
-    <DC_term_source>dc</DC_term_source>
+    <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Type of object with the primary object type listed first, with a secondary object type listed on occasions.</Description>
     <Examples>Rugs; Mineral specimens; Sculptures; Spearthrowers</Examples>
@@ -76,7 +79,8 @@
     <AAT_label>-</AAT_label>
     <NMA_term_id />
     <DC_term>additionalType</DC_term>
-    <DC_term_source>dc</DC_term_source>
+    <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>Additional object type, listed under</Description>
     <Examples>Woomeras</Examples>
@@ -98,6 +102,7 @@
     <NMA_term_id />
     <DC_term>title</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Title given to the object</Description>
     <Examples>Bark canoe</Examples>
@@ -119,6 +124,7 @@
     <NMA_term_id />
     <DC_term>collection/id</DC_term>
     <DC_term_source>rdf</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Catalogue internal record number for the collection</Description>
     <Examples>4567</Examples>
@@ -140,6 +146,7 @@
     <NMA_term_id />
     <DC_term>collection/type</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>API entity type for the collection</Description>
     <Examples>Collection</Examples>
@@ -161,6 +168,7 @@
     <NMA_term_id />
     <DC_term>collection/title</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>The name of the collection</Description>
     <Examples />
@@ -182,6 +190,7 @@
     <NMA_term_id />
     <DC_term>identifier</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Accession number assigned to the object</Description>
     <Examples>1984.0010.0721</Examples>
@@ -203,6 +212,7 @@
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>Used by the API to determine if the object is a parent.</Description>
     <Examples>Parent</Examples>
@@ -224,6 +234,7 @@
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description />
     <Examples />
@@ -245,6 +256,7 @@
     <NMA_term_id />
     <DC_term>medium</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Physical material types in the object</Description>
     <Examples>Feather; Wax - non specific</Examples>
@@ -266,6 +278,7 @@
     <NMA_term_id />
     <DC_term>extent/type</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>API entity type for the dimensions</Description>
     <Examples>Measurement</Examples>
@@ -287,6 +300,7 @@
     <NMA_term_id />
     <DC_term>extent/length</DC_term>
     <DC_term_source>nma</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Length of the object</Description>
     <Examples>123; 45.6</Examples>
@@ -308,6 +322,7 @@
     <NMA_term_id />
     <DC_term>extent/height</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Height of the object</Description>
     <Examples>123; 45.6</Examples>
@@ -329,6 +344,7 @@
     <NMA_term_id />
     <DC_term>extent/width</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Width of the object</Description>
     <Examples>123; 45.6</Examples>
@@ -350,6 +366,7 @@
     <NMA_term_id />
     <DC_term>extent/depth</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Depth of the object (dimension)</Description>
     <Examples>123; 45.6</Examples>
@@ -371,6 +388,7 @@
     <NMA_term_id />
     <DC_term>extent/diameter</DC_term>
     <DC_term_source>nma</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Diameter of the object</Description>
     <Examples>123; 45.6</Examples>
@@ -392,6 +410,7 @@
     <NMA_term_id />
     <DC_term>extent/weight</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Weight of the object</Description>
     <Examples>123; 45.6</Examples>
@@ -413,6 +432,7 @@
     <NMA_term_id />
     <DC_term>extent/unitText</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Unit type for the object's size measurements</Description>
     <Examples>mm; cm; m</Examples>
@@ -434,6 +454,7 @@
     <NMA_term_id />
     <DC_term>extent/unitTextWeight</DC_term>
     <DC_term_source>nma</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Unit type for the object's weight</Description>
     <Examples>g; kg; oz; lb; tonne</Examples>
@@ -455,6 +476,7 @@
     <NMA_term_id>contentDescription</NMA_term_id>
     <DC_term>description</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Description of the object and its signficance.</Description>
     <Examples>This hat was worn by Muriel McPhee. McPhee's family believe that around 1916 McPhee became engaged, although they don't know to whom. They believe he was killed on the Western Front. Following the loss of her fiancé during the First World War, McPhee wore black clothing and accessories as a reminder of her loss and grief. They are signifiers of her unstated yet lifelong mourning.</Examples>
@@ -477,6 +499,7 @@ FW changed display label to: Description</Notes>
     <NMA_term_id>physicalDescription</NMA_term_id>
     <DC_term>physicalDescription</DC_term>
     <DC_term_source>nma</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Physical description of the object</Description>
     <Examples>Glass plate negative</Examples>
@@ -498,6 +521,7 @@ FW changed display label to: Description</Notes>
     <NMA_term_id>significanceStatement</NMA_term_id>
     <DC_term>significanceStatement</DC_term>
     <DC_term_source>nma</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Describes the collection in which the objects belongs and its significance.</Description>
     <Examples>This collection consists of a number of objects relating to the life of Muriel McPhee (1899 -1986). These include shoes, a hat and hatbox, gold bracelet and ring, mourning brooch, WWI era cards and photographs, lamp, women's clothing and undergarments, stockings, gloves, handmade post-partum abdominal binder and breast-feeding camisole, grocers invoices and hand-embroidered doily.</Examples>
@@ -519,6 +543,7 @@ FW changed display label to: Description</Notes>
     <NMA_term_id>educationalSignificance</NMA_term_id>
     <DC_term>educationalSignificance</DC_term>
     <DC_term_source>nma</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Information about the object of educational value</Description>
     <Examples>This is a plaster death mask of the head of bushranger Ned Kelly, including the neck and partial right shoulder. &#xD;
@@ -542,6 +567,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>EMu module that continas the parties</Description>
     <Examples />
@@ -563,6 +589,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>(container element)</Description>
     <Examples />
@@ -584,6 +611,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>creator/id</DC_term>
     <DC_term_source>rdf</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Catalogue internal record number for the creator</Description>
     <Examples>8230</Examples>
@@ -605,6 +633,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>creator/type</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>The type of creator. This will either be a person or an organisation.</Description>
     <Examples>Person; Organisation</Examples>
@@ -626,6 +655,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>creator/title</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>The name of the creator</Description>
     <Examples>Angkaliya Brumby</Examples>
@@ -647,6 +677,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>creator/roleName</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>The role this creator played in creating the object</Description>
     <Examples>maker; photographer; builder</Examples>
@@ -668,6 +699,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>creator/description</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Notes about this part of creating the object</Description>
     <Examples>There are other branches noted: London, Melbourne and Brisbane.</Examples>
@@ -689,6 +721,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>creator/interactionType</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>The type of action taken by the creator</Description>
     <Examples>Production</Examples>
@@ -710,6 +743,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>The production party key</Description>
     <Examples />
@@ -731,6 +765,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -752,6 +787,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>(container element)</Description>
     <Examples />
@@ -773,6 +809,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>contributor/id</DC_term>
     <DC_term_source>rdf</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>NMA EMu Catalogue record number for the associated party</Description>
     <Examples />
@@ -794,6 +831,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>contributor/type</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>API entity type for the associated party</Description>
     <Examples>Person; Organisation</Examples>
@@ -815,6 +853,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>contributor/title</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>The name of the associated party</Description>
     <Examples />
@@ -836,6 +875,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>contributor/roleName</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>How this party is associated with the object</Description>
     <Examples />
@@ -857,6 +897,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>contributor/description</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Notes about this party's association with the object</Description>
     <Examples />
@@ -878,6 +919,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>The associated party key</Description>
     <Examples />
@@ -899,6 +941,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -920,6 +963,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -941,6 +985,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>spatial/id</DC_term>
     <DC_term_source>rdf</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>NMA EMu Catalogue record number for the place</Description>
     <Examples />
@@ -962,6 +1007,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>spatial/type</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>API entity type for the place</Description>
     <Examples>Place</Examples>
@@ -983,6 +1029,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>spatial/title</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>The name of the place</Description>
     <Examples>Auckland</Examples>
@@ -1004,6 +1051,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>spatial/roleName</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>The role this place played in this part of creating the object</Description>
     <Examples>Place designed</Examples>
@@ -1025,6 +1073,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>spatial/description</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>Notes about this place's part of creating the object</Description>
     <Examples />
@@ -1046,6 +1095,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>spatial/interactionType</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>The type of action that the place was involved in</Description>
     <Examples>Production</Examples>
@@ -1067,6 +1117,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>spatial/geo</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>The GPS lat/long co-ordinates for the place</Description>
     <Examples>-35.3,149.13</Examples>
@@ -1088,6 +1139,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -1109,6 +1161,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -1130,6 +1183,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -1151,6 +1205,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>spatial/id</DC_term>
     <DC_term_source>rdf</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -1172,6 +1227,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>spatial/type</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>API entity type for the place</Description>
     <Examples>Place</Examples>
@@ -1193,6 +1249,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>spatial/title</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>The name of the place</Description>
     <Examples>Auckland</Examples>
@@ -1214,6 +1271,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>spatial/roleName</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>How this location is associated with the object</Description>
     <Examples>Place collected</Examples>
@@ -1235,6 +1293,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>spatial/description</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Notes about this location's association with the object</Description>
     <Examples />
@@ -1256,6 +1315,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>spatial/geo</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>The GPS lat/long co-ordinates for the place</Description>
     <Examples>-35.3,149.13</Examples>
@@ -1277,6 +1337,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -1298,6 +1359,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description />
     <Examples />
@@ -1319,6 +1381,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>(container element)</Description>
     <Examples />
@@ -1340,6 +1403,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>temporal/type</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>API entity type for the date</Description>
     <Examples>Event</Examples>
@@ -1361,6 +1425,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>temporal/title</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>Display version of the date or date range</Description>
     <Examples>1912 - 2 June 1940</Examples>
@@ -1382,6 +1447,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>temporal/roleName</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>The role this date played in this part of creating the object</Description>
     <Examples>Date photographed</Examples>
@@ -1403,6 +1469,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>temporal/startDate</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>Encoded version of the start of the date range</Description>
     <Examples>1912</Examples>
@@ -1424,6 +1491,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>temporal/endDate</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>Encoded version of the end of the date range</Description>
     <Examples>1940-06-02</Examples>
@@ -1445,6 +1513,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>temporal/interactionType</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>The type of action that the date was involved in</Description>
     <Examples>Production</Examples>
@@ -1466,6 +1535,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>temporal/description</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>Notes about this date's part of creating the object</Description>
     <Examples />
@@ -1487,6 +1557,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description />
     <Examples />
@@ -1508,6 +1579,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -1529,6 +1601,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>(container element)</Description>
     <Examples />
@@ -1550,6 +1623,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>temporal/type</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>API entity type for the date</Description>
     <Examples>Event</Examples>
@@ -1571,6 +1645,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>temporal/title</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Associated date</Description>
     <Examples />
@@ -1592,6 +1667,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>temporal/roleName</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>How this date is associated with the object</Description>
     <Examples>Date photographed</Examples>
@@ -1613,6 +1689,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>temporal/startDate</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Earliest associated date</Description>
     <Examples />
@@ -1634,6 +1711,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>temporal/endDate</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Latest associated date</Description>
     <Examples />
@@ -1655,6 +1733,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>temporal/description</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Notes about this date's association with the object</Description>
     <Examples />
@@ -1676,6 +1755,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -1697,6 +1777,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>acknowledgement</DC_term>
     <DC_term_source>nma</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Statement to display acknowledging the donor of the object</Description>
     <Examples />
@@ -1718,6 +1799,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Used to exclude RigCreditLine2</Description>
     <Examples />
@@ -1739,7 +1821,8 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>source</DC_term>
     <DC_term_source>dc</DC_term_source>
-    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Internal>X</Internal>
+    <Exclude_from_DC_help />
     <Description>Present if the object is on loan to NMA</Description>
     <Examples>Inward loan to NMA</Examples>
     <TODO>v2.0</TODO>
@@ -1760,6 +1843,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>location</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>The gallery at the NMA that the object is on display at</Description>
     <Examples>Landmarks: People and Places across Australia gallery</Examples>
@@ -1781,6 +1865,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -1802,7 +1887,8 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>location</DC_term>
     <DC_term_source>schema</DC_term_source>
-    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Internal>X</Internal>
+    <Exclude_from_DC_help />
     <Description>1st level of the object location hierarchy</Description>
     <Examples />
     <TODO>v1.0 DC</TODO>
@@ -1823,7 +1909,8 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>location</DC_term>
     <DC_term_source>schema</DC_term_source>
-    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Internal>X</Internal>
+    <Exclude_from_DC_help />
     <Description>2nd level of the object location hierarchy</Description>
     <Examples />
     <TODO>v1.0 DC</TODO>
@@ -1844,7 +1931,8 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>location</DC_term>
     <DC_term_source>schema</DC_term_source>
-    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Internal>X</Internal>
+    <Exclude_from_DC_help />
     <Description>3rd level of the object location hierarchy</Description>
     <Examples />
     <TODO>V1.0 Int</TODO>
@@ -1865,7 +1953,8 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>location</DC_term>
     <DC_term_source>schema</DC_term_source>
-    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Internal>X</Internal>
+    <Exclude_from_DC_help />
     <Description>4th level of the object location hierarchy</Description>
     <Examples />
     <TODO>V1.0 Int</TODO>
@@ -1886,7 +1975,8 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>location</DC_term>
     <DC_term_source>schema</DC_term_source>
-    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Internal>X</Internal>
+    <Exclude_from_DC_help />
     <Description>5th level of the object location hierarchy</Description>
     <Examples />
     <TODO>V1.0 Int</TODO>
@@ -1907,7 +1997,8 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>location</DC_term>
     <DC_term_source>schema</DC_term_source>
-    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Internal>X</Internal>
+    <Exclude_from_DC_help />
     <Description>6th level of the object location hierarchy</Description>
     <Examples />
     <TODO>V1.0 Int</TODO>
@@ -1928,7 +2019,8 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>location</DC_term>
     <DC_term_source>schema</DC_term_source>
-    <Exclude_from_DC_help>X</Exclude_from_DC_help>
+    <Internal>X</Internal>
+    <Exclude_from_DC_help />
     <Description>7th level of the object location hierarchy</Description>
     <Examples />
     <TODO>V1.0 Int</TODO>
@@ -1949,6 +2041,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>isPartOf</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>The parent object that this object is part of</Description>
     <Examples />
@@ -1970,6 +2063,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>hasPart</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Child objects that are parts of this object</Description>
     <Examples />
@@ -1991,6 +2085,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>(container element)</Description>
     <Examples />
@@ -2012,6 +2107,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -2033,6 +2129,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>relation/id</DC_term>
     <DC_term_source>rdf</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>NMA EMu Catalogue record number for the related object</Description>
     <Examples />
@@ -2054,6 +2151,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>relation/type</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>API entity type for the related object</Description>
     <Examples>object</Examples>
@@ -2075,6 +2173,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>relation/title</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>The title of the related object</Description>
     <Examples />
@@ -2096,6 +2195,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>How the other object is related to this object</Description>
     <Examples />
@@ -2117,6 +2217,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Used to decide if the relationship is to be included in the API. Currently if this value=api then it can be included. However we wish to change this as I do not see why we would resirct showing a relationship in the API. TBC.</Description>
     <Examples />
@@ -2138,6 +2239,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Which API related object is in: Public</Description>
     <Examples />
@@ -2159,6 +2261,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source>-</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>(container element)</Description>
     <Examples />
@@ -2180,6 +2283,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>seeAlso/type</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>API entity type for the web link</Description>
     <Examples>Link</Examples>
@@ -2201,6 +2305,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>seeAlso/title</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Label for the web link</Description>
     <Examples />
@@ -2222,6 +2327,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>seeAlso/identifier</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>URL to any related links or references</Description>
     <Examples />
@@ -2243,6 +2349,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>List of notes of type ‘Web Link’ put into the objects ‘Notes’ tab</Description>
     <Examples />
@@ -2264,6 +2371,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Yes/No field - denotes if it's an item of interest. Could be used to display object on a homepage</Description>
     <Examples />
@@ -2285,6 +2393,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -2306,6 +2415,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -2327,6 +2437,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Public | Public Restricted | Internal</Description>
     <Examples />
@@ -2348,6 +2459,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>If we should show 640x640 on CE, might have to investigate why we have this field and it’s function</Description>
     <Examples />
@@ -2369,6 +2481,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source>-</DC_term_source>
+    <Internal>X</Internal>
     <Exclude_from_DC_help />
     <Description>Yes/No field - used to identify if the object is published on Collection Explorer</Description>
     <Examples />
@@ -2390,6 +2503,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source>-</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>If the object has at least one image release to the web from EMu. i.e. the lower resolution image.</Description>
     <Examples />
@@ -2411,6 +2525,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -2432,6 +2547,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -2453,6 +2569,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>hasVersion/id</DC_term>
     <DC_term_source>rdf</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>NMA EMu Catalogue record number for the media</Description>
     <Examples />
@@ -2474,6 +2591,7 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <NMA_term_id />
     <DC_term>hasVersion/type</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>API entity type for the media</Description>
     <Examples>StillImage</Examples>
@@ -2487,14 +2605,15 @@ Ned Kelly was hanged at Melbourne Gaol on the morning of 11 November 1880. Immed
     <Where_to_find_in_EMu>Access Tab &gt; Creative Commons / Status</Where_to_find_in_EMu>
     <Display_label>Copyright status of media URI</Display_label>
     <Datatype>string</Datatype>
-    <LA_JSON>aggregates/subject_to/component</LA_JSON>
-    <CRM_relation__rdf_value_>ore:aggregation/P104_is_subject_to/P148_has_component</CRM_relation__rdf_value_>
+    <LA_JSON>aggregated_by/subject_to/component</LA_JSON>
+    <CRM_relation__rdf_value_>ore:isAggregatedBy/P104_is_subject_to/P148_has_component</CRM_relation__rdf_value_>
     <CRM_object_type>ore:Aggregation/E30_Right/E30_Right</CRM_object_type>
     <AAT_id>-</AAT_id>
     <AAT_label>-</AAT_label>
     <NMA_term_id />
     <DC_term>hasVersion/rights</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>URI for the rights or licence for media representations of the object</Description>
     <Examples>https://creativecommons.org/licenses/by-nc-sa/4.0/; http://rightsstatements.org/vocab/InC/1.0/</Examples>
@@ -2509,14 +2628,15 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <Where_to_find_in_EMu>Access Tab &gt; Creative Commons / Status</Where_to_find_in_EMu>
     <Display_label>Copyright status of media</Display_label>
     <Datatype>string</Datatype>
-    <LA_JSON>aggregates/subject_to/component</LA_JSON>
-    <CRM_relation__rdf_value_>ore:aggregation/P104_is_subject_to/P148_has_component/rdfs:label</CRM_relation__rdf_value_>
+    <LA_JSON>aggregated_by/subject_to/component</LA_JSON>
+    <CRM_relation__rdf_value_>ore:isAggregatedBy/P104_is_subject_to/P148_has_component/rdfs:label</CRM_relation__rdf_value_>
     <CRM_object_type>(literal)</CRM_object_type>
     <AAT_id>-</AAT_id>
     <AAT_label>-</AAT_label>
     <NMA_term_id />
     <DC_term>hasVersion/rightsTitle</DC_term>
     <DC_term_source>nma</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Label for the rights or licence for media representations of the object</Description>
     <Examples>Public Domain; CC BY-SA 4.0; CC BY-NC-SA 4.0; Copyright not evaluated; Copyright undetermined; All Rights Reserved</Examples>
@@ -2531,14 +2651,15 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <Where_to_find_in_EMu>Access Tab &gt; Creative Commons / Reason for Restriction</Where_to_find_in_EMu>
     <Display_label>Reason for copyright restriction</Display_label>
     <Datatype>string</Datatype>
-    <LA_JSON>aggregates/subject_to/subject_of</LA_JSON>
-    <CRM_relation__rdf_value_>ore:aggregation/P104_is_subject_to/P129i_is_subject_of</CRM_relation__rdf_value_>
+    <LA_JSON>aggregated_by/subject_to/subject_of</LA_JSON>
+    <CRM_relation__rdf_value_>ore:isAggregatedBy/P104_is_subject_to/P129i_is_subject_of</CRM_relation__rdf_value_>
     <CRM_object_type>E33_Linguistic_Object</CRM_object_type>
     <AAT_id>300404457</AAT_id>
     <AAT_label>purpose (information indicator)</AAT_label>
     <NMA_term_id />
     <DC_term>hasVersion/rightsReason</DC_term>
     <DC_term_source>nma</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -2560,6 +2681,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>MIME format of the media file</Description>
     <Examples>image; application</Examples>
@@ -2581,6 +2703,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>MIME type of the media file</Description>
     <Examples>tiff; jpeg; png; pdf</Examples>
@@ -2602,6 +2725,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -2623,6 +2747,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>hasVersion/hasVersion/type</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>API entity type for the media file</Description>
     <Examples>StillImage</Examples>
@@ -2644,6 +2769,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>hasVersion/hasVersion/version</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Version of the media file</Description>
     <Examples>thumbnail image; preview image</Examples>
@@ -2665,6 +2791,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>hasVersion/hasVersion/identifier</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>URL to retrieve the media file</Description>
     <Examples />
@@ -2686,6 +2813,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source>-</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -2707,6 +2835,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source>-</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -2728,6 +2857,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source>-</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description />
     <Examples />
@@ -2749,6 +2879,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>hasVersion/hasVersion/type</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>API entity type for the media file</Description>
     <Examples>StillImage</Examples>
@@ -2770,6 +2901,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>hasVersion/hasVersion/version</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>Version of the media</Description>
     <Examples>thumbnail image</Examples>
@@ -2791,6 +2923,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>hasVersion/hasVersion/identifier</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description>URL to retrieve the medai</Description>
     <Examples />
@@ -2812,6 +2945,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source>-</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description />
     <Examples />
@@ -2833,6 +2967,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source>-</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help>X</Exclude_from_DC_help>
     <Description />
     <Examples />
@@ -2854,8 +2989,9 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>_meta/modified</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
-    <Description>Date the record was last modified in Emu</Description>
+    <Description>Date the record was last modified in EMu</Description>
     <Examples>2018-03-26</Examples>
     <TODO />
     <Notes />
@@ -2875,6 +3011,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>_meta/issued</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Date the record was released to NMA's Collection Explorer website</Description>
     <Examples>2008-10-01</Examples>
@@ -2896,6 +3033,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>_meta/hasFormat</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>URL to view the object in NMA's Collection Explorer website</Description>
     <Examples>http://collectionsearch.nma.gov.au/object/64620</Examples>
@@ -2917,6 +3055,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>_meta/copyright</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Copyright statement for the metadata record</Description>
     <Examples>Copyright National Museum of Australia / CC BY-NC</Examples>
@@ -2938,6 +3077,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>_meta/licence</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Licence URI for the metadata record</Description>
     <Examples>https://creativecommons.org/licenses/by-nc/4.0/</Examples>
@@ -2959,6 +3099,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -2980,6 +3121,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>id</DC_term>
     <DC_term_source>rdf</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>NMA EMu Catalogue record number for the party</Description>
     <Examples />
@@ -3001,6 +3143,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -3014,19 +3157,42 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <Where_to_find_in_EMu />
     <Display_label>Party type</Display_label>
     <Datatype>string</Datatype>
-    <LA_JSON>-</LA_JSON>
+    <LA_JSON>type</LA_JSON>
     <CRM_relation__rdf_value_>rdf:type</CRM_relation__rdf_value_>
     <CRM_object_type>E21_Person; E74_Group</CRM_object_type>
     <AAT_id>-</AAT_id>
     <AAT_label>-</AAT_label>
     <NMA_term_id />
-    <DC_term>type</DC_term>
-    <DC_term_source>dc</DC_term_source>
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
-    <Description>API entity type for the party</Description>
+    <Description>Entity type for the party</Description>
     <Examples>Person; Organisation</Examples>
     <TODO />
-    <Notes>Person | Organisation</Notes>
+    <Notes>Person | Organisation (in Simple DC is just 'party')</Notes>
+  </Party>
+  <Party>
+    <Source>Party</Source>
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Party type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>type</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Internal />
+    <Exclude_from_DC_help />
+    <Description>API entity type for the party</Description>
+    <Examples>party</Examples>
+    <TODO />
+    <Notes />
   </Party>
   <Party>
     <Source>Party</Source>
@@ -3043,6 +3209,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>givenName</DC_term>
     <DC_term_source>foaf</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Person's given name</Description>
     <Examples>Mildred</Examples>
@@ -3064,6 +3231,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>middleName</DC_term>
     <DC_term_source>nma</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Person's middle name</Description>
     <Examples>Mary</Examples>
@@ -3085,6 +3253,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>familyName</DC_term>
     <DC_term_source>foaf</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Person's family name</Description>
     <Examples>Turner</Examples>
@@ -3106,9 +3275,10 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>name</DC_term>
     <DC_term_source>foaf</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
-    <Description>Party's full name, including title and designations</Description>
-    <Examples>Mildred M. Turner</Examples>
+    <Description>Person or Organisation's full name, including title and designations</Description>
+    <Examples>Mrs Mildred M. Turner; South Coast Land Council</Examples>
     <TODO />
     <Notes>Full name with title and designations, when type=Person</Notes>
   </Party>
@@ -3127,6 +3297,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>gender</DC_term>
     <DC_term_source>foaf</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Person's gender</Description>
     <Examples>Female; Male &amp; Female</Examples>
@@ -3148,6 +3319,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>(container element)</Description>
     <Examples />
@@ -3169,6 +3341,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>alternativeNames</DC_term>
     <DC_term_source>nma</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Person's other recorded names</Description>
     <Examples>Mildred Mary Raymond</Examples>
@@ -3190,6 +3363,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>title</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Organisation's name (duplicated in Display name)</Description>
     <Examples>South Coast Land Council</Examples>
@@ -3199,7 +3373,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Place>
     <Source>Place</Source>
     <EMu_field>IRN</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Place record number</Display_label>
     <Datatype>integer</Datatype>
@@ -3211,6 +3385,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>id</DC_term>
     <DC_term_source>rdf</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>EMu Sites record number</Description>
     <Examples />
@@ -3220,18 +3395,19 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Place>
     <Source>Place</Source>
     <EMu_field>API</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Place type</Display_label>
     <Datatype>string</Datatype>
-    <LA_JSON />
-    <CRM_relation__rdf_value_ />
-    <CRM_object_type />
-    <AAT_id />
-    <AAT_label />
+    <LA_JSON>type</LA_JSON>
+    <CRM_relation__rdf_value_>rdf:type</CRM_relation__rdf_value_>
+    <CRM_object_type>E53_Place</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
     <NMA_term_id />
     <DC_term>type</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>API entity type for the place</Description>
     <Examples>place</Examples>
@@ -3241,18 +3417,19 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Place>
     <Source>Place</Source>
     <EMu_field>API</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu>-</Where_to_find_in_EMu>
     <Display_label>Place title</Display_label>
     <Datatype>string</Datatype>
-    <LA_JSON />
-    <CRM_relation__rdf_value_ />
-    <CRM_object_type />
+    <LA_JSON>label</LA_JSON>
+    <CRM_relation__rdf_value_>rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>E53_Place</CRM_object_type>
     <AAT_id />
     <AAT_label />
     <NMA_term_id />
     <DC_term>title</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>The name of the place</Description>
     <Examples>Binda, New South Wales, Australia</Examples>
@@ -3262,7 +3439,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Place>
     <Source>Place</Source>
     <EMu_field>SummaryData</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Display title</Display_label>
     <Datatype>string</Datatype>
@@ -3274,6 +3451,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Concatenated town, country, etc. but has gaps</Description>
     <Examples />
@@ -3283,7 +3461,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Place>
     <Source>Place</Source>
     <EMu_field>LocOcean_tab</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Ocean</Display_label>
     <Datatype>string</Datatype>
@@ -3295,16 +3473,17 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal>X</Internal>
     <Exclude_from_DC_help />
     <Description />
     <Examples />
     <TODO>v2.0</TODO>
-    <Notes />
+    <Notes>(not internal, but don't want displayed in help until implemented)'</Notes>
   </Place>
   <Place>
     <Source>Place</Source>
     <EMu_field>LocContinent_tab</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Continent</Display_label>
     <Datatype>string</Datatype>
@@ -3316,16 +3495,17 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal>X</Internal>
     <Exclude_from_DC_help />
     <Description />
     <Examples />
     <TODO>v2.0</TODO>
-    <Notes />
+    <Notes>(not internal, but don't want displayed in help until implemented)'</Notes>
   </Place>
   <Place>
     <Source>Place</Source>
     <EMu_field>LocCountry_tab</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Country</Display_label>
     <Datatype>string</Datatype>
@@ -3337,16 +3517,17 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal>X</Internal>
     <Exclude_from_DC_help />
     <Description />
     <Examples />
     <TODO>v2.0</TODO>
-    <Notes />
+    <Notes>(not internal, but don't want displayed in help until implemented)'</Notes>
   </Place>
   <Place>
     <Source>Place</Source>
     <EMu_field>LocProvinceStateTerritory_tab</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>State, territory or shire</Display_label>
     <Datatype>string</Datatype>
@@ -3358,16 +3539,17 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal>X</Internal>
     <Exclude_from_DC_help />
     <Description />
     <Examples />
     <TODO>v2.0</TODO>
-    <Notes />
+    <Notes>(not internal, but don't want displayed in help until implemented)'</Notes>
   </Place>
   <Place>
     <Source>Place</Source>
     <EMu_field>LocDistrictCountyShire_tab</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>District, county or shire</Display_label>
     <Datatype>string</Datatype>
@@ -3379,16 +3561,17 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal>X</Internal>
     <Exclude_from_DC_help />
     <Description />
     <Examples />
     <TODO>v2.0</TODO>
-    <Notes />
+    <Notes>(not internal, but don't want displayed in help until implemented)'</Notes>
   </Place>
   <Place>
     <Source>Place</Source>
     <EMu_field>LocTownship_tab</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>City, town or suburb</Display_label>
     <Datatype>string</Datatype>
@@ -3400,16 +3583,17 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal>X</Internal>
     <Exclude_from_DC_help />
     <Description />
     <Examples />
     <TODO>v2.0</TODO>
-    <Notes />
+    <Notes>(not internal, but don't want displayed in help until implemented)'</Notes>
   </Place>
   <Place>
     <Source>Place</Source>
     <EMu_field>LocNearestNamedPlace_tab</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Feature or locality</Display_label>
     <Datatype>string</Datatype>
@@ -3421,16 +3605,17 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal>X</Internal>
     <Exclude_from_DC_help />
     <Description />
     <Examples />
     <TODO>v2.0</TODO>
-    <Notes />
+    <Notes>(not internal, but don't want displayed in help until implemented)'</Notes>
   </Place>
   <Place>
     <Source>Place</Source>
     <EMu_field>LocSpecialGeographicUnit_tab</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Natural feature</Display_label>
     <Datatype>string</Datatype>
@@ -3442,16 +3627,17 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal>X</Internal>
     <Exclude_from_DC_help />
     <Description>Natural feature e.g river, rock, mountain</Description>
     <Examples />
     <TODO>v2.0</TODO>
-    <Notes />
+    <Notes>(not internal, but don't want displayed in help until implemented)'</Notes>
   </Place>
   <Place>
     <Source>Place</Source>
     <EMu_field>LatCentroidLatitude0</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Geo centroid Latitude HMS</Display_label>
     <Datatype>string</Datatype>
@@ -3463,6 +3649,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Latitude - DMS</Description>
     <Examples />
@@ -3472,7 +3659,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Place>
     <Source>Place</Source>
     <EMu_field>LatCentroidLongitude0</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Geo centroid Longitude HMS</Display_label>
     <Datatype>string</Datatype>
@@ -3484,6 +3671,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Longitude - DMS</Description>
     <Examples />
@@ -3493,7 +3681,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Place>
     <Source>Place</Source>
     <EMu_field>LatCentroidLatitudeDec_tab</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Geo centroid Latitude Decimal</Display_label>
     <Datatype>float</Datatype>
@@ -3505,6 +3693,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>geo</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Latitude - Decimal</Description>
     <Examples />
@@ -3514,7 +3703,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Place>
     <Source>Place</Source>
     <EMu_field>LatCentroidLongitudeDec_tab</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Geo centroid Longitude Decimal</Display_label>
     <Datatype>float</Datatype>
@@ -3526,6 +3715,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>geo</DC_term>
     <DC_term_source>schema</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Longitude - Decimal</Description>
     <Examples />
@@ -3534,19 +3724,20 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   </Place>
   <Narrative>
     <Source>Narrative</Source>
-    <EMu_field>irn</EMu_field>
-    <Checked_2019-01 />
+    <EMu_field>IRN</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Narrative record number</Display_label>
     <Datatype>integer</Datatype>
-    <LA_JSON />
-    <CRM_relation__rdf_value_ />
-    <CRM_object_type />
-    <AAT_id />
-    <AAT_label />
+    <LA_JSON>identified_by</LA_JSON>
+    <CRM_relation__rdf_value_>P1_is_identified_by</CRM_relation__rdf_value_>
+    <CRM_object_type>E42_Identifier</CRM_object_type>
+    <AAT_id>300404621</AAT_id>
+    <AAT_label>repository numbers</AAT_label>
     <NMA_term_id />
-    <DC_term />
-    <DC_term_source />
+    <DC_term>id</DC_term>
+    <DC_term_source>rdf</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>EMu Narrative record number (likely to use 'set' for user created groupings)</Description>
     <Examples />
@@ -3555,10 +3746,120 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   </Narrative>
   <Narrative>
     <Source>Narrative</Source>
-    <EMu_field>NarTitle</EMu_field>
-    <Checked_2019-01 />
+    <EMu_field>API</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
-    <Display_label>Title</Display_label>
+    <Display_label>Narrative type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>type</LA_JSON>
+    <CRM_relation__rdf_value_>rdf:type</CRM_relation__rdf_value_>
+    <CRM_object_type>ore:Aggregation</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>type</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Internal />
+    <Exclude_from_DC_help />
+    <Description>API entity type for the narrative</Description>
+    <Examples>narrative</Examples>
+    <TODO />
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>DesType_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON />
+    <CRM_relation__rdf_value_ />
+    <CRM_object_type />
+    <AAT_id />
+    <AAT_label />
+    <NMA_term_id />
+    <DC_term />
+    <DC_term_source />
+    <Internal />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO />
+    <Notes />
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>DesType</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Narrative type</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>classified_as</LA_JSON>
+    <CRM_relation__rdf_value_>P2_has_type/rdfs:label</CRM_relation__rdf_value_>
+    <CRM_object_type>E55_Type</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>additionalType</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Internal>X</Internal>
+    <Exclude_from_DC_help />
+    <Description>Additional type of the narrative</Description>
+    <Examples />
+    <TODO>v1.0 DC int</TODO>
+    <Notes>Used in CE, probably not needed in public API but needed in internal API.</Notes>
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>DesIntendedAudience_tab</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>-</Display_label>
+    <Datatype>list</Datatype>
+    <LA_JSON>-</LA_JSON>
+    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
+    <CRM_object_type>-</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>-</DC_term>
+    <DC_term_source />
+    <Internal />
+    <Exclude_from_DC_help />
+    <Description />
+    <Examples />
+    <TODO>V1.0 int</TODO>
+    <Notes>For internal API only</Notes>
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>DesIntendedAudience</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Audience</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>classified_as</LA_JSON>
+    <CRM_relation__rdf_value_>P2_has_type</CRM_relation__rdf_value_>
+    <CRM_object_type>E55_Type</CRM_object_type>
+    <AAT_id>300192793</AAT_id>
+    <AAT_label>audiences</AAT_label>
+    <NMA_term_id />
+    <DC_term>additionalType</DC_term>
+    <DC_term_source>schema</DC_term_source>
+    <Internal>X</Internal>
+    <Exclude_from_DC_help />
+    <Description>Additional type of the narrative</Description>
+    <Examples />
+    <TODO>v1.0 DC</TODO>
+    <Notes>Field to be included in internal API only. Value to be used to filter what narratives are to be included in the public API - only those with "Collection explorer publish". Internal API to include all narratives</Notes>
+  </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>NarTitle</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Narrative title</Display_label>
     <Datatype>string</Datatype>
     <LA_JSON>label</LA_JSON>
     <CRM_relation__rdf_value_>rdfs:label</CRM_relation__rdf_value_>
@@ -3568,6 +3869,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>title</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -3576,21 +3878,22 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   </Narrative>
   <Narrative>
     <Source>Narrative</Source>
-    <EMu_field>AdmDateModified</EMu_field>
-    <Checked_2019-01 />
+    <EMu_field>NarNarrative</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
-    <Display_label>Last modified</Display_label>
-    <Datatype>date</Datatype>
-    <LA_JSON>-</LA_JSON>
-    <CRM_relation__rdf_value_>P70i_is_documented_in/dc:modified</CRM_relation__rdf_value_>
-    <CRM_object_type>(literal)</CRM_object_type>
-    <AAT_id>-</AAT_id>
-    <AAT_label>-</AAT_label>
+    <Display_label>Description</Display_label>
+    <Datatype>string</Datatype>
+    <LA_JSON>aggregates/value</LA_JSON>
+    <CRM_relation__rdf_value_>ore:aggregates/rdf:value</CRM_relation__rdf_value_>
+    <CRM_object_type>E33_Linguistic_Object</CRM_object_type>
+    <AAT_id>300263751</AAT_id>
+    <AAT_label>texts (documents)</AAT_label>
     <NMA_term_id />
-    <DC_term>_meta/modified</DC_term>
+    <DC_term>description</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
-    <Description>Date the record was last modified in Emu</Description>
+    <Description>Narrative body, may contain HTML markup</Description>
     <Examples />
     <TODO />
     <Notes />
@@ -3598,28 +3901,29 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>AssMasterNarrativeRef</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
-    <Display_label>Parent record number</Display_label>
+    <Display_label>Parent record</Display_label>
     <Datatype>integer</Datatype>
-    <LA_JSON>-</LA_JSON>
-    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
-    <CRM_object_type>-</CRM_object_type>
+    <LA_JSON>aggregated_by</LA_JSON>
+    <CRM_relation__rdf_value_>ore:aggregated_by</CRM_relation__rdf_value_>
+    <CRM_object_type>ore:Aggregation</CRM_object_type>
     <AAT_id>-</AAT_id>
     <AAT_label>-</AAT_label>
     <NMA_term_id />
-    <DC_term>-</DC_term>
-    <DC_term_source />
+    <DC_term>isPartOf</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
-    <Description />
+    <Description>The parent narrative that this narrative is part of</Description>
     <Examples />
     <TODO />
-    <Notes>Ignore as we get the relationship from SubNarrative</Notes>
+    <Notes>For help display - we actually get the relationship from SubNarrative</Notes>
   </Narrative>
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>DesPurpose</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Narrative purpose</Display_label>
     <Datatype>string</Datatype>
@@ -3631,6 +3935,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal>X</Internal>
     <Exclude_from_DC_help />
     <Description>May be used to segregate narratives for different subsites</Description>
     <Examples />
@@ -3640,7 +3945,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>DetNarrativeIdentifier</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Narrative identifier</Display_label>
     <Datatype>string</Datatype>
@@ -3652,6 +3957,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>May be used for grouping narratives</Description>
     <Examples />
@@ -3661,7 +3967,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>DesVersionDate</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Created</Display_label>
     <Datatype>date</Datatype>
@@ -3673,6 +3979,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Date was first exported from EMu ??</Description>
     <Examples />
@@ -3681,113 +3988,8 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   </Narrative>
   <Narrative>
     <Source>Narrative</Source>
-    <EMu_field>DesType_tab</EMu_field>
-    <Checked_2019-01 />
-    <Where_to_find_in_EMu />
-    <Display_label>-</Display_label>
-    <Datatype>list</Datatype>
-    <LA_JSON />
-    <CRM_relation__rdf_value_ />
-    <CRM_object_type />
-    <AAT_id />
-    <AAT_label />
-    <NMA_term_id />
-    <DC_term />
-    <DC_term_source />
-    <Exclude_from_DC_help />
-    <Description />
-    <Examples />
-    <TODO />
-    <Notes />
-  </Narrative>
-  <Narrative>
-    <Source>Narrative</Source>
-    <EMu_field>DesType</EMu_field>
-    <Checked_2019-01 />
-    <Where_to_find_in_EMu />
-    <Display_label>Narrative type</Display_label>
-    <Datatype>string</Datatype>
-    <LA_JSON>classified_as</LA_JSON>
-    <CRM_relation__rdf_value_>P2_has_type/rdfs:label</CRM_relation__rdf_value_>
-    <CRM_object_type>-</CRM_object_type>
-    <AAT_id>-</AAT_id>
-    <AAT_label>-</AAT_label>
-    <NMA_term_id />
-    <DC_term />
-    <DC_term_source />
-    <Exclude_from_DC_help />
-    <Description />
-    <Examples />
-    <TODO>v1.0 DC int</TODO>
-    <Notes>Used in CE, probably not needed in public API but needed in internal API.</Notes>
-  </Narrative>
-  <Narrative>
-    <Source>Narrative</Source>
-    <EMu_field>DesIntendedAudience_tab</EMu_field>
-    <Checked_2019-01 />
-    <Where_to_find_in_EMu />
-    <Display_label>-</Display_label>
-    <Datatype>list</Datatype>
-    <LA_JSON>-</LA_JSON>
-    <CRM_relation__rdf_value_>-</CRM_relation__rdf_value_>
-    <CRM_object_type>-</CRM_object_type>
-    <AAT_id>-</AAT_id>
-    <AAT_label>-</AAT_label>
-    <NMA_term_id />
-    <DC_term>-</DC_term>
-    <DC_term_source />
-    <Exclude_from_DC_help />
-    <Description />
-    <Examples />
-    <TODO>V1.0 int</TODO>
-    <Notes>For internal API only</Notes>
-  </Narrative>
-  <Narrative>
-    <Source>Narrative</Source>
-    <EMu_field>DesIntendedAudience</EMu_field>
-    <Checked_2019-01 />
-    <Where_to_find_in_EMu />
-    <Display_label>Audience</Display_label>
-    <Datatype>string</Datatype>
-    <LA_JSON>classified_as</LA_JSON>
-    <CRM_relation__rdf_value_>P2_has_type</CRM_relation__rdf_value_>
-    <CRM_object_type>E55_Type</CRM_object_type>
-    <AAT_id>300192793</AAT_id>
-    <AAT_label>audiences</AAT_label>
-    <NMA_term_id />
-    <DC_term />
-    <DC_term_source />
-    <Exclude_from_DC_help />
-    <Description>This is used to filter the narratives.</Description>
-    <Examples />
-    <TODO>v1.0 DC</TODO>
-    <Notes>Field to be included in internal API only. Value to be used to filter what narratives are to be included in the public API - only those with "Collection explorer publish". Internal API to include all narratives</Notes>
-  </Narrative>
-  <Narrative>
-    <Source>Narrative</Source>
     <EMu_field>NarAuthorsRef_tab</EMu_field>
-    <Checked_2019-01 />
-    <Where_to_find_in_EMu />
-    <Display_label>Description</Display_label>
-    <Datatype>string</Datatype>
-    <LA_JSON>aggregates/value</LA_JSON>
-    <CRM_relation__rdf_value_>ore:aggregates</CRM_relation__rdf_value_>
-    <CRM_object_type>E33_Linguistic_Object</CRM_object_type>
-    <AAT_id>300263751</AAT_id>
-    <AAT_label>texts (documents)</AAT_label>
-    <NMA_term_id />
-    <DC_term>description</DC_term>
-    <DC_term_source>dc</DC_term_source>
-    <Exclude_from_DC_help />
-    <Description>Narrative body, may contain HTML markup</Description>
-    <Examples />
-    <TODO />
-    <Notes />
-  </Narrative>
-  <Narrative>
-    <Source>Narrative</Source>
-    <EMu_field />
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>-</Display_label>
     <Datatype>list</Datatype>
@@ -3799,6 +4001,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -3808,7 +4011,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>NarAuthorsRef</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Party record number</Display_label>
     <Datatype>integer</Datatype>
@@ -3820,6 +4023,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>IRN of narrative author</Description>
     <Examples />
@@ -3829,7 +4033,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>SubNarratives</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>-</Display_label>
     <Datatype>list</Datatype>
@@ -3841,6 +4045,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -3850,7 +4055,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>SubNarrative</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>-</Display_label>
     <Datatype>object</Datatype>
@@ -3862,6 +4067,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Subnarratives may be side bars or links within the document</Description>
     <Examples />
@@ -3871,20 +4077,21 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>SubNarrative."SubNarrative.irn"</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Narrative record number</Display_label>
     <Datatype>integer</Datatype>
     <LA_JSON>aggregates</LA_JSON>
     <CRM_relation__rdf_value_>ore:aggregates</CRM_relation__rdf_value_>
-    <CRM_object_type>-</CRM_object_type>
+    <CRM_object_type>ore:Aggregation</CRM_object_type>
     <AAT_id>-</AAT_id>
     <AAT_label>-</AAT_label>
     <NMA_term_id />
     <DC_term>hasPart</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
-    <Description />
+    <Description>Subnarratives of this narrative</Description>
     <Examples />
     <TODO />
     <Notes />
@@ -3892,7 +4099,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>SubNarrative."SubNarrative.title"</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Narrative title</Display_label>
     <Datatype>string</Datatype>
@@ -3902,8 +4109,9 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <AAT_id>-</AAT_id>
     <AAT_label>-</AAT_label>
     <NMA_term_id />
-    <DC_term>-</DC_term>
+    <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -3913,7 +4121,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>MulMultiMediaRef_tab</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>-</Display_label>
     <Datatype>list</Datatype>
@@ -3925,6 +4133,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -3934,7 +4143,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>image</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>-</Display_label>
     <Datatype>object</Datatype>
@@ -3946,6 +4155,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -3955,18 +4165,19 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>banner_small</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Small banner location</Display_label>
     <Datatype>string</Datatype>
     <LA_JSON>aggregates/representation</LA_JSON>
     <CRM_relation__rdf_value_>ore:aggregates/P138i_has_representation</CRM_relation__rdf_value_>
-    <CRM_object_type>-</CRM_object_type>
+    <CRM_object_type>E36_Visual_Item/nma:small-banner-image</CRM_object_type>
     <AAT_id>-</AAT_id>
     <AAT_label>-</AAT_label>
     <NMA_term_id />
-    <DC_term />
-    <DC_term_source />
+    <DC_term>aggregates</DC_term>
+    <DC_term_source>ore</DC_term_source>
+    <Internal>X</Internal>
     <Exclude_from_DC_help />
     <Description>Relative path on Collection Explorer</Description>
     <Examples />
@@ -3976,18 +4187,19 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>banner_large</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Large banner location</Display_label>
     <Datatype>string</Datatype>
     <LA_JSON>aggregates/representation</LA_JSON>
     <CRM_relation__rdf_value_>ore:aggregates/P138i_has_representation</CRM_relation__rdf_value_>
-    <CRM_object_type>-</CRM_object_type>
+    <CRM_object_type>E36_Visual_Item/nma:large-banner-image</CRM_object_type>
     <AAT_id>-</AAT_id>
     <AAT_label>-</AAT_label>
     <NMA_term_id />
-    <DC_term />
-    <DC_term_source />
+    <DC_term>aggregates</DC_term>
+    <DC_term_source>ore</DC_term_source>
+    <Internal>X</Internal>
     <Exclude_from_DC_help />
     <Description>Relative path on Collection Explorer</Description>
     <Examples />
@@ -3997,7 +4209,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>ObjObjectsRef_tab</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>-</Display_label>
     <Datatype>list</Datatype>
@@ -4009,6 +4221,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Object | Parent | Pending</Description>
     <Examples />
@@ -4018,7 +4231,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>ObjObjectsRef</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>-</Display_label>
     <Datatype>object</Datatype>
@@ -4030,6 +4243,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -4039,20 +4253,21 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>ObjObjectsRef.irn</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Object record number</Display_label>
     <Datatype>integer</Datatype>
     <LA_JSON>aggregates</LA_JSON>
     <CRM_relation__rdf_value_>ore:aggregates</CRM_relation__rdf_value_>
-    <CRM_object_type>-</CRM_object_type>
+    <CRM_object_type>E19_Physical_Object</CRM_object_type>
     <AAT_id>-</AAT_id>
     <AAT_label>-</AAT_label>
     <NMA_term_id />
     <DC_term>aggregates</DC_term>
     <DC_term_source>ore</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
-    <Description />
+    <Description>Collection objects related to this narrative</Description>
     <Examples />
     <TODO />
     <Notes />
@@ -4060,7 +4275,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>ObjObjectsRef.AdmPublishWebNoPassword</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Published in CE</Display_label>
     <Datatype>boolean</Datatype>
@@ -4072,6 +4287,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -4081,7 +4297,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>ObjObjectsRef.AcsAPI_tab</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>-</Display_label>
     <Datatype>list</Datatype>
@@ -4093,6 +4309,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -4102,7 +4319,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Narrative>
     <Source>Narrative</Source>
     <EMu_field>ObjObjectsRef.AcsAPI_tab.AcsAPI</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>API Access</Display_label>
     <Datatype>string</Datatype>
@@ -4114,16 +4331,39 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term />
     <DC_term_source />
+    <Internal>X</Internal>
     <Exclude_from_DC_help />
-    <Description>Values are: Public | Public Restricted | Internal</Description>
+    <Description>Values are: Public | Public Restricted | Internal | Removed</Description>
     <Examples />
     <TODO>v1.0</TODO>
     <Notes>Used to filter the records. Publlic API to include values of Public and Public Restricted. Internal API to include all records. Both APIs to include the value of this field. TBC as not sure why this is under narratives, maybe it is confirming the API status of the objects in that narrative.</Notes>
   </Narrative>
+  <Narrative>
+    <Source>Narrative</Source>
+    <EMu_field>AdmDateModified</EMu_field>
+    <Checked_2019-01>Y</Checked_2019-01>
+    <Where_to_find_in_EMu />
+    <Display_label>Last modified</Display_label>
+    <Datatype>date</Datatype>
+    <LA_JSON>documented_in/modified</LA_JSON>
+    <CRM_relation__rdf_value_>P70i_is_documented_in/dc:modified</CRM_relation__rdf_value_>
+    <CRM_object_type>E31_Document/(literal)</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
+    <NMA_term_id />
+    <DC_term>_meta/modified</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Internal />
+    <Exclude_from_DC_help />
+    <Description>Date the record was last modified in EMu</Description>
+    <Examples>2018-03-26</Examples>
+    <TODO />
+    <Notes />
+  </Narrative>
   <Piction>
     <Source>Piction</Source>
     <EMu_field>EMu IRN for Media Asset</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>?</Display_label>
     <Datatype>?</Datatype>
@@ -4135,6 +4375,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -4144,7 +4385,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Piction>
     <Source>Piction</Source>
     <EMu_field>EMu IRN for Related Objects</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Object record number</Display_label>
     <Datatype>integer</Datatype>
@@ -4154,8 +4395,9 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <AAT_id>-</AAT_id>
     <AAT_label>-</AAT_label>
     <NMA_term_id />
-    <DC_term />
-    <DC_term_source />
+    <DC_term>isVersionOf/id</DC_term>
+    <DC_term_source>rdf</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description>Object IRN this media file represents</Description>
     <Examples />
@@ -4165,7 +4407,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Piction>
     <Source>Piction</Source>
     <EMu_field>Multimedia ID</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Multimedia record number</Display_label>
     <Datatype>string</Datatype>
@@ -4177,6 +4419,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>hasVersion/id</DC_term>
     <DC_term_source>rdf</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -4186,7 +4429,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Piction>
     <Source>Piction</Source>
     <EMu_field>Other Numbers Kind</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Accession number</Display_label>
     <Datatype>string</Datatype>
@@ -4198,6 +4441,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -4207,7 +4451,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Piction>
     <Source>Piction</Source>
     <EMu_field>Other Numbers Value</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Accession number</Display_label>
     <Datatype>string</Datatype>
@@ -4219,6 +4463,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -4228,18 +4473,19 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Piction>
     <Source>Piction</Source>
     <EMu_field>Page Number</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
-    <Display_label>?</Display_label>
+    <Display_label>Preferred</Display_label>
     <Datatype>integer</Datatype>
-    <LA_JSON />
-    <CRM_relation__rdf_value_ />
-    <CRM_object_type />
-    <AAT_id />
-    <AAT_label />
+    <LA_JSON>classified_as</LA_JSON>
+    <CRM_relation__rdf_value_>P2_has_type</CRM_relation__rdf_value_>
+    <CRM_object_type>nma:preferred</CRM_object_type>
+    <AAT_id>-</AAT_id>
+    <AAT_label>-</AAT_label>
     <NMA_term_id />
-    <DC_term />
+    <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -4249,7 +4495,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Piction>
     <Source>Piction</Source>
     <EMu_field>Photographer</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Media creator</Display_label>
     <Datatype>string</Datatype>
@@ -4259,10 +4505,11 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <AAT_id>-</AAT_id>
     <AAT_label>-</AAT_label>
     <NMA_term_id />
-    <DC_term />
-    <DC_term_source />
+    <DC_term>creator</DC_term>
+    <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
-    <Description />
+    <Description>Photographer</Description>
     <Examples />
     <TODO>v1.0 DC</TODO>
     <Notes />
@@ -4270,7 +4517,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Piction>
     <Source>Piction</Source>
     <EMu_field>Title</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Object title</Display_label>
     <Datatype>string</Datatype>
@@ -4282,6 +4529,7 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
     <Description />
     <Examples />
@@ -4291,91 +4539,95 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
   <Piction>
     <Source>Piction</Source>
     <EMu_field>thumbnail</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Thumbnail media location</Display_label>
     <Datatype>string</Datatype>
     <LA_JSON>representation/representation</LA_JSON>
     <CRM_relation__rdf_value_>P138i_has_representation/P138i_has_representation</CRM_relation__rdf_value_>
-    <CRM_object_type>-</CRM_object_type>
+    <CRM_object_type>nma:thumbnail</CRM_object_type>
     <AAT_id>-</AAT_id>
     <AAT_label>-</AAT_label>
     <NMA_term_id />
     <DC_term>hasVersion/hasVersion/identifier</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
-    <Description>200px image</Description>
+    <Description>Thumbnail image</Description>
     <Examples />
     <TODO />
-    <Notes />
+    <Notes>200px image</Notes>
   </Piction>
   <Piction>
     <Source>Piction</Source>
     <EMu_field>web</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Preview media location</Display_label>
     <Datatype>string</Datatype>
     <LA_JSON>representation/representation</LA_JSON>
     <CRM_relation__rdf_value_>P138i_has_representation/P138i_has_representation</CRM_relation__rdf_value_>
-    <CRM_object_type>-</CRM_object_type>
+    <CRM_object_type>nma:preview</CRM_object_type>
     <AAT_id>-</AAT_id>
     <AAT_label>-</AAT_label>
     <NMA_term_id />
     <DC_term>hasVersion/hasVersion/identifier</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
-    <Description>800px image</Description>
+    <Description>Preview image</Description>
     <Examples />
     <TODO />
-    <Notes />
+    <Notes>800px image</Notes>
   </Piction>
   <Piction>
     <Source>Piction</Source>
     <EMu_field>original_2</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Hi-res media location</Display_label>
     <Datatype>string</Datatype>
     <LA_JSON>representation/representation</LA_JSON>
     <CRM_relation__rdf_value_>P138i_has_representation/P138i_has_representation</CRM_relation__rdf_value_>
-    <CRM_object_type>-</CRM_object_type>
+    <CRM_object_type>nma:full</CRM_object_type>
     <AAT_id>-</AAT_id>
     <AAT_label>-</AAT_label>
     <NMA_term_id />
     <DC_term>hasVersion/hasVersion/identifier</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal>X</Internal>
     <Exclude_from_DC_help />
-    <Description>2000px image (internal use only)</Description>
+    <Description>Full (hi-res) image</Description>
     <Examples />
     <TODO />
-    <Notes />
+    <Notes>2000px image (internal use only)</Notes>
   </Piction>
   <Piction>
     <Source>Piction</Source>
     <EMu_field>original_3</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Full media location</Display_label>
     <Datatype>string</Datatype>
     <LA_JSON>representation/representation</LA_JSON>
     <CRM_relation__rdf_value_>P138i_has_representation/P138i_has_representation</CRM_relation__rdf_value_>
-    <CRM_object_type>-</CRM_object_type>
+    <CRM_object_type>nma:large</CRM_object_type>
     <AAT_id>-</AAT_id>
     <AAT_label>-</AAT_label>
     <NMA_term_id />
     <DC_term>hasVersion/hasVersion/identifier</DC_term>
     <DC_term_source>dc</DC_term_source>
+    <Internal />
     <Exclude_from_DC_help />
-    <Description>1600px image</Description>
+    <Description>Large image</Description>
     <Examples />
     <TODO />
-    <Notes />
+    <Notes>1600px image</Notes>
   </Piction>
   <Piction>
     <Source>Piction</Source>
     <EMu_field>original_4</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Old preview image location</Display_label>
     <Datatype>string</Datatype>
@@ -4387,16 +4639,17 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
-    <Description>640px image (old)</Description>
+    <Description />
     <Examples />
     <TODO />
-    <Notes>Ignore as old data</Notes>
+    <Notes>640px image - Ignore as old data</Notes>
   </Piction>
   <Piction>
     <Source>Piction</Source>
     <EMu_field>original_5</EMu_field>
-    <Checked_2019-01 />
+    <Checked_2019-01>Y</Checked_2019-01>
     <Where_to_find_in_EMu />
     <Display_label>Old thumbnail image location</Display_label>
     <Datatype>string</Datatype>
@@ -4408,11 +4661,12 @@ FW 17/5/18 - I think the rights is OK as is, as it refers to the images. And the
     <NMA_term_id />
     <DC_term>-</DC_term>
     <DC_term_source />
+    <Internal />
     <Exclude_from_DC_help />
-    <Description>200px image (old)</Description>
+    <Description />
     <Examples />
     <TODO />
-    <Notes>Ignore as old data</Notes>
+    <Notes>200px image - Ignore as old data</Notes>
   </Piction>
 </data>
 
