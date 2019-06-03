@@ -142,13 +142,22 @@
 
 	<!-- Convert the Solr http response into an API response to the API user -->
 	<xsl:template match="/">
-		<!-- define the HTTP response; the error code supplied, or a 404 "Not found" if nothing was found, otherwise a 200 "OK" -->
+		<!-- define the HTTP response:
+			the error code returned by Solr, if any 
+			otherwise if there are no results for a search request then 200 "OK"
+			otherwise if there are no results for a known-item request then 404 "Not found"
+			otherwise a known-item request can return a single record containing a status code (e.g. 400 "Gone")
+			otherwise 200 "OK" 
+		-->
 		<c:response status="{
 			if (/response/lst[@name='error']) then 
 				/response/lst[@name='error']/int[@name='code']
 			else
 				if ($result-count=0) then 
-					'404' 
+					if ($is-search-request) then
+						'200'
+					else
+						'404' 
 				else if (not($is-search-request) and /response/result/doc/str[@name='status_code']) then
 					/response/result/doc/str[@name='status_code']
 				else
