@@ -16,8 +16,9 @@ echo "API status was previously $current_status"
 
 # download from url into 'result' file, and record http response code
 response_code=$(curl -s -i -o $host.txt -w "%{response_code}" "$url" )
+curl_status=$?
 echo "API new response code is $response_code"
-
+echo "curl returned $curl_status"
 # if current API status is "down" then notify only if status is now "up"
 # or if current API status is "up", then notify only if status is now "down"
 if [ $response_code = "200" ] && [ $current_status = "down" ]; then
@@ -27,7 +28,7 @@ fi
 if [ $response_code != '200' ]; then
 	if [ $current_status = "up" ]; then
 		echo "API has gone down"
-		sendemail -f $from -t $to -u "API down on $host" -m "$url returned $response_code" -a $host.txt
+		sendemail -f $from -t $to -u "API down on $host" -m "$url returned $response_code and curl returned status code $curl_status" -a $host.txt 
 		# remove API result file (semaphore) to signal that the API is now down
 	fi
 	rm $host.txt
