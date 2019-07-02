@@ -97,6 +97,7 @@
 		<p:output port="result"/>
 		<p:option name="status" select=" '200' "/>
 		<p:option name="content-type" select=" 'application/xml' "/>
+		<p:variable name="version" xmlns:x="tag:conaltuohy.com,2019:xproc-z-system-properties" select="p:system-property('x:version')"/>
 		<p:in-scope-names name="parameters"/>
 		<p:template name="http-response">
 			<p:input port="source">
@@ -106,7 +107,7 @@
 				<p:inline>
 					<c:response status="{$status}">
 						<c:header name="X-Powered-By" value="XProc using XML Calabash"/>
-						<c:header name="Server" value="XProc-Z"/>
+						<c:header name="Server" value="XProc-Z version {$version}"/>
 						<c:body content-type="{$content-type}">{/*}</c:body>
 					</c:response>
 				</p:inline>

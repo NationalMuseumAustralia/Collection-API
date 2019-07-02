@@ -142,13 +142,22 @@
 
 	<!-- Convert the Solr http response into an API response to the API user -->
 	<xsl:template match="/">
-		<!-- define the HTTP response; the error code supplied, or a 404 "Not found" if nothing was found, otherwise a 200 "OK" -->
+		<!-- define the HTTP response:
+			the error code returned by Solr, if any 
+			otherwise if there are no results for a search request then 200 "OK"
+			otherwise if there are no results for a known-item request then 404 "Not found"
+			otherwise a known-item request can return a single record containing a status code (e.g. 400 "Gone")
+			otherwise 200 "OK" 
+		-->
 		<c:response status="{
 			if (/response/lst[@name='error']) then 
 				/response/lst[@name='error']/int[@name='code']
 			else
 				if ($result-count=0) then 
-					'404' 
+					if ($is-search-request) then
+						'200'
+					else
+						'404' 
 				else if (not($is-search-request) and /response/result/doc/str[@name='status_code']) then
 					/response/result/doc/str[@name='status_code']
 				else
@@ -156,6 +165,15 @@
 		}">
 			<xsl:call-template name="response-headers"/>
 			<!-- specify which format the result is being returned in -->
+			<!-- Originally there was only one "simple" field; later this was split into multiple versions "simple_1", "simple_2" etc. -->
+			<!-- Here, as a transitional arrangement, we check whether any of the records here have a "simple" field, in which
+			case we will not declare our response to have any particular profile (since it is either entirely "simple" records or a mixed
+			bag of "simple" and some "simple_1", "simple_2" or similar specific versions. -->
+			<xsl:variable name="legacy-simple-field-exists" select="exists(/response/result/doc/*[@name='simple'])"/>
+			<xsl:variable name="response-version" select="
+				if ($response-format='json-ld' or $legacy-simple-field-exists) then ()
+				else ($requested-version, $latest-version)[1]
+			"/>	
 			<c:body content-type="{
 				if ($response-format='json-ld') then 
 					'application/ld+json' 
@@ -348,16 +366,15 @@
 		</xsl:if>
 	</xsl:template>
 	
-	<!-- Originally there was only one "simple" field; later this was split into multiple versions "simple_1", "simple_2" etc. -->
-	<!-- Here, as a transitional arrangement, we check whether the "simple" field still exists since this means we can't choose a specific version -->
-	<xsl:variable name="legacy-simple-field-exists" select="exists(/response/result/doc/*[@name='simple'])"/>
-	<xsl:variable name="response-version" select="
-		if ($response-format='json-ld' or $legacy-simple-field-exists) then ()
-		else ($requested-version, $latest-version)[1]
-	"/>
-	
 	<!-- Represent an individual search result simply by selecting the appropriate format payload field from within it -->
 	<xsl:template match="doc">
+		<!-- Originally there was only one "simple" field; later this was split into multiple versions "simple_1", "simple_2" etc. -->
+		<!-- Here, as a transitional arrangement, we check whether the "simple" field still exists since this means we can't choose a specific version -->
+		<xsl:variable name="legacy-simple-field-exists" select="exists(*[@name='simple'])"/>
+		<xsl:variable name="response-version" select="
+			if ($response-format='json-ld' or $legacy-simple-field-exists) then ()
+			else ($requested-version, $latest-version)[1]
+		"/>	
 		<xsl:variable name="payload-field-name" select="
 			if ($response-version) then
 				concat($response-format, '_', $response-version)

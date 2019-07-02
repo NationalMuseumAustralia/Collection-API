@@ -38,7 +38,29 @@ version="1.0" name="main" xmlns:nma="tag:conaltuohy.com,2018:nma">
 	<p:choose>
 		<p:when test="/c:request/@href='http://localhost:8983/solr/core_nma_log/update'">
 			<!-- This request is an asynchronous request invoked by this pipeline itself, to log the details of an API request made by an end user -->
+<!--
+			TODO test with update UUID-based p:episode implementation
+			<cx:message>
+				<p:with-option name="message" select="/c:request/c:body/add/doc/field[@name='id']"/>
+			</cx:message>
+-->
 			<p:http-request name="execute-log-update-request"/>
+<!--
+			<p:wrap-sequence name="request-response" wrapper="request-response">
+				<p:input port="source">
+					<p:pipe step="main" port="source"/>
+					<p:pipe step="execute-log-update-request" port="result"/>
+				</p:input>
+			</p:wrap-sequence>
+			<p:store indent="true">
+				<p:with-option name="href" select="concat('/tmp/api-log/', /request-response/c:request/c:body/add/doc/field[@name='id'], '.xml')"/>
+			</p:store>
+			<p:identity>
+				<p:input port="source">
+					<p:pipe step="request-response" port="result"/>
+				</p:input>
+			</p:identity>
+			-->
 		</p:when>
 		<p:otherwise>
 			<p:choose>

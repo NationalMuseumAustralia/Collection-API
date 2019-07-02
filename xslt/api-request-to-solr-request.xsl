@@ -100,6 +100,14 @@
 	
 	<xsl:function name="nma:encode-params-as-solr-query">
 		<xsl:param name="params"/><!-- sequence of c:param elements -->
+		<!-- some fields should be searched as numbers, not as text as we do with most fields -->
+		<xsl:variable name="non-text-fields" select="
+			(
+				'depth', 'width', 'length', 'height', 'diameter', 'weight',
+				'datestamp', 'temporal_date','issued_date', 'modified_date'
+			)"/>
+		<!-- some fields contain phrases which should be searched as phrases, rather than as a bag of words, as we do with most text fields -->
+		<xsl:variable name="phrasal-fields" select="('rights')"/>
 		<xsl:variable name="query">
 			<xsl:for-each-group select="$params" group-by="@name">
 				<xsl:if test="position() &gt; 1">
@@ -112,19 +120,29 @@
 							$parameter/@name, 
 							if ($parameter/@value='*') then 
 								':*' 
-							else concat(
-								':&quot;', 
-								replace(
+							else if ($parameter/@name = $non-text-fields) then 
+								(: non text fields don't need quoting or proximity operator :)
+								concat(':', $parameter/@value)
+							else 
+								(: text fields must be quoted :)
+								concat(
+									':&quot;', 
 									replace(
-										$parameter/@value,
-										'\\',
-										'\\\\'
-									),
-									'&quot;',
-									'\\&quot;'
-								), 
-								'&quot;~1000000'
-							)
+										replace(
+											$parameter/@value,
+											'\\',
+											'\\\\'
+										),
+										'&quot;',
+										'\\&quot;'
+									), 
+									if ($parameter/@name = $phrasal-fields) then
+										(: search as a phrase, i.e. without word proximity operator :)
+										'&quot;'
+									else
+										(: most fields should be search as a bag of words, using the proximity operator '~' appended :)
+										'&quot;~1000000'
+								)
 						),
 						' OR '
 					)
