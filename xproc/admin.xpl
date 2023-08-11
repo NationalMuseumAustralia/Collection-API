@@ -567,7 +567,12 @@
 												<xsl:for-each select="$keys">
 													<xsl:variable name="key-id" select="fn:string[@key='id']"/>
 													<xsl:variable name="key" select="fn:string[@key='key']"/>
-													<xsl:variable name="consumer-id" select="fn:string[@key='consumer_id']"/>
+													<xsl:variable name="consumer-id" select="
+														(
+															fn:string[@key='consumer_id'], (: in kong-community-edition-0.13 :)
+															fn:map[@key='consumer']/fn:string[@key='id'] (: in kong-gateway-3.x :)
+														)[1]
+													"/>
 													<xsl:variable name="consumer-custom-id" select="
 														key('consumer-by-id', $consumer-id)/fn:string[@key='custom_id']
 													"/>
