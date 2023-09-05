@@ -381,6 +381,8 @@
 		</nma:send-email>
 		
 		<!-- Create response web page -->
+		<!-- redirect replaced with a static html page, as the NMA's website changed and the old page is gone -->
+		<!--
 		<p:identity name="http-response">
 			<p:input port="source">
 				<p:inline>
@@ -390,6 +392,9 @@
 				</p:inline>
 			</p:input>
 		</p:identity>
+		-->
+		<p:load name="signup-complete" href="../signup-complete.html"/>
+		<z:make-http-response content-type="application/xhtml+xml"/>
 	</p:declare-step>
 	
 	<p:declare-step name="read" type="kong:read">
