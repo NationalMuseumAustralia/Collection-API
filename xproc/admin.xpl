@@ -547,10 +547,19 @@
 											padding-left: 0.5em;
 											padding-bottom: 0em;
 										}
+										a {
+											text-decoration: none;
+										}
+										.public {
+											background-color: #80ff80;
+										}
+										.internal {
+											background-color: #ffbf80;
+										}
 									</style>
 								</head>
-								<body>
-									<h1>API users</h1>
+								<body xsl:expand-text="true">
+									<h1>{count($keys)} API users</h1>
 									<form action="#" method="post">
 										<table>
 											<thead>
@@ -584,7 +593,7 @@
 														</td>
 														<td><xsl:value-of select="$consumer?name"/></td>
 														<td><a href="mailto:{$consumer?email}"><xsl:value-of select="$consumer?email"/></a></td>
-														<td><xsl:value-of select="$consumer?group"/></td>
+														<td class="{$consumer?group}"><xsl:value-of select="$consumer?group"/></td>
 														<td><xsl:value-of select="$consumer?date"/></td>
 														<td><xsl:value-of select="$consumer?time"/></td>
 													</tr>
