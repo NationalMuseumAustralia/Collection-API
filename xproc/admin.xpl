@@ -564,6 +564,7 @@
 										<table>
 											<thead>
 												<tr>
+													<th>Row</th>
 													<th>API Key</th>
 													<th>Name</th>
 													<th>Email</th>
@@ -575,6 +576,7 @@
 											<tbody>
 												<xsl:for-each select="$keys">
 													<xsl:sort select="fn:string[@key='key']"/>
+													<xsl:variable name="n" select="position()"/>
 													<xsl:variable name="key-id" select="fn:string[@key='id']"/>
 													<xsl:variable name="key" select="fn:string[@key='key']"/>
 													<xsl:variable name="consumer-id" select="
@@ -588,6 +590,7 @@
 													"/>
 													<xsl:variable name="consumer" select="nma:parse-consumer($consumer-custom-id)"/>
 													<tr>
+														<td>{$n}</td>
 														<td>
 															<input type="checkbox" name="id" id="{$consumer-id}" value="{$consumer-id}"/>
 															<label for="{$consumer-id}"><code><xsl:value-of select="$key"/></code></label>
