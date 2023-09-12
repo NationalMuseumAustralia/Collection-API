@@ -592,8 +592,8 @@
 															<input type="checkbox" name="id" id="{$consumer-id}" value="{$consumer-id}"/>
 															<label for="{$consumer-id}"><code><xsl:value-of select="$key"/></code></label>
 														</td>
-														<td><xsl:value-of select="$consumer?name"/></td>
-														<td><a href="mailto:{$consumer?email}"><xsl:value-of select="$consumer?email"/></a></td>
+														<td><a title="View API access" href="../dashboard/?username={encode-for-uri($consumer-custom-id)}"><xsl:value-of select="$consumer?name"/></a></td>
+														<td><a title="Send email" href="mailto:{$consumer?email}"><xsl:value-of select="$consumer?email"/></a></td>
 														<td class="{$consumer?group}"><xsl:value-of select="$consumer?group"/></td>
 														<td><xsl:value-of select="$consumer?date"/></td>
 														<td><xsl:value-of select="$consumer?time"/></td>
