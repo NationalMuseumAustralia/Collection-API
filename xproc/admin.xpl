@@ -574,6 +574,7 @@
 											</thead>
 											<tbody>
 												<xsl:for-each select="$keys">
+													<xsl:sort select="fn:string[@key='key']"/>
 													<xsl:variable name="key-id" select="fn:string[@key='id']"/>
 													<xsl:variable name="key" select="fn:string[@key='key']"/>
 													<xsl:variable name="consumer-id" select="
