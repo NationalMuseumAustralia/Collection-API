@@ -27,6 +27,7 @@
 					'/solr/core_nma_log/query?'
 				)
 			}"
+			override-content-type="text/plain"
 		>
 			<c:body content-type="application/xml">
 				<xsl:apply-templates select="/*/c:param-set"/>
